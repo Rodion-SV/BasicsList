@@ -1,3 +1,5 @@
+/* How to read? Select the code you want and use "command + /" hotkeys in XCode to remove commentaries.*/
+
 /* Simple temperature output*/
 //let day = "Monday"
 //let dailyTemperature = 75
@@ -50,22 +52,22 @@
  The level's average score is 4.9.*/
 
  /*Simple weather app modified*/
-let day = "Monday"
-print("Today is \(day).")
-let hour = "6"
-let minutes = "15"
-let period = "PM"
-var time = hour + ":" + minutes + " " + period
-print("It is \(time).")
-print("It is \(time) on \(day).")
-let timezone = "PST"
-time += " \(timezone)"
-print("It is \(time).")
-time += " on \(day)"
-print("It is \(time).")
-let shortDay = day.prefix(3)
-print("Today is \(shortDay).")
-print("It is \(hour):\(minutes) \(period) \(timezone) on \(shortDay).")
+//let day = "Monday"
+//print("Today is \(day).")
+//let hour = "6"
+//let minutes = "15"
+//let period = "PM"
+//var time = hour + ":" + minutes + " " + period
+//print("It is \(time).")
+//print("It is \(time) on \(day).")
+//let timezone = "PST"
+//time += " \(timezone)"
+//print("It is \(time).")
+//time += " on \(day)"
+//print("It is \(time).")
+//let shortDay = day.prefix(3)
+//print("Today is \(shortDay).")
+//print("It is \(hour):\(minutes) \(period) \(timezone) on \(shortDay).")
 
 /*Output:
  Today is Monday.

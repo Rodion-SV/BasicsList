@@ -16,14 +16,14 @@
 //let test1 = 0.33
 //let r = Double(test)+test1
 //print(r)
-//
-///*Output:
-//Today is Monday! Rise and shine!
-//The temperature on Monday is 75 F.
-//The temperature on Monday morning is 70 F.
-//The temperature on Monday evening is 80 F.
-//The average temperature this week is 75 F.
-//5.33*/
+
+/*Output:
+Today is Monday! Rise and shine!
+The temperature on Monday is 75 F.
+The temperature on Monday morning is 70 F.
+The temperature on Monday evening is 80 F.
+The average temperature this week is 75 F.
+5.33*/
 
 /*simple game score output*/
 //let levelScore = 10
@@ -77,3 +77,53 @@
  It is 6:15 PM PST on Monday.
  Today is Mon.
  It is 6:15 PM PST on Mon.*/
+
+/*Weather app, paid subscription + settings check demo*/
+let freeApp = true
+if freeApp == true {
+    print("You are using the free version of the app. Buy the full version of the app to get access to all of its features.")
+}
+let morningTemperature = 70
+let eveningTemperature = 80
+if morningTemperature < eveningTemperature {
+    print("The coldest temperature is in the morning.")
+}
+else {
+    print("The coldest temperature is in the evening.")
+}
+let temperatureDegree = "Fahrenheit"
+if temperatureDegree == "Fahrenheit" {
+    print("Your selection of scale's temperature is Fahrenheit.")
+}
+else {
+    print("Your selection of scale's temperature is Celsius.")
+}
+let Fahrenheit = true
+let Celcius = false
+if Fahrenheit || Celcius {
+    print("Fahrenheit is being used as default. The app configured properly.")
+}
+else {
+    print("Celcius is being used as default. The app isn't configured properly.")
+}
+if temperatureDegree == "Celsius" || temperatureDegree == "Fahrenheit" {
+  print("The weather app is configured properly.")
+} else {
+  print("The weather app isn't configured properly.")
+}
+switch temperatureDegree {
+case "Fahrenheit":
+    print("App uses Fahrenheit degrees for its temperature.")
+case "Celcius":
+    print("App uses Celcius degrees for its temperature.")
+default:
+    print("App has an unknown configuration.")
+}
+
+/*Output:
+ You are using the free version of the app. Buy the full version of the app to get access to all of its features.
+ The coldest temperature is in the morning.
+ Your selection of scale's temperature is Fahrenheit.
+ Fahrenheit is being used as default. The app configured properly.
+ The weather app is configured properly.
+ App uses Fahrenheit degrees for its temperature.*/

@@ -129,20 +129,43 @@ The average temperature this week is 75 F.
  App uses Fahrenheit degrees for its temperature.*/
 
 /*Game's level checking*/
-let levels = 10
-let freeLevels = 4
-let bonusLevel = 3
-for i in 1...levels {
-    if i == bonusLevel {
-        print("It's a bonus level")
-    }
-    else if i <= 4 {
-        print("Game's level is \(i)")
-    }
-}
+//let levels = 10
+//let freeLevels = 4
+//let bonusLevel = 3
+//for i in 1...levels {
+//    if i == bonusLevel {
+//        print("It's a bonus level")
+//    }
+//    else if i <= 4 {
+//        print("Game's level is \(i)")
+//    }
+//}
 
 /*Output:
  Game's level is 1
  Game's level is 2
  It's a bonus level
  Game's level is 4*/
+
+/*Paid levels checking in a game*/
+let levels = 10
+let freeLevels = 4
+let bonusLevel = 3
+for level in 1...levels {
+  if level == bonusLevel {
+    print("Skip bonus level \(bonusLevel).")
+    continue
+  }
+  print("Play level \(level).")
+  if level == freeLevels {
+    print("You have played all \(freeLevels) free levels. Buy the game to play the remaining \(levels - freeLevels) levels.")
+    break
+  }
+}
+
+/*Output:
+ Play level 1.
+ Play level 2.
+ Skip bonus level 3.
+ Play level 4.
+ You have played all 4 free levels. Buy the game to play the remaining 6 levels.*/

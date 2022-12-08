@@ -148,20 +148,20 @@ The average temperature this week is 75 F.
  Game's level is 4*/
 
 /*Paid levels checking in a game*/
-let levels = 10
-let freeLevels = 4
-let bonusLevel = 3
-for level in 1...levels {
-  if level == bonusLevel {
-    print("Skip bonus level \(bonusLevel).")
-    continue
-  }
-  print("Play level \(level).")
-  if level == freeLevels {
-    print("You have played all \(freeLevels) free levels. Buy the game to play the remaining \(levels - freeLevels) levels.")
-    break
-  }
-}
+//let levels = 10
+//let freeLevels = 4
+//let bonusLevel = 3
+//for level in 1...levels {
+//  if level == bonusLevel {
+//    print("Skip bonus level \(bonusLevel).")
+//    continue
+//  }
+//  print("Play level \(level).")
+//  if level == freeLevels {
+//    print("You have played all \(freeLevels) free levels. Buy the game to play the remaining \(levels - freeLevels) levels.")
+//    break
+//  }
+//}
 
 /*Output:
  Play level 1.
@@ -169,3 +169,14 @@ for level in 1...levels {
  Skip bonus level 3.
  Play level 4.
  You have played all 4 free levels. Buy the game to play the remaining 6 levels.*/
+
+/*Simple roll&dice*/
+var firstDice = Int.random(in: 1...6)
+var secondDice = Int.random(in: 1...6)
+while firstDice != secondDice {
+  firstDice = Int.random(in: 1...6)
+  secondDice = Int.random(in: 1...6)
+}
+print("You rolled a double \(firstDice).")
+/*Output is random:
+You rolled a double 2.*/

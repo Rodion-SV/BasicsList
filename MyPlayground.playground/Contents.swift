@@ -171,12 +171,25 @@ The average temperature this week is 75 F.
  You have played all 4 free levels. Buy the game to play the remaining 6 levels.*/
 
 /*Simple roll&dice*/
-var firstDice = Int.random(in: 1...6)
-var secondDice = Int.random(in: 1...6)
-while firstDice != secondDice {
-  firstDice = Int.random(in: 1...6)
-  secondDice = Int.random(in: 1...6)
-}
-print("You rolled a double \(firstDice).")
+//var firstDice = Int.random(in: 1...6)
+//var secondDice = Int.random(in: 1...6)
+//while firstDice != secondDice {
+//  firstDice = Int.random(in: 1...6)
+//  secondDice = Int.random(in: 1...6)
+//}
+//print("You rolled a double \(firstDice).")
+
 /*Output is random:
 You rolled a double 2.*/
+
+/*Another method of roll&dice*/
+var firstDice = 0
+var secondDice = 0
+repeat {
+  firstDice = Int.random(in: 1...6)
+  secondDice = Int.random(in: 1...6)
+} while firstDice != secondDice
+print("You rolled a double \(firstDice).")
+
+/*Output is random:
+ You rolled a double 6.*/

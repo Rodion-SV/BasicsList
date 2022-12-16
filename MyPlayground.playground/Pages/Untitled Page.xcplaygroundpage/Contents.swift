@@ -195,49 +195,49 @@ You rolled a double 2.*/
  You rolled a double 6.*/
 
 /*App passcodes*/
-var password = "1234"
-let passcode = Int(password)
-print("The passcode of the app is \(passcode!).")
-password = "hello world"
-if let code = Int(password) {
-  print("The passcode of the app is \(code).")
-} else {
-  print("Invalid passcode!")
-}
-let accessCode: Int
-if let code = Int(password) {
-  accessCode = code
-} else {
-  accessCode = 1111
-}
-print("The passcode of the app is \(accessCode).")
-let firstPassword = "hello"
-let secondPassword = "world"
-if let firstPasscode = Int(firstPassword),
-  let secondPasscode =
-    Int(secondPassword)
-{
-  print(
-    "The first passcode of the app is \(firstPasscode) and the second passcode of the app is \(secondPasscode)."
-  )
-} else {
-  print("Invalid passcodes!")
-}
-let firstAccessCode: Int
-let secondAccessCode: Int
-if let firstPasscode = Int(firstPassword),
-  let secondPasscode =
-    Int(secondPassword)
-{
-  firstAccessCode = firstPasscode
-  secondAccessCode = secondPasscode
-} else {
-  firstAccessCode = 1111
-  secondAccessCode = 2222
-}
-print(
-  "The first passcode of the app is \(firstAccessCode) and the second passcode of the app is \(secondAccessCode)."
-)
+//var password = "1234"
+//let passcode = Int(password)
+//print("The passcode of the app is \(passcode!).")
+//password = "hello world"
+//if let code = Int(password) {
+//  print("The passcode of the app is \(code).")
+//} else {
+//  print("Invalid passcode!")
+//}
+//let accessCode: Int
+//if let code = Int(password) {
+//  accessCode = code
+//} else {
+//  accessCode = 1111
+//}
+//print("The passcode of the app is \(accessCode).")
+//let firstPassword = "hello"
+//let secondPassword = "world"
+//if let firstPasscode = Int(firstPassword),
+//  let secondPasscode =
+//    Int(secondPassword)
+//{
+//  print(
+//    "The first passcode of the app is \(firstPasscode) and the second passcode of the app is \(secondPasscode)."
+//  )
+//} else {
+//  print("Invalid passcodes!")
+//}
+//let firstAccessCode: Int
+//let secondAccessCode: Int
+//if let firstPasscode = Int(firstPassword),
+//  let secondPasscode =
+//    Int(secondPassword)
+//{
+//  firstAccessCode = firstPasscode
+//  secondAccessCode = secondPasscode
+//} else {
+//  firstAccessCode = 1111
+//  secondAccessCode = 2222
+//}
+//print(
+//  "The first passcode of the app is \(firstAccessCode) and the second passcode of the app is \(secondAccessCode)."
+//)
 
 /*Output:
  The passcode of the app is 1234.
@@ -245,3 +245,38 @@ print(
  The passcode of the app is 1111.
  Invalid passcodes!
  The first passcode of the app is 1111 and the second passcode of the app is 2222.*/
+
+/* Paid levels in the game*/
+var levelScore:[Int] = []
+let firstLevelScore = 10
+let secondLevelScore = 20
+let thirdLevelScore = 30
+let levelBonusScore = 40
+let freeLevelsScore = [20, 30]
+let freeLevels = 2
+let totalLevels = 6
+var currentLevel = 2
+for _ in 1...totalLevels {
+    if levelScore.isEmpty {
+        print("Hello and welcome!")
+        levelScore.append(firstLevelScore+levelBonusScore)
+        print("The first level's score is \(levelScore[0]).")
+    } else if levelScore.count <= freeLevels {
+        levelScore.append(secondLevelScore)
+        print("The \(currentLevel) level's score is \(levelScore).")
+        currentLevel+=1
+        continue
+    } else {
+        print(levelScore)
+        levelScore.removeAll()
+        print("Buy an app to play full version.")
+        break
+    }
+}
+/* Output:
+ Hello and welcome!
+ The first level's score is 50.
+ The 2 level's score is [50, 20].
+ The 3 level's score is [50, 20, 20].
+ [50, 20, 20]
+ Buy an app to play full version.*/

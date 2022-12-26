@@ -247,32 +247,32 @@ You rolled a double 2.*/
  The first passcode of the app is 1111 and the second passcode of the app is 2222.*/
 
 /* Paid levels in the game*/
-var levelScore:[Int] = []
-let firstLevelScore = 10
-let secondLevelScore = 20
-let thirdLevelScore = 30
-let levelBonusScore = 40
-let freeLevelsScore = [20, 30]
-let freeLevels = 2
-let totalLevels = 6
-var currentLevel = 2
-for _ in 1...totalLevels {
-    if levelScore.isEmpty {
-        print("Hello and welcome!")
-        levelScore.append(firstLevelScore+levelBonusScore)
-        print("The first level's score is \(levelScore[0]).")
-    } else if levelScore.count <= freeLevels {
-        levelScore.append(secondLevelScore)
-        print("The \(currentLevel) level's score is \(levelScore).")
-        currentLevel+=1
-        continue
-    } else {
-        print(levelScore)
-        levelScore.removeAll()
-        print("Buy an app to play full version.")
-        break
-    }
-}
+//var levelScore:[Int] = []
+//let firstLevelScore = 10
+//let secondLevelScore = 20
+//let thirdLevelScore = 30
+//let levelBonusScore = 40
+//let freeLevelsScore = [20, 30]
+//let freeLevels = 2
+//let totalLevels = 6
+//var currentLevel = 2
+//for _ in 1...totalLevels {
+//    if levelScore.isEmpty {
+//        print("Hello and welcome!")
+//        levelScore.append(firstLevelScore+levelBonusScore)
+//        print("The first level's score is \(levelScore[0]).")
+//    } else if levelScore.count <= freeLevels {
+//        levelScore.append(secondLevelScore)
+//        print("The \(currentLevel) level's score is \(levelScore).")
+//        currentLevel+=1
+//        continue
+//    } else {
+//        print(levelScore)
+//        levelScore.removeAll()
+//        print("Buy an app to play full version.")
+//        break
+//    }
+//}
 /* Output:
  Hello and welcome!
  The first level's score is 50.
@@ -280,3 +280,31 @@ for _ in 1...totalLevels {
  The 3 level's score is [50, 20, 20].
  [50, 20, 20]
  Buy an app to play full version.*/
+
+/*Paid levels modification.*/
+//var levelScores: [Int] = []
+//if levelScores.count == 0 {
+//  print("Start playing the game!")
+//}
+//let firstLevelScore = 10
+//levelScores.append(firstLevelScore)
+//print("The first level's score is \(levelScores[0]).")
+//let levelBonusScore = 40
+//levelScores[0] += levelBonusScore
+//print("The first level's score is \(levelScores[0]).")
+//let freeLevelScores = [20, 30]
+//levelScores += freeLevelScores
+//let freeLevels = 3
+//if levelScores.count == freeLevels {
+//  print(
+//    "You have finished playing the free version of the game. Buy the game to play its full version."
+//  )
+//  levelScores = []
+//  print("Game restarted!")
+//}
+/*Output:
+ Start playing the game!
+ The first level's score is 10.
+ The first level's score is 50.
+ You have finished playing the free version of the game. Buy the game to play its full version.
+ Game restarted!*/

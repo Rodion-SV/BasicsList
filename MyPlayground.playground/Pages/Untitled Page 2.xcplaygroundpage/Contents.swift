@@ -1,66 +1,142 @@
-protocol Protocol1 {
-  func output()
-}
-
-extension Protocol1 {
-  func output() {
-    print("Output")
-  }
-}
-
-class Delegate: Protocol1 {
-  func output() {
-    print("Delegation")
-  }
-}
-
-class Output {
-  var delegate: Protocol1?
-  func output() {
-    delegate?.output()
-  }
-}
-
-let output = Output()
-output.delegate = Delegate()
-output.output()
-
-class Spaghetti {
-    func fetchIngredients() {
-        print("Spaghetti Ingredients")
-    }
-}
-class SpaghettiMeatball: Spaghetti {
-    override func fetchIngredients() {
-        print("BBB")
-        super.fetchIngredients()
-        print("AAA")
-    }
-}
-let spaghettiMeatball = SpaghettiMeatball()
-spaghettiMeatball.fetchIngredients()
-
-protocol Employee {
-    var daysWorking: Int { get set }
-}
-
-struct Waiter: Employee {
-    var daysWorking: Int
-}
-
-print(Waiter.self)
+//let berries = [
+//    "strawberry",
+//    "blueberry",
+//    "grape",
+//    "goji"
+//]
+//let result = berries
+//    .filter { $0.count >= 6 }
+//    .map { "healthy \($0)\n" }
+//    .reduce("Berries:\n") { $0 + $1 }
+//print(result)
 
 
-//What is the console output?
+//class Berry {
+//}
+//class Blueberry: Berry {
+//}
+//class Strawberry: Berry {
+//}
+//let berries = [Berry(), Blueberry(), Strawberry()]
+//for berry in berries {
+//    if berry is Berry {
+//        print("Berry")
+//    }
+//    if berry is Blueberry {
+//        print("Blueberry")
+//    }
+//    if berry is Strawberry {
+//        print("Strawberry")
+//    }
+//}
+//struct Book {
+//    var pages = 0
+//    mutating func incrementPages() {
+//        pages += 1
+//    }
+//}
+//var book = Book()
+//book.incrementPages()
+
+//protocol FoodDelivery {
+//    func deliverFood()
+//}
+//struct Car: FoodDelivery {
+//    func deliverFood() {
+//        print("Deliver food by car")
+//    }
+//}
+//class Restaurant {
+//    var delegate: FoodDelivery?
+//    func delegateDelivery() {
+//        if let delegate = delegate {
+//            delegate.deliverFood()
+//            return
+//        }
+//        print("No delegate found.")
+//    }
+//}
+//let restaurant = Restaurant()
+//restaurant.delegate = Car()
+//restaurant.delegateDelivery()
+//protocol Game {
+//    var title: String { get set }
+//    func share()
+//}
+//OR:
+//class BoardGame: Game {
+//    var title: String
+//    init(title: String) {
+//        self.title = title
+//    }
+//    func share() {
+//    }
+//}
+//OR:
+//struct BoardGame: Game {
+//    var title: String
+//    func share() {
+//    }
+//}
+//OR:
+//class BoardGame: Game {
+//    var title: String = ""
+//    func share() {
+//    }
+//}
+
+//protocol Berry {
+//    var color: String { get }
+//}
+//class Blueberry: Berry {
+//    let color = "blue"
+//}
+//class Strawberry: Berry {
+//    let color = "red"
+//}
 //
-//1 point
-//
-//
-//No delivery driver found.
-//
-//
-//
-//Driver name: George
-//
-//13.
-//Question 13
+//for berry in [Blueberry(), Strawberry()] {
+//    if berry is Blueberry {
+//        print("blueberry")
+//    }
+//    if let blueberry = berry as? Blueberry {
+//        print(blueberry.color)
+//    }
+//    if berry is Strawberry {
+//        print("strawberry")
+//    }
+//    if let strawberry = berry as? Strawberry {
+//        print(strawberry.color)
+//    }
+//}
+
+//protocol Game {
+//    var title: String { get set }
+//    func share()
+//}
+//struct BoardGame: Game {
+//    var title: String
+//    func share() {
+//    }
+//}
+//protocol FoodDelivery {
+//    func deliverFood()
+//}
+//struct Car: FoodDelivery {
+//    func deliverFood() {
+//        print("Deliver food by car")
+//    }
+//}
+//class Restaurant {
+//    var delegate: FoodDelivery?
+//    func delegateDelivery() {
+//        if let delegate = delegate {
+//            delegate.deliverFood()
+//            return
+//        }
+//        print("No delegate found.")
+//    }
+//}
+//let restaurant = Restaurant()
+//restaurant.delegateDelivery()
+//restaurant.delegate = Car()

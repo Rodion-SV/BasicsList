@@ -309,18 +309,44 @@ You rolled a double 2.*/
  You have finished playing the free version of the game. Buy the game to play its full version.
  Game restarted!*/
 /*Implementing user authentification*/
-let credentials = ("", -1111)
-if credentials.0 == "" || credentials.1 < 0 {
-  print("Invalid credentials!")
-} else {
-  print("The username is \(credentials.0) and the password is \(credentials.1).")
-}
-let fullCredentials = (password: "pass", passcode: 1111)
-if fullCredentials.password == "" || fullCredentials.passcode < 0 {
-  print("Invalid credentials!")
-} else {
-  print("The password is \(fullCredentials.password) and the passcode is \(fullCredentials.passcode).")
-}
-/*Output:
- Invalid credentials!
- The password is pass and the passcode is 1111.*/
+//let credentials = ("", -1111)
+//if credentials.0 == "" || credentials.1 < 0 {
+//  print("Invalid credentials!")
+//} else {
+//  print("The username is \(credentials.0) and the password is \(credentials.1).")
+//}
+//let fullCredentials = (password: "pass", passcode: 1111)
+//if fullCredentials.password == "" || fullCredentials.passcode < 0 {
+//  print("Invalid credentials!")
+//} else {
+//  print("The password is \(fullCredentials.password) and the passcode is \(fullCredentials.passcode).")
+//}
+///*Output:
+// Invalid credentials!
+// The password is pass and the passcode is 1111.*/
+
+/*Imlementing forecast for a week.*/
+//var weeklyTemperatures: [String: Int] = [:]
+//weeklyTemperatures = [
+//  "Monday": 70, "Tuesday": 75, "Wednesday": 80, "Thursday": 85, "Friday": 90, "Saturday": 95,
+//]
+//weeklyTemperatures["Monday"]! += 20
+//print("The temperature on Monday is \(weeklyTemperatures["Monday"]!)°F.")
+//if let temperature = weeklyTemperatures["Sunday"] {
+//  print("The temperature on Sunday is \(temperature)°F.")
+//} else {
+//  weeklyTemperatures["Sunday"] = 100
+//  print("The temperature on Sunday is \(weeklyTemperatures["Sunday"]!)°F.")
+//}
+//if weeklyTemperatures.count == 7 {
+//  print("You have access to the weather forecast of the whole week.")
+//  weeklyTemperatures = [:]
+//  print("Reset weekly temperatures for next week!")
+//}
+//
+///*Output:
+// The temperature on Monday is 90°F.
+// The temperature on Sunday is 100°F.
+// You have access to the weather forecast of the whole week.
+// Reset weekly temperatures for next week!
+//*/

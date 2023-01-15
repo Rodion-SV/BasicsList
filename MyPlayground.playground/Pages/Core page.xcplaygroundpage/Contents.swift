@@ -308,7 +308,8 @@ You rolled a double 2.*/
  The first level's score is 50.
  You have finished playing the free version of the game. Buy the game to play its full version.
  Game restarted!*/
-/*Implementing user authentification*/
+
+/*Implementing user authentification.*/
 //let credentials = ("", -1111)
 //if credentials.0 == "" || credentials.1 < 0 {
 //  print("Invalid credentials!")
@@ -321,9 +322,9 @@ You rolled a double 2.*/
 //} else {
 //  print("The password is \(fullCredentials.password) and the passcode is \(fullCredentials.passcode).")
 //}
-///*Output:
-// Invalid credentials!
-// The password is pass and the passcode is 1111.*/
+/*Output:
+ Invalid credentials!
+ The password is pass and the passcode is 1111.*/
 
 /*Imlementing forecast for a week.*/
 //var weeklyTemperatures: [String: Int] = [:]
@@ -343,25 +344,25 @@ You rolled a double 2.*/
 //  weeklyTemperatures = [:]
 //  print("Reset weekly temperatures for next week!")
 //}
-//
-///*Output:
-// The temperature on Monday is 90°F.
-// The temperature on Sunday is 100°F.
-// You have access to the weather forecast of the whole week.
-// Reset weekly temperatures for next week!
-//*/
+
+/*Output:
+ The temperature on Monday is 90°F.
+ The temperature on Sunday is 100°F.
+ You have access to the weather forecast of the whole week.
+ Reset weekly temperatures for next week!
+*/
 
 /*Bringing enumerations*/
 
-let levelScores = [10, 20, 30, 40, 50, 60, 70]
-for (level, score) in levelScores.enumerated() {
-  print("The score of level \(level + 1) is \(score).")
-}
-var gameScore = 0
-for levelScore in levelScores {
-  gameScore += levelScore
-}
-print("The game's score is \(gameScore).")
+//let levelScores = [10, 20, 30, 40, 50, 60, 70]
+//for (level, score) in levelScores.enumerated() {
+//  print("The score of level \(level + 1) is \(score).")
+//}
+//var gameScore = 0
+//for levelScore in levelScores {
+//  gameScore += levelScore
+//}
+//print("The game's score is \(gameScore).")
 
 /*Output:
  The score of level 1 is 10.

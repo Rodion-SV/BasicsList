@@ -350,3 +350,25 @@ You rolled a double 2.*/
 // You have access to the weather forecast of the whole week.
 // Reset weekly temperatures for next week!
 //*/
+
+/*Bringing enumerations*/
+
+let levelScores = [10, 20, 30, 40, 50, 60, 70]
+for (level, score) in levelScores.enumerated() {
+  print("The score of level \(level + 1) is \(score).")
+}
+var gameScore = 0
+for levelScore in levelScores {
+  gameScore += levelScore
+}
+print("The game's score is \(gameScore).")
+
+/*Output:
+ The score of level 1 is 10.
+ The score of level 2 is 20.
+ The score of level 3 is 30.
+ The score of level 4 is 40.
+ The score of level 5 is 50.
+ The score of level 6 is 60.
+ The score of level 7 is 70.
+ The game's score is 280.*/

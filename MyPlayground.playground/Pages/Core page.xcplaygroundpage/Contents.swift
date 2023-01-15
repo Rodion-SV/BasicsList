@@ -373,3 +373,17 @@ You rolled a double 2.*/
  The score of level 6 is 60.
  The score of level 7 is 70.
  The game's score is 280.*/
+
+/*Doubles*/
+
+func double(passedValue: Int) {
+  let result = passedValue * 2
+  print("Double \(passedValue) is \(result)")
+}
+
+double(passedValue: 2)
+
+/*Output:
+Double 2 is 4
+3
+4*/

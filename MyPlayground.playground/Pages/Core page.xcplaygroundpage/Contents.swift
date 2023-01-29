@@ -442,20 +442,20 @@ Double 2 is 4
 
 /*Incrementing*/
 
-var goldBars = 0
-func incrementInventory(_ inventory: inout Int, by amount: Int = 100) {
-  inventory += amount
-}
-incrementInventory(&goldBars)
-print(goldBars)
-incrementInventory(&goldBars)
-print(goldBars)
-incrementInventory(&goldBars)
-print(goldBars)
-incrementInventory(&goldBars, by: 300)
-print(goldBars)
-incrementInventory(&goldBars, by: 50)
-print(goldBars)
+//var goldBars = 0
+//func incrementInventory(_ inventory: inout Int, by amount: Int = 100) {
+//  inventory += amount
+//}
+//incrementInventory(&goldBars)
+//print(goldBars)
+//incrementInventory(&goldBars)
+//print(goldBars)
+//incrementInventory(&goldBars)
+//print(goldBars)
+//incrementInventory(&goldBars, by: 300)
+//print(goldBars)
+//incrementInventory(&goldBars, by: 50)
+//print(goldBars)
 
 /*Output:
  100
@@ -464,3 +464,50 @@ print(goldBars)
  600
  650
 */
+
+/* Implementing closures.
+ Closure:
+ {( argument list) -> ReturnType in
+     Execute some code}
+ */
+
+//var maximum = {
+//  (num1: Int, num2: Int) -> Int in
+//  return num1 > num2 ? num1 : num2
+//}
+//print("Maximum value is:", maximum(1, 6))
+///*
+// Closure into variable:
+// var aClosure = {
+//   () -> Void in
+//   print("This is a closure")}
+// */
+//func  updateValue() -> () -> Void {
+//    let capturedValue = 10
+//    return { print("Static INT value is", capturedValue) }
+//  /* Returns a closure holding capturedValue */
+//}
+//let captureClosure = updateValue()
+//captureClosure()
+//
+//var goldBars = 0
+//let unlockTreasureChest = { (inventory: inout Int) in
+//  inventory += 100
+//}
+//unlockTreasureChest(&goldBars)
+//print("Goldbars fun value is", goldBars)
+//
+///*Passing an argument into a closure:*/
+//var argumentClosure = {
+//  (str: String) -> Void in
+//  print("Hello \(str)")
+//}
+//argumentClosure("Bertram")
+
+/*
+ Output:
+ Maximum value is: 6
+ Static INT value is 10
+ Goldbars fun value is 100
+ Hello Bertram
+ */

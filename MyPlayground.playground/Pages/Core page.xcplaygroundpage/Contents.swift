@@ -511,14 +511,3 @@ Double 2 is 4
  Goldbars fun value is 100
  Hello Bertram
  */
-
-/*letters sortering*/
-
-//let letters = ["H" , "E" , "X" , "A"]
-//let myCollection = letters.sorted(by: { (string1: String, string2: String) -> Bool in return string1 < string2 } )
-//print(myCollection)
-
-/*
- Output:
- ["A", "E", "H", "X"]
- */

@@ -511,5 +511,25 @@ Double 2 is 4
  Goldbars fun value is 100
  Hello Bertram
  */
- ,
 
+/* Shortening closures */
+
+func forwards(s1:String, s2:String) -> Bool {
+    return s1 > s2
+}
+let letters = ["H", "i"]
+let sorted = letters.sorted(by: forwards)
+print(sorted)
+let myCollection = letters.sorted(by: {(s1: String, s2: String) -> Bool in return s1 < s2})
+print(myCollection)
+let myCollection1 = letters.sorted(by: {s1, s2 in return s1 < s2})
+print(myCollection1)
+let myCollection2 = letters.sorted(by: {$0 < $1})
+print(myCollection2)
+
+/*Output:
+ ["i", "H"]
+ ["H", "i"]
+ ["H", "i"]
+ ["H", "i"]
+*/

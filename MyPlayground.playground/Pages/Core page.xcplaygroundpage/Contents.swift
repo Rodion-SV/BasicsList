@@ -1,6 +1,6 @@
 /* How to read? Select the code you want and use "command + /" hotkeys in XCode to remove commentaries.*/
 
-/* Simple temperature output*/
+/* Simple temperature output. */
 //let day = "Monday"
 //let dailyTemperature = 75
 //print ("Today is \(day)! Rise and shine!")
@@ -17,15 +17,16 @@
 //let r = Double(test)+test1
 //print(r)
 
-/*Output:
+/* Output:
 Today is Monday! Rise and shine!
 The temperature on Monday is 75 F.
 The temperature on Monday morning is 70 F.
 The temperature on Monday evening is 80 F.
 The average temperature this week is 75 F.
-5.33*/
+5.33
+*/
 
-/*simple game score output*/
+/* Simple game score output. */
 //let levelScore = 10
 //var gameScore = 0
 //gameScore += levelScore
@@ -44,14 +45,15 @@ The average temperature this week is 75 F.
 //let averageLevelScore = Double(levelScoreDifference) / Double(levels)
 //print("The level's average score is \(averageLevelScore).")
 
-/*Output:
+/* Output:
  The game's score is 10.
  The level's bonus score is 20.0.
  The game's final score is 30.
  The level's average score is 4.
- The level's average score is 4.9.*/
+ The level's average score is 4.9.
+ */
 
- /*Simple weather app modified*/
+/* Simple weather app modified. */
 //let day = "Monday"
 //print("Today is \(day).")
 //let hour = "6"
@@ -69,16 +71,17 @@ The average temperature this week is 75 F.
 //print("Today is \(shortDay).")
 //print("It is \(hour):\(minutes) \(period) \(timezone) on \(shortDay).")
 
-/*Output:
+/* Output:
  Today is Monday.
  It is 6:15 PM.
  It is 6:15 PM on Monday.
  It is 6:15 PM PST.
  It is 6:15 PM PST on Monday.
  Today is Mon.
- It is 6:15 PM PST on Mon.*/
+ It is 6:15 PM PST on Mon.
+ */
 
-/*Weather app, paid subscription + settings check demo*/
+/* Weather app, paid subscription + settings check demo. */
 //let freeApp = true
 //if freeApp == true {
 //    print("You are using the free version of the app. Buy the full version of the app to get access to all of its features.")
@@ -120,7 +123,7 @@ The average temperature this week is 75 F.
 //    print("App has an unknown configuration.")
 //}
 
-/*Output:
+/* Output:
  You are using the free version of the app. Buy the full version of the app to get access to all of its features.
  The coldest temperature is in the morning.
  Your selection of scale's temperature is Fahrenheit.
@@ -128,7 +131,7 @@ The average temperature this week is 75 F.
  The weather app is configured properly.
  App uses Fahrenheit degrees for its temperature.*/
 
-/*Game's level checking*/
+/* Game's level checking. */
 //let levels = 10
 //let freeLevels = 4
 //let bonusLevel = 3
@@ -141,13 +144,14 @@ The average temperature this week is 75 F.
 //    }
 //}
 
-/*Output:
+/* Output:
  Game's level is 1
  Game's level is 2
  It's a bonus level
- Game's level is 4*/
+ Game's level is 4
+ */
 
-/*Paid levels checking in a game*/
+/* Paid levels checking in a game. */
 //let levels = 10
 //let freeLevels = 4
 //let bonusLevel = 3
@@ -163,14 +167,15 @@ The average temperature this week is 75 F.
 //  }
 //}
 
-/*Output:
+/* Output:
  Play level 1.
  Play level 2.
  Skip bonus level 3.
  Play level 4.
- You have played all 4 free levels. Buy the game to play the remaining 6 levels.*/
+ You have played all 4 free levels. Buy the game to play the remaining 6 levels.
+ */
 
-/*Simple roll&dice*/
+/* Simple roll&dice. */
 //var firstDice = Int.random(in: 1...6)
 //var secondDice = Int.random(in: 1...6)
 //while firstDice != secondDice {
@@ -179,10 +184,11 @@ The average temperature this week is 75 F.
 //}
 //print("You rolled a double \(firstDice).")
 
-/*Output is random:
-You rolled a double 2.*/
+/* Output is random:
+You rolled a double 2.
+ */
 
-/*Another method of roll&dice*/
+/* Another method of roll&dice. */
 //var firstDice = 0
 //var secondDice = 0
 //repeat {
@@ -191,10 +197,11 @@ You rolled a double 2.*/
 //} while firstDice != secondDice
 //print("You rolled a double \(firstDice).")
 
-/*Output is random:
- You rolled a double 6.*/
+/* Output is random:
+ You rolled a double 6.
+ */
 
-/*App passcodes*/
+/* App passcodes. */
 //var password = "1234"
 //let passcode = Int(password)
 //print("The passcode of the app is \(passcode!).")
@@ -239,14 +246,15 @@ You rolled a double 2.*/
 //  "The first passcode of the app is \(firstAccessCode) and the second passcode of the app is \(secondAccessCode)."
 //)
 
-/*Output:
+/* Output:
  The passcode of the app is 1234.
  Invalid passcode!
  The passcode of the app is 1111.
  Invalid passcodes!
- The first passcode of the app is 1111 and the second passcode of the app is 2222.*/
+ The first passcode of the app is 1111 and the second passcode of the app is 2222.
+ */
 
-/* Paid levels in the game*/
+/* Paid levels in the game. */
 //var levelScore:[Int] = []
 //let firstLevelScore = 10
 //let secondLevelScore = 20
@@ -279,9 +287,10 @@ You rolled a double 2.*/
  The 2 level's score is [50, 20].
  The 3 level's score is [50, 20, 20].
  [50, 20, 20]
- Buy an app to play full version.*/
+ Buy an app to play full version.
+ */
 
-/*Paid levels modification.*/
+/* Paid levels modification. */
 //var levelScores: [Int] = []
 //if levelScores.count == 0 {
 //  print("Start playing the game!")
@@ -302,14 +311,15 @@ You rolled a double 2.*/
 //  levelScores = []
 //  print("Game restarted!")
 //}
-/*Output:
+/* Output:
  Start playing the game!
  The first level's score is 10.
  The first level's score is 50.
  You have finished playing the free version of the game. Buy the game to play its full version.
- Game restarted!*/
+ Game restarted!
+ */
 
-/*Implementing user authentification.*/
+/* Implementing user authentification. */
 //let credentials = ("", -1111)
 //if credentials.0 == "" || credentials.1 < 0 {
 //  print("Invalid credentials!")
@@ -322,11 +332,12 @@ You rolled a double 2.*/
 //} else {
 //  print("The password is \(fullCredentials.password) and the passcode is \(fullCredentials.passcode).")
 //}
-/*Output:
+/* Output:
  Invalid credentials!
- The password is pass and the passcode is 1111.*/
+ The password is pass and the passcode is 1111.
+ */
 
-/*Imlementing forecast for a week.*/
+/* Imlementing forecast for a week. */
 //var weeklyTemperatures: [String: Int] = [:]
 //weeklyTemperatures = [
 //  "Monday": 70, "Tuesday": 75, "Wednesday": 80, "Thursday": 85, "Friday": 90, "Saturday": 95,
@@ -345,14 +356,14 @@ You rolled a double 2.*/
 //  print("Reset weekly temperatures for next week!")
 //}
 
-/*Output:
+/* Output:
  The temperature on Monday is 90°F.
  The temperature on Sunday is 100°F.
  You have access to the weather forecast of the whole week.
  Reset weekly temperatures for next week!
 */
 
-/*Bringing enumerations*/
+/* Bringing enumerations. */
 
 //let levelScores = [10, 20, 30, 40, 50, 60, 70]
 //for (level, score) in levelScores.enumerated() {
@@ -364,7 +375,7 @@ You rolled a double 2.*/
 //}
 //print("The game's score is \(gameScore).")
 
-/*Output:
+/* Output:
  The score of level 1 is 10.
  The score of level 2 is 20.
  The score of level 3 is 30.
@@ -372,9 +383,10 @@ You rolled a double 2.*/
  The score of level 5 is 50.
  The score of level 6 is 60.
  The score of level 7 is 70.
- The game's score is 280.*/
+ The game's score is 280.
+ */
 
-/*Simple doubles*/
+/* Simple doubles. */
 
 //func double(passedValue: Int) {
 //  let result = passedValue * 2
@@ -383,12 +395,13 @@ You rolled a double 2.*/
 //
 //double(passedValue: 2)
 
-/*Output:
+/* Output:
 Double 2 is 4
 3
-4*/
+4
+*/
 
-/*Strings usage*/
+/* Strings usage. */
 
 //func hiThere(fn: String, sn: String) {
 //let fullname = fn + " " + sn
@@ -415,14 +428,15 @@ Double 2 is 4
 //display("John", "Roberts")
 //display("John",  "Roberts",  score: 100)
 
-/*Output:
+/* Output:
  Hi there Fred Bloggs
  Hi there Fred Bloggs
  Hi there Fred Bloggs
  Hello John Roberts 0
- Hello John Roberts 100*/
+ Hello John Roberts 100
+ */
 
-/*Adding currency content.*/
+/* Adding currency content. */
 
 //var goldBars = 0
 //func unlockTreasureChest(inventory: Int) -> Int {
@@ -435,12 +449,13 @@ Double 2 is 4
 //goldBars = unlockTreasureChest(inventory: goldBars)
 //print(goldBars)
 
-/*Output:
+/* Output:
  100
  200
- 300*/
+ 300
+ */
 
-/*Incrementing*/
+/* Incrementing. */
 
 //var goldBars = 0
 //func incrementInventory(_ inventory: inout Int, by amount: Int = 100) {
@@ -457,7 +472,7 @@ Double 2 is 4
 //incrementInventory(&goldBars, by: 50)
 //print(goldBars)
 
-/*Output:
+/* Output:
  100
  200
  300
@@ -504,32 +519,62 @@ Double 2 is 4
 //}
 //argumentClosure("Bertram")
 
-/*
- Output:
+/* Output:
  Maximum value is: 6
  Static INT value is 10
  Goldbars fun value is 100
  Hello Bertram
  */
 
-/* Shortening closures */
+/* Shortening closures. */
 
-func forwards(s1:String, s2:String) -> Bool {
-    return s1 > s2
-}
-let letters = ["H", "i"]
-let sorted = letters.sorted(by: forwards)
-print(sorted)
-let myCollection = letters.sorted(by: {(s1: String, s2: String) -> Bool in return s1 < s2})
-print(myCollection)
-let myCollection1 = letters.sorted(by: {s1, s2 in return s1 < s2})
-print(myCollection1)
-let myCollection2 = letters.sorted(by: {$0 < $1})
-print(myCollection2)
+//func forwards(s1:String, s2:String) -> Bool {
+//    return s1 > s2
+//}
+//let letters = ["H", "i"]
+//let sorted = letters.sorted(by: forwards)
+//print(sorted)
+//let myCollection = letters.sorted(by: {(s1: String, s2: String) -> Bool in return s1 < s2})
+//print(myCollection)
+//let myCollection1 = letters.sorted(by: {s1, s2 in return s1 < s2})
+//print(myCollection1)
+//let myCollection2 = letters.sorted(by: {$0 < $1})
+//print(myCollection2)
 
-/*Output:
+/* Output:
  ["i", "H"]
  ["H", "i"]
  ["H", "i"]
  ["H", "i"]
 */
+
+/* Switch cases. */
+
+print("Welcome to your virtual bank system. What kind of account would you like to make?")
+print("1. Debit account")
+print("2. Credit account")
+print("3. Bank account")
+var accountType = ""
+var input = 0
+var userInput = Int.random(in: 1...5)
+print("Which option do you choose? (1, 2 or 3)")
+repeat {
+        input = userInput
+        print("The selected option is \(input)")
+    switch userInput {
+    case 1: accountType = "debit"
+    case 2: accountType = "credit"
+    case 3: accountType = "generic"
+    default: break }
+    } while accountType.count == input
+print("You have opened a \(accountType) account.")
+
+/* Output is random 1-5:
+ Welcome to your virtual bank system. What kind of account would you like to make?
+ 1. Debit account
+ 2. Credit account
+ 3. Bank account
+ Which option do you choose? (1, 2 or 3)
+ The selected option is 3
+ You have opened a generic account.
+ */

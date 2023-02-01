@@ -550,24 +550,24 @@ Double 2 is 4
 
 /* Switch cases. */
 
-print("Welcome to your virtual bank system. What kind of account would you like to make?")
-print("1. Debit account")
-print("2. Credit account")
-print("3. Bank account")
-var accountType = ""
-var input = 0
-var userInput = Int.random(in: 1...5)
-print("Which option do you choose? (1, 2 or 3)")
-repeat {
-        input = userInput
-        print("The selected option is \(input)")
-    switch userInput {
-    case 1: accountType = "debit"
-    case 2: accountType = "credit"
-    case 3: accountType = "generic"
-    default: break }
-    } while accountType.count == input
-print("You have opened a \(accountType) account.")
+//print("Welcome to your virtual bank system. What kind of account would you like to make?")
+//print("1. Debit account")
+//print("2. Credit account")
+//print("3. Bank account")
+//var accountType = ""
+//var input = 0
+//var userInput = Int.random(in: 1...5)
+//print("Which option do you choose? (1, 2 or 3)")
+//repeat {
+//        input = userInput
+//        print("The selected option is \(input)")
+//    switch userInput {
+//    case 1: accountType = "debit"
+//    case 2: accountType = "credit"
+//    case 3: accountType = "generic"
+//    default: break }
+//    } while accountType.count == input /* Change input for "" to check for wrong input. */
+//print("You have opened a \(accountType) account.")
 
 /* Output is random 1-5:
  Welcome to your virtual bank system. What kind of account would you like to make?
@@ -578,3 +578,56 @@ print("You have opened a \(accountType) account.")
  The selected option is 3
  You have opened a generic account.
  */
+
+/* Making a bank account demo. */
+
+var balance = 100
+func getBalanceInfo() -> String {
+    "Current balance: $\(balance)"
+}
+print(getBalanceInfo())
+func withdraw(_ amount: Int) {
+    balance -= amount
+    print("Withdrew: $\(amount). \(getBalanceInfo())")
+}
+withdraw(20)
+func debitWithdraw(_ amount: Int) {
+    if amount > balance {
+        print("Insufficient funds to withdraw $\(amount). \(getBalanceInfo())")
+    } else {
+        withdraw(amount)
+    }
+}
+debitWithdraw(81)
+debitWithdraw(80)
+func deposit(_ amount: Int) {
+    balance += amount
+    print("Deposited $\(amount). \(getBalanceInfo())")
+}
+deposit(100)
+func creditDeposit(_ amount: Int) {
+    deposit(amount)
+    if balance == 0 {
+        print("Paid off account balance.")
+    } else if balance > 0 {
+        print("Overpaid account balance.")
+    }
+}
+withdraw(200)
+creditDeposit(50)
+creditDeposit(50)
+creditDeposit(100)
+
+/* Output:
+ Current balance: $100
+ Withdrew: $20. Current balance: $80
+ Insufficient funds to withdraw $81. Current balance: $80
+ Withdrew: $80. Current balance: $0
+ Deposited $100. Current balance: $100
+ Withdrew: $200. Current balance: $-100
+ Deposited $50. Current balance: $-50
+ Deposited $50. Current balance: $0
+ Paid off account balance.
+ Deposited $100. Current balance: $100
+ Overpaid account balance.
+*/

@@ -633,92 +633,93 @@ Double 2 is 4
 */
 
 /* Bank app emulation. */
-func getBalanceInfo() -> String {
-    "Current balance: $\(balance)"
-}
-func withdraw(_ amount: Int) {
-    balance -= amount
-    print("Withdrew: $\(amount). \(getBalanceInfo())")
-}
-func debitWithdraw(_ amount: Int) {
-    if amount > balance {
-        print("Insufficient funds to withdraw $\(amount). \(getBalanceInfo())")
-    } else {
-        withdraw(amount)
-    }
-}
-func deposit(_ amount: Int) {
-    balance += amount
-    print("Deposited $\(amount). \(getBalanceInfo())")
-}
-func creditDeposit(_ amount: Int) {
-    deposit(amount)
-    if balance == 0 {
-        print("Paid off account balance.")
-    } else if balance > 0 {
-        print("Overpaid account balance.")
-    }
-}
-print("Welcome to your virtual bank system. What kind of account would you like to make?")
-print("1. Debit account")
-print("2. Credit account")
-print("3. Bank account")
-var accountType = ""
-var input = 0
-repeat {
-    print("Which option do you choose? (1, 2 or 3)")
-    input = Int.random(in: 1...3) // Check with previous exercise
-    print("Selected option: \(input)")
-    switch input {
-    case 1: accountType = "debit"
-    case 2: accountType = "credit"
-    case 3: accountType = "generic"
-    default: break
-    }
-} while accountType == ""
-var balance = 100 // only declared again for this part 3 solution, already declared in part 2
-let transferAmount = 50
-print("Current balance: $\(balance)")
-print("Transfer amount: $\(transferAmount)")
-func transferMoney(_ transferType: String) {
-    switch transferType {
-    case "withdraw":
-        if accountType == "debit" {
-            debitWithdraw(transferAmount)
-        } else {
-            withdraw(transferAmount)
-        }
-    case "deposit":
-        if accountType == "credit" {
-            creditDeposit(transferAmount)
-        } else {
-            deposit(transferAmount)
-        }
-    default:
-        break
-    }
-}
-var isSystemOpened = true
-var option = 0
-repeat {
-    print("What would you like to do?")
-    print("1. Check bank account")
-    print("2. Withdraw money")
-    print("3. Deposit money")
-    print("4. Close the system")
-    print("Which option do you choose? (1, 2, 3 or 4)")
-    option = Int.random(in: 1...5)
-    print("Selected option: \(option).")
-    switch option {
-    case 1: print("Current balance: $\(balance) dollars")
-    case 2: transferMoney("withdraw")
-    case 3: transferMoney("deposit")
-    case 4:
-        isSystemOpened = false
-        print("The system is closed.")
-    default: break
-    }
-} while isSystemOpened
+
+//func getBalanceInfo() -> String {
+//    "Current balance: $\(balance)"
+//}
+//func withdraw(_ amount: Int) {
+//    balance -= amount
+//    print("Withdrew: $\(amount). \(getBalanceInfo())")
+//}
+//func debitWithdraw(_ amount: Int) {
+//    if amount > balance {
+//        print("Insufficient funds to withdraw $\(amount). \(getBalanceInfo())")
+//    } else {
+//        withdraw(amount)
+//    }
+//}
+//func deposit(_ amount: Int) {
+//    balance += amount
+//    print("Deposited $\(amount). \(getBalanceInfo())")
+//}
+//func creditDeposit(_ amount: Int) {
+//    deposit(amount)
+//    if balance == 0 {
+//        print("Paid off account balance.")
+//    } else if balance > 0 {
+//        print("Overpaid account balance.")
+//    }
+//}
+//print("Welcome to your virtual bank system. What kind of account would you like to make?")
+//print("1. Debit account")
+//print("2. Credit account")
+//print("3. Bank account")
+//var accountType = ""
+//var input = 0
+//repeat {
+//    print("Which option do you choose? (1, 2 or 3)")
+//    input = Int.random(in: 1...3) // Check with previous exercise
+//    print("Selected option: \(input)")
+//    switch input {
+//    case 1: accountType = "debit"
+//    case 2: accountType = "credit"
+//    case 3: accountType = "generic"
+//    default: break
+//    }
+//} while accountType == ""
+//var balance = 100 // only declared again for this part 3 solution, already declared in part 2
+//let transferAmount = 50
+//print("Current balance: $\(balance)")
+//print("Transfer amount: $\(transferAmount)")
+//func transferMoney(_ transferType: String) {
+//    switch transferType {
+//    case "withdraw":
+//        if accountType == "debit" {
+//            debitWithdraw(transferAmount)
+//        } else {
+//            withdraw(transferAmount)
+//        }
+//    case "deposit":
+//        if accountType == "credit" {
+//            creditDeposit(transferAmount)
+//        } else {
+//            deposit(transferAmount)
+//        }
+//    default:
+//        break
+//    }
+//}
+//var isSystemOpened = true
+//var option = 0
+//repeat {
+//    print("What would you like to do?")
+//    print("1. Check bank account")
+//    print("2. Withdraw money")
+//    print("3. Deposit money")
+//    print("4. Close the system")
+//    print("Which option do you choose? (1, 2, 3 or 4)")
+//    option = Int.random(in: 1...5)
+//    print("Selected option: \(option).")
+//    switch option {
+//    case 1: print("Current balance: $\(balance) dollars")
+//    case 2: transferMoney("withdraw")
+//    case 3: transferMoney("deposit")
+//    case 4:
+//        isSystemOpened = false
+//        print("The system is closed.")
+//    default: break
+//    }
+//} while isSystemOpened
 
 /* Output:
  Welcome to your virtual bank system. What kind of account would you like to make?
@@ -755,5 +756,27 @@ repeat {
  Which option do you choose? (1, 2, 3 or 4)
  Selected option: 4.
  The system is closed.
+ */
+
+/* Enums. */
+
+enum PastaTypes: Int {
+  case spaghetti = 8
+  case penne = 10
+  case ravioli = 11
+  case rigatoni = 12
+}
+let cookingTime = PastaTypes.spaghetti.rawValue
+print("Spaghetti will be perfectly cooked in \(cookingTime) minutes.")
+
+func cookingPerfectPasta(pasta: PastaTypes) {
+  let cookingTime = pasta.rawValue
+  print("\(pasta) will be perfectly cooked in \(cookingTime) minutes.")
+}
+cookingPerfectPasta(pasta: .rigatoni)
+
+/* Output:
+Spaghetti will be perfectly cooked in 8 minutes.
+rigatoni will be perfectly cooked in 12 minutes.
  */
 

@@ -760,23 +760,37 @@ Double 2 is 4
 
 /* Enums. */
 
-enum PastaTypes: Int {
-  case spaghetti = 8
-  case penne = 10
-  case ravioli = 11
-  case rigatoni = 12
-}
-let cookingTime = PastaTypes.spaghetti.rawValue
-print("Spaghetti will be perfectly cooked in \(cookingTime) minutes.")
-
-func cookingPerfectPasta(pasta: PastaTypes) {
-  let cookingTime = pasta.rawValue
-  print("\(pasta) will be perfectly cooked in \(cookingTime) minutes.")
-}
-cookingPerfectPasta(pasta: .rigatoni)
+//enum PastaTypes: Int {
+//  case spaghetti = 8
+//  case penne = 10
+//  case ravioli = 11
+//  case rigatoni = 12
+//}
+//let cookingTime = PastaTypes.spaghetti.rawValue
+//print("Spaghetti will be perfectly cooked in \(cookingTime) minutes.")
+//
+//func cookingPerfectPasta(pasta: PastaTypes) {
+//  let cookingTime = pasta.rawValue
+//  print("\(pasta) will be perfectly cooked in \(cookingTime) minutes.")
+//}
+//cookingPerfectPasta(pasta: .rigatoni)
 
 /* Output:
 Spaghetti will be perfectly cooked in 8 minutes.
 rigatoni will be perfectly cooked in 12 minutes.
  */
 
+/* Enum, switch and count. */
+
+enum PastaTypes: Int, CaseIterable {
+  case spaghetti
+  case penne
+  case ravioli
+  case rigatoni
+}
+let totalCaseCount = PastaTypes.allCases.count
+print(totalCaseCount)
+
+/* Output:
+ 4
+ */

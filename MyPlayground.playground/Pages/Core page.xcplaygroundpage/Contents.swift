@@ -782,15 +782,50 @@ rigatoni will be perfectly cooked in 12 minutes.
 
 /* Enum, switch and count. */
 
-enum PastaTypes: Int, CaseIterable {
-  case spaghetti
-  case penne
-  case ravioli
-  case rigatoni
-}
-let totalCaseCount = PastaTypes.allCases.count
-print(totalCaseCount)
+//enum PastaTypes: Int, CaseIterable {
+//  case spaghetti
+//  case penne
+//  case ravioli
+//  case rigatoni
+//}
+//let totalCaseCount = PastaTypes.allCases.count
+//print(totalCaseCount)
 
 /* Output:
  4
+ */
+
+/* Playing with enums, combined. */
+
+enum PastaTypes: Int {
+  case spaghetti = 8
+  case penne = 10
+  case ravioli = 11
+  case rigatoni = 12
+}
+let cookingTime = PastaTypes.spaghetti.rawValue
+print("Spaghetti will be perfectly cooked in \(cookingTime) minutes.")
+func cookingPerfectPasta(pasta: PastaTypes) {
+  let cookingTime = pasta.rawValue
+  print("\(pasta) will be perfectly cooked in \(cookingTime) minutes.")
+}
+cookingPerfectPasta(pasta: .rigatoni)
+enum PastaTypesA {
+  case spaghetti(cookingTime: Int)
+  case penne(cookingTime: Int)
+  case ravioli(cookingTime: Int)
+  case fusilli(cookingTime: Int)
+  case rigatoni(cookingTime: Int)
+}
+var checkIfCooked = PastaTypesA.spaghetti(cookingTime: 8)
+if cookingTime < 8 {
+  print("Spaghetti is still not fully cooked...")
+} else {
+  print("Spaghetti is cooked, take it out of the water!")
+}
+
+/* Output:
+Spaghetti will be perfectly cooked in 8 minutes.
+rigatoni will be perfectly cooked in 12 minutes.
+Spaghetti is cooked, take it out of the water!
  */

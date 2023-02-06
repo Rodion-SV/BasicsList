@@ -823,9 +823,31 @@ if cookingTime < 8 {
 } else {
   print("Spaghetti is cooked, take it out of the water!")
 }
+func checkIfCooked2(for pasta: PastaTypesA) {
+  switch pasta {
+  case .spaghetti(let cookingTime):
+    if cookingTime < 8 {
+      print("Spaghetti is still not fully cooked...")
+    } else {
+      print("Spaghetti is cooked, take it out of the water!")
+    }
+  default: return
+  }
+}
+checkIfCooked2(for: .spaghetti(cookingTime: 6))
+func checkIfCooked3(for pasta: PastaTypesA) {
+  switch pasta {
+  case .spaghetti(let cookingTime) where cookingTime >= 8:
+    print("Spaghetti is cooked, take it out of the water!")
+  default: print("Pasta is not cooked.")
+  }
+}
+checkIfCooked3(for: .spaghetti(cookingTime: 7))
 
 /* Output:
 Spaghetti will be perfectly cooked in 8 minutes.
 rigatoni will be perfectly cooked in 12 minutes.
 Spaghetti is cooked, take it out of the water!
+Spaghetti is still not fully cooked...
+Pasta is not cooked.
  */

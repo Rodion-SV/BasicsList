@@ -797,52 +797,52 @@ rigatoni will be perfectly cooked in 12 minutes.
 
 /* Playing with enums, combined. */
 
-enum PastaTypes: Int {
-  case spaghetti = 8
-  case penne = 10
-  case ravioli = 11
-  case rigatoni = 12
-}
-let cookingTime = PastaTypes.spaghetti.rawValue
-print("Spaghetti will be perfectly cooked in \(cookingTime) minutes.")
-func cookingPerfectPasta(pasta: PastaTypes) {
-  let cookingTime = pasta.rawValue
-  print("\(pasta) will be perfectly cooked in \(cookingTime) minutes.")
-}
-cookingPerfectPasta(pasta: .rigatoni)
-enum PastaTypesA {
-  case spaghetti(cookingTime: Int)
-  case penne(cookingTime: Int)
-  case ravioli(cookingTime: Int)
-  case fusilli(cookingTime: Int)
-  case rigatoni(cookingTime: Int)
-}
-var checkIfCooked = PastaTypesA.spaghetti(cookingTime: 8)
-if cookingTime < 8 {
-  print("Spaghetti is still not fully cooked...")
-} else {
-  print("Spaghetti is cooked, take it out of the water!")
-}
-func checkIfCooked2(for pasta: PastaTypesA) {
-  switch pasta {
-  case .spaghetti(let cookingTime):
-    if cookingTime < 8 {
-      print("Spaghetti is still not fully cooked...")
-    } else {
-      print("Spaghetti is cooked, take it out of the water!")
-    }
-  default: return
-  }
-}
-checkIfCooked2(for: .spaghetti(cookingTime: 6))
-func checkIfCooked3(for pasta: PastaTypesA) {
-  switch pasta {
-  case .spaghetti(let cookingTime) where cookingTime >= 8:
-    print("Spaghetti is cooked, take it out of the water!")
-  default: print("Pasta is not cooked.")
-  }
-}
-checkIfCooked3(for: .spaghetti(cookingTime: 7))
+//enum PastaTypes: Int {
+//  case spaghetti = 8
+//  case penne = 10
+//  case ravioli = 11
+//  case rigatoni = 12
+//}
+//let cookingTime = PastaTypes.spaghetti.rawValue
+//print("Spaghetti will be perfectly cooked in \(cookingTime) minutes.")
+//func cookingPerfectPasta(pasta: PastaTypes) {
+//  let cookingTime = pasta.rawValue
+//  print("\(pasta) will be perfectly cooked in \(cookingTime) minutes.")
+//}
+//cookingPerfectPasta(pasta: .rigatoni)
+//enum PastaTypesA {
+//  case spaghetti(cookingTime: Int)
+//  case penne(cookingTime: Int)
+//  case ravioli(cookingTime: Int)
+//  case fusilli(cookingTime: Int)
+//  case rigatoni(cookingTime: Int)
+//}
+//var checkIfCooked = PastaTypesA.spaghetti(cookingTime: 8)
+//if cookingTime < 8 {
+//  print("Spaghetti is still not fully cooked...")
+//} else {
+//  print("Spaghetti is cooked, take it out of the water!")
+//}
+//func checkIfCooked2(for pasta: PastaTypesA) {
+//  switch pasta {
+//  case .spaghetti(let cookingTime):
+//    if cookingTime < 8 {
+//      print("Spaghetti is still not fully cooked...")
+//    } else {
+//      print("Spaghetti is cooked, take it out of the water!")
+//    }
+//  default: return
+//  }
+//}
+//checkIfCooked2(for: .spaghetti(cookingTime: 6))
+//func checkIfCooked3(for pasta: PastaTypesA) {
+//  switch pasta {
+//  case .spaghetti(let cookingTime) where cookingTime >= 8:
+//    print("Spaghetti is cooked, take it out of the water!")
+//  default: print("Pasta is not cooked.")
+//  }
+//}
+//checkIfCooked3(for: .spaghetti(cookingTime: 7))
 
 /* Output:
 Spaghetti will be perfectly cooked in 8 minutes.
@@ -851,3 +851,31 @@ Spaghetti is cooked, take it out of the water!
 Spaghetti is still not fully cooked...
 Pasta is not cooked.
  */
+
+/* Menu simulation. */
+
+enum Ingredient: String {
+  case lettuce = "Romaine Lettuce"
+  case croutons = "Salted Croutons"
+  case chicken = "Free Range Chicken"
+}
+let ingredient = Ingredient.lettuce
+switch ingredient {
+case .lettuce:
+  print("We use \(ingredient.rawValue) that has the richest flavor from all the lettuces.")
+case .croutons:
+  print("Our \(ingredient.rawValue) makes sure we do not have to use additional salt in our salads.")
+case .chicken: print("Our meals tastes better with \(ingredient.rawValue) to raise the quality.")
+}
+enum RecipeInformation {
+  case allergens(information: String)
+}
+let recipeInformation = RecipeInformation.allergens(information: "Peanuts, Milk, Gluten")
+switch recipeInformation {
+case .allergens(let information): print("The meal includes the following allergens: \(information).")
+}
+
+/* Output:
+We use Romaine Lettuce that has the richest flavor from all the lettuces.
+The meal includes the following allergens: Peanuts, Milk, Gluten.
+*/

@@ -890,6 +890,27 @@ The meal includes the following allergens: Peanuts, Milk, Gluten.
  1
 */
 
-/* */
+/* Sets. */
 
+let reservationsInPerson: Set <String> = (["000-111-222", "000-122-111"])
+let reservationsOverPhone: Set <String> = (["000-111-333", "000-122-112"])
+let reservationsOverInternet: Set <String> = (["000-111-444", "000-122-113"])
+let inPersonAndOverPhone: Set<String> = reservationsInPerson.union(reservationsOverPhone)
+print(inPersonAndOverPhone)
+var allPhoneNumbers: Set <String> = inPersonAndOverPhone.union(reservationsOverInternet)
+print(allPhoneNumbers)
+var confirmationCodes: Set<String> = (["LL127","LL129"])
+print(allPhoneNumbers.count, confirmationCodes.count)
+confirmationCodes.insert("LL001")
+print("\(allPhoneNumbers.count) \(confirmationCodes.count)")
+allPhoneNumbers.remove("000-111-333")
+print(allPhoneNumbers.count, confirmationCodes.count)
+
+/* Output:
+["000-111-222", "000-122-112", "000-111-333", "000-122-111"]
+["000-111-222", "000-122-112", "000-111-444", "000-111-333", "000-122-111", "000-122-113"]
+6 2
+6 3
+5 3
+*/
 

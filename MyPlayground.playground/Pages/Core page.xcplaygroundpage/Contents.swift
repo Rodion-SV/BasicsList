@@ -892,19 +892,19 @@ The meal includes the following allergens: Peanuts, Milk, Gluten.
 
 /* Sets. */
 
-let reservationsInPerson: Set <String> = (["000-111-222", "000-122-111"])
-let reservationsOverPhone: Set <String> = (["000-111-333", "000-122-112"])
-let reservationsOverInternet: Set <String> = (["000-111-444", "000-122-113"])
-let inPersonAndOverPhone: Set<String> = reservationsInPerson.union(reservationsOverPhone)
-print(inPersonAndOverPhone)
-var allPhoneNumbers: Set <String> = inPersonAndOverPhone.union(reservationsOverInternet)
-print(allPhoneNumbers)
-var confirmationCodes: Set<String> = (["LL127","LL129"])
-print(allPhoneNumbers.count, confirmationCodes.count)
-confirmationCodes.insert("LL001")
-print("\(allPhoneNumbers.count) \(confirmationCodes.count)")
-allPhoneNumbers.remove("000-111-333")
-print(allPhoneNumbers.count, confirmationCodes.count)
+//let reservationsInPerson: Set <String> = (["000-111-222", "000-122-111"])
+//let reservationsOverPhone: Set <String> = (["000-111-333", "000-122-112"])
+//let reservationsOverInternet: Set <String> = (["000-111-444", "000-122-113"])
+//let inPersonAndOverPhone: Set<String> = reservationsInPerson.union(reservationsOverPhone)
+//print(inPersonAndOverPhone)
+//var allPhoneNumbers: Set <String> = inPersonAndOverPhone.union(reservationsOverInternet)
+//print(allPhoneNumbers)
+//var confirmationCodes: Set<String> = (["LL127","LL129"])
+//print(allPhoneNumbers.count, confirmationCodes.count)
+//confirmationCodes.insert("LL001")
+//print("\(allPhoneNumbers.count) \(confirmationCodes.count)")
+//allPhoneNumbers.remove("000-111-333")
+//print(allPhoneNumbers.count, confirmationCodes.count)
 
 /* Output:
 ["000-111-222", "000-122-112", "000-111-333", "000-122-111"]
@@ -914,3 +914,35 @@ print(allPhoneNumbers.count, confirmationCodes.count)
 5 3
 */
 
+/* Sets, enums. */
+var mySet: Set<String> = []
+print(mySet)
+
+var letters1: Set<String> = ["a","b","c","d"]
+
+var letters4: Set = ["a","b","c","d"]
+print(letters1,letters4)
+var cities: Set = ["Cairo", "London", "Paris"]
+var cities2: Set<String> = ["Moscow", "Hanoi", "Zurich"]
+print(cities,cities2)
+enum Week: Int, CaseIterable {
+  case Monday = 1
+  case Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+}
+for day in Week.allCases {
+  print("\(day) is day \(day.rawValue) of the week")
+}
+
+/* Output:
+ []
+ ["b", "a", "d", "c"] ["d", "b", "c", "a"]
+ ["Cairo", "Paris", "London"] ["Hanoi", "Moscow", "Zurich"]
+ Monday is day 1 of the week
+ Tuesday is day 2 of the week
+ Wednesday is day 3 of the week
+ Thursday is day 4 of the week
+ Friday is day 5 of the week
+ Saturday is day 6 of the week
+ Sunday is day 7 of the week
+
+*/

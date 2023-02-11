@@ -915,23 +915,24 @@ The meal includes the following allergens: Peanuts, Milk, Gluten.
 */
 
 /* Sets, enums. */
-var mySet: Set<String> = []
-print(mySet)
 
-var letters1: Set<String> = ["a","b","c","d"]
-
-var letters4: Set = ["a","b","c","d"]
-print(letters1,letters4)
-var cities: Set = ["Cairo", "London", "Paris"]
-var cities2: Set<String> = ["Moscow", "Hanoi", "Zurich"]
-print(cities,cities2)
-enum Week: Int, CaseIterable {
-  case Monday = 1
-  case Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
-}
-for day in Week.allCases {
-  print("\(day) is day \(day.rawValue) of the week")
-}
+//var mySet: Set<String> = []
+//print(mySet)
+//
+//var letters1: Set<String> = ["a","b","c","d"]
+//
+//var letters4: Set = ["a","b","c","d"]
+//print(letters1,letters4)
+//var cities: Set = ["Cairo", "London", "Paris"]
+//var cities2: Set<String> = ["Moscow", "Hanoi", "Zurich"]
+//print(cities,cities2)
+//enum Week: Int, CaseIterable {
+//  case Monday = 1
+//  case Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+//}
+//for day in Week.allCases {
+//  print("\(day) is day \(day.rawValue) of the week")
+//}
 
 /* Output:
  []
@@ -944,5 +945,35 @@ for day in Week.allCases {
  Friday is day 5 of the week
  Saturday is day 6 of the week
  Sunday is day 7 of the week
-
 */
+
+/* Enums inserting. */
+
+enum PastaTypes: Int {
+    case spaghetti
+    case penne
+    case ravioli
+    case rigatoni
+}
+print(PastaTypes.penne.rawValue)
+print(PastaTypes.ravioli.rawValue)
+print(PastaTypes.rigatoni.rawValue)
+print(PastaTypes.spaghetti.rawValue)
+
+var listOfNumbers = Set<Int>()
+
+listOfNumbers.insert(1)
+listOfNumbers.insert(5)
+listOfNumbers.insert(8)
+listOfNumbers.insert(3)
+listOfNumbers.insert(1)
+
+print(listOfNumbers.count)
+
+/* Output:
+ 1
+ 2
+ 3
+ 0
+ 4
+ */

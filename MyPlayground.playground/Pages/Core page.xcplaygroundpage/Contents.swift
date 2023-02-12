@@ -949,26 +949,23 @@ The meal includes the following allergens: Peanuts, Milk, Gluten.
 
 /* Enums inserting. */
 
-enum PastaTypes: Int {
-    case spaghetti
-    case penne
-    case ravioli
-    case rigatoni
-}
-print(PastaTypes.penne.rawValue)
-print(PastaTypes.ravioli.rawValue)
-print(PastaTypes.rigatoni.rawValue)
-print(PastaTypes.spaghetti.rawValue)
-
-var listOfNumbers = Set<Int>()
-
-listOfNumbers.insert(1)
-listOfNumbers.insert(5)
-listOfNumbers.insert(8)
-listOfNumbers.insert(3)
-listOfNumbers.insert(1)
-
-print(listOfNumbers.count)
+//enum PastaTypes: Int {
+//    case spaghetti
+//    case penne
+//    case ravioli
+//    case rigatoni
+//}
+//print(PastaTypes.penne.rawValue)
+//print(PastaTypes.ravioli.rawValue)
+//print(PastaTypes.rigatoni.rawValue)
+//print(PastaTypes.spaghetti.rawValue)
+//var listOfNumbers = Set<Int>()
+//listOfNumbers.insert(1)
+//listOfNumbers.insert(5)
+//listOfNumbers.insert(8)
+//listOfNumbers.insert(3)
+//listOfNumbers.insert(1)
+//print(listOfNumbers.count)
 
 /* Output:
  1
@@ -977,3 +974,67 @@ print(listOfNumbers.count)
  0
  4
  */
+
+/* Inheritance. */
+
+class Dish {
+    private let name: String
+    private var ingredients: [String]
+    init(name: String, ingredients: [String]) {
+        self.name = name
+        self.ingredients = ingredients
+    }
+    func printInfo() {
+        print(name)
+        print(ingredients)
+    }
+}
+final class AppetizerDish: Dish {
+    override func printInfo() {
+        print("Appetizer")
+        super.printInfo()
+    }
+}
+final class MainDish: Dish {
+}
+for _ in 0..<5 {
+    let randomNumber = Int.random(in: 0...1)
+    let dish: Dish
+    if randomNumber == 0 {
+        dish = AppetizerDish(
+            name: "Margherita Flatbread",
+            ingredients: [
+                "Margherita",
+                "Flatbread",
+            ]
+        )
+    } else {
+        dish = MainDish(
+            name: "Super Spaghetti",
+            ingredients: [
+                "Spaghetti",
+                "Tomato sauce",
+            ]
+        )
+    }
+    if let appetizerDish = dish as? AppetizerDish {
+        appetizerDish.printInfo()
+    }
+    if dish is MainDish {
+        print("Main Dish!")
+    }
+}
+
+/* Output:
+ Appetizer
+ Margherita Flatbread
+ ["Margherita", "Flatbread"]
+ Appetizer
+ Margherita Flatbread
+ ["Margherita", "Flatbread"]
+ Appetizer
+ Margherita Flatbread
+ ["Margherita", "Flatbread"]
+ Main Dish!
+ Main Dish!
+*/

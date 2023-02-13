@@ -977,53 +977,53 @@ The meal includes the following allergens: Peanuts, Milk, Gluten.
 
 /* Inheritance. */
 
-class Dish {
-    private let name: String
-    private var ingredients: [String]
-    init(name: String, ingredients: [String]) {
-        self.name = name
-        self.ingredients = ingredients
-    }
-    func printInfo() {
-        print(name)
-        print(ingredients)
-    }
-}
-final class AppetizerDish: Dish {
-    override func printInfo() {
-        print("Appetizer")
-        super.printInfo()
-    }
-}
-final class MainDish: Dish {
-}
-for _ in 0..<5 {
-    let randomNumber = Int.random(in: 0...1)
-    let dish: Dish
-    if randomNumber == 0 {
-        dish = AppetizerDish(
-            name: "Margherita Flatbread",
-            ingredients: [
-                "Margherita",
-                "Flatbread",
-            ]
-        )
-    } else {
-        dish = MainDish(
-            name: "Super Spaghetti",
-            ingredients: [
-                "Spaghetti",
-                "Tomato sauce",
-            ]
-        )
-    }
-    if let appetizerDish = dish as? AppetizerDish {
-        appetizerDish.printInfo()
-    }
-    if dish is MainDish {
-        print("Main Dish!")
-    }
-}
+//class Dish {
+//    private let name: String
+//    private var ingredients: [String]
+//    init(name: String, ingredients: [String]) {
+//        self.name = name
+//        self.ingredients = ingredients
+//    }
+//    func printInfo() {
+//        print(name)
+//        print(ingredients)
+//    }
+//}
+//final class AppetizerDish: Dish {
+//    override func printInfo() {
+//        print("Appetizer")
+//        super.printInfo()
+//    }
+//}
+//final class MainDish: Dish {
+//}
+//for _ in 0..<5 {
+//    let randomNumber = Int.random(in: 0...1)
+//    let dish: Dish
+//    if randomNumber == 0 {
+//        dish = AppetizerDish(
+//            name: "Margherita Flatbread",
+//            ingredients: [
+//                "Margherita",
+//                "Flatbread",
+//            ]
+//        )
+//    } else {
+//        dish = MainDish(
+//            name: "Super Spaghetti",
+//            ingredients: [
+//                "Spaghetti",
+//                "Tomato sauce",
+//            ]
+//        )
+//    }
+//    if let appetizerDish = dish as? AppetizerDish {
+//        appetizerDish.printInfo()
+//    }
+//    if dish is MainDish {
+//        print("Main Dish!")
+//    }
+//}
 
 /* Output:
  Appetizer
@@ -1037,4 +1037,26 @@ for _ in 0..<5 {
  ["Margherita", "Flatbread"]
  Main Dish!
  Main Dish!
+*/
+
+/* Delegating. */
+protocol Employee {
+    var name: String { get }
+    func executePrimaryDuty()
+}
+struct Cook: Employee {
+    let name: String
+    var delegate: Employee?
+    func executePrimaryDuty() {
+let name = delegate?.name ?? self.name
+print("\(name) cooks extra good food.")
+    }
+}
+var mario = Cook(name: "Mario")
+let adrian = Cook(name: "Adrian")
+mario.delegate = adrian
+mario.executePrimaryDuty()
+
+/*
+Adrian cooks extra good food.
 */

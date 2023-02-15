@@ -1064,34 +1064,78 @@ Adrian cooks extra good food.
 
 /* Protocols inheritance. */
 
-protocol Dish {
-    var name: String { get }
-    var preparationMinutes: Int { get set }
-    func prepare()
-    func plate(artisticLevel: Int)
-}
-class MainDish: Dish {
-    let name: String
-    var preparationMinutes: Int
-    init(name: String, preparationMinutes: Int) {
-        self.name = name
-        self.preparationMinutes = preparationMinutes
-    }
-    func prepare() {
-        print("Preparing \(name) for \(preparationMinutes) minutes")
-    }
-    func plate(artisticLevel: Int) {
-        print("Plating artistic level: \(artisticLevel)")
-    }
-}
-let superSpaghetti = MainDish(
-    name: "Super Spaghetti",
-    preparationMinutes: 35
-)
-superSpaghetti.prepare()
-superSpaghetti.plate(artisticLevel: 10)
+//protocol Dish {
+//    var name: String { get }
+//    var preparationMinutes: Int { get set }
+//    func prepare()
+//    func plate(artisticLevel: Int)
+//}
+//class MainDish: Dish {
+//    let name: String
+//    var preparationMinutes: Int
+//    init(name: String, preparationMinutes: Int) {
+//        self.name = name
+//        self.preparationMinutes = preparationMinutes
+//    }
+//    func prepare() {
+//        print("Preparing \(name) for \(preparationMinutes) minutes")
+//    }
+//    func plate(artisticLevel: Int) {
+//        print("Plating artistic level: \(artisticLevel)")
+//    }
+//}
+//let superSpaghetti = MainDish(
+//    name: "Super Spaghetti",
+//    preparationMinutes: 35
+//)
+//superSpaghetti.prepare()
+//superSpaghetti.plate(artisticLevel: 10)
 
 /* Output:
 Preparing Super Spaghetti for 35 minutes
 Plating artistic level: 10
+*/
+
+/* Delegating extended. */
+protocol Driver {
+    var name: String { get }
+    func driveToDestination(_ destination: String, with food: String)
+}
+class DeliveryDriver: Driver {
+    let name: String
+    init(name: String) {
+        self.name = name
+    }
+    func driveToDestination(_ destination: String, with food: String) {
+        print("\(name) is driving to \(destination) to deliver \(food).")
+    }
+}
+class LittleLemon {
+    var deliveryDriver: Driver?
+    func deliverFood(_ food: String, to destination: String) {
+        if let deliveryDriver = deliveryDriver {
+            deliveryDriver.driveToDestination(
+                destination,
+                with: food
+            )
+        } else {
+            print("No delivery driver.")
+        }
+    }
+}
+let bob = DeliveryDriver(name: "Bob")
+let littleLemon = LittleLemon()
+littleLemon.deliverFood(
+    "Super Spaghetti",
+    to: "1 Spaghetti Lane"
+)
+littleLemon.deliveryDriver = bob
+littleLemon.deliverFood(
+    "Super Spaghetti",
+    to: "1 Spaghetti Lane"
+)
+
+/* Output:
+No delivery driver.
+Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 */

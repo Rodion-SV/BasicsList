@@ -1143,57 +1143,49 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 
 /* Delegating extended. */
 
-protocol Protocol1 {
-  func output()
-}
-
-extension Protocol1 {
-  func output() {
-    print("Output")
-  }
-}
-
-class Delegate: Protocol1 {
-  func output() {
-    print("Delegation")
-  }
-}
-
-class Output {
-  var delegate: Protocol1?
-  func output() {
-    delegate?.output()
-  }
-}
-
-let output = Output()
-output.delegate = Delegate()
-output.output()
-
-class Spaghetti {
-    func fetchIngredients() {
-        print("Spaghetti Ingredients")
-    }
-}
-class SpaghettiMeatball: Spaghetti {
-    override func fetchIngredients() {
-        print("BBB")
-        super.fetchIngredients()
-        print("AAA")
-    }
-}
-let spaghettiMeatball = SpaghettiMeatball()
-spaghettiMeatball.fetchIngredients()
-
-protocol Employee {
-    var daysWorking: Int { get set }
-}
-
-struct Waiter: Employee {
-    var daysWorking: Int
-}
-
-print(Waiter.self)
+//protocol Protocol1 {
+//  func output()
+//}
+//extension Protocol1 {
+//  func output() {
+//    print("Output")
+//  }
+//}
+//class Delegate: Protocol1 {
+//  func output() {
+//    print("Delegation")
+//  }
+//}
+//class Output {
+//  var delegate: Protocol1?
+//  func output() {
+//    delegate?.output()
+//  }
+//}
+//let output = Output()
+//output.delegate = Delegate()
+//output.output()
+//class Spaghetti {
+//    func fetchIngredients() {
+//        print("Spaghetti Ingredients")
+//    }
+//}
+//class SpaghettiMeatball: Spaghetti {
+//    override func fetchIngredients() {
+//        print("BBB")
+//        super.fetchIngredients()
+//        print("AAA")
+//    }
+//}
+//let spaghettiMeatball = SpaghettiMeatball()
+//spaghettiMeatball.fetchIngredients()
+//protocol Employee {
+//    var daysWorking: Int { get set }
+//}
+//struct Waiter: Employee {
+//    var daysWorking: Int
+//}
+//print(Waiter.self)
 
 /* Output:
  Delegation
@@ -1201,4 +1193,34 @@ print(Waiter.self)
  Spaghetti Ingredients
  AAA
  Waiter
+ */
+
+/* Catching errors. */
+enum CalculatorError: Error {
+    case divisionByZero
+}
+class Calculator {
+    
+    func divide(x: Double, y: Double) throws -> Double {
+        
+        if y == 0 {
+            throw CalculatorError.divisionByZero
+        }
+        
+        return x / y
+    }
+}
+let calculator = Calculator()
+do {
+    let successfulResult = try calculator.divide(x: 1, y: 2)
+    print(successfulResult)
+    let invalidResult = try calculator.divide(x: 1, y: 0)
+}
+catch CalculatorError.divisionByZero {
+    print("Division by zero detected and not allowed")
+}
+
+/* Output:
+ 0.5
+ Division by zero detected and not allowed
  */

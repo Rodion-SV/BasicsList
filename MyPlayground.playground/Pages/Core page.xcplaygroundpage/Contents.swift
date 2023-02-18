@@ -1196,31 +1196,48 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
  */
 
 /* Catching errors. */
-enum CalculatorError: Error {
-    case divisionByZero
-}
-class Calculator {
-    
-    func divide(x: Double, y: Double) throws -> Double {
-        
-        if y == 0 {
-            throw CalculatorError.divisionByZero
-        }
-        
-        return x / y
-    }
-}
-let calculator = Calculator()
-do {
-    let successfulResult = try calculator.divide(x: 1, y: 2)
-    print(successfulResult)
-    let invalidResult = try calculator.divide(x: 1, y: 0)
-}
-catch CalculatorError.divisionByZero {
-    print("Division by zero detected and not allowed")
-}
+
+//enum CalculatorError: Error {
+//    case divisionByZero
+//}
+//class Calculator {
+//
+//    func divide(x: Double, y: Double) throws -> Double {
+//
+//        if y == 0 {
+//            throw CalculatorError.divisionByZero
+//        }
+//
+//        return x / y
+//    }
+//}
+//let calculator = Calculator()
+//do {
+//    let successfulResult = try calculator.divide(x: 1, y: 2)
+//    print(successfulResult)
+//    let invalidResult = try calculator.divide(x: 1, y: 0)
+//}
+//catch CalculatorError.divisionByZero {
+//    print("Division by zero detected and not allowed")
+//}
 
 /* Output:
  0.5
  Division by zero detected and not allowed
+ */
+
+/* Higher order function example. */
+
+let originalPrices = [2, 4, 6, 19, 39]
+func covertPrices(originalPrices: [Int], conversionClosure: (_ price: Int) -> Int) -> [Int] {
+    var convertedPrices = [Int]()
+    for originalPrice in originalPrices {
+        let convertedPrice = conversionClosure(originalPrice)
+        convertedPrices.append(convertedPrice)
+    }
+        return convertedPrices
+}
+covertPrices(originalPrices: originalPrices, conversionClosure: {$0 * 2})
+
+/* Output:
  */

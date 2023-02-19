@@ -1228,16 +1228,42 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 
 /* Higher order function example. */
 
-let originalPrices = [2, 4, 6, 19, 39]
-func covertPrices(originalPrices: [Int], conversionClosure: (_ price: Int) -> Int) -> [Int] {
-    var convertedPrices = [Int]()
-    for originalPrice in originalPrices {
-        let convertedPrice = conversionClosure(originalPrice)
-        convertedPrices.append(convertedPrice)
-    }
-        return convertedPrices
-}
-covertPrices(originalPrices: originalPrices, conversionClosure: {$0 * 2})
+//let originalPrices = [2, 4, 6, 19, 39]
+//func covertPrices(originalPrices: [Int], conversionClosure: (_ price: Int) -> Int) -> [Int] {
+//    var convertedPrices = [Int]()
+//    for originalPrice in originalPrices {
+//        let convertedPrice = conversionClosure(originalPrice)
+//        convertedPrices.append(convertedPrice)
+//    }
+//        return convertedPrices
+//}
+//covertPrices(originalPrices: originalPrices, conversionClosure: {$0 * 2})
 
 /* Output:
+ */
+
+/* Recursion. */
+
+var n = 6
+while n > 0 {
+    print(n)
+    n -= 1
+}
+func output(n: Int) {
+    if (n==0) { // step 1 base case
+        return
+    }
+    else {
+        print(n) // step 2 perform the work
+        output(n: n-1) // step 3 repeat recursion with smaller problem
+    }
+}
+
+/* Output:
+ 6
+ 5
+ 4
+ 3
+ 2
+ 1
  */

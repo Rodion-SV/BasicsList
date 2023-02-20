@@ -1244,20 +1244,20 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 
 /* Recursion. */
 
-var n = 6
-while n > 0 {
-    print(n)
-    n -= 1
-}
-func output(n: Int) {
-    if (n==0) { // step 1 base case
-        return
-    }
-    else {
-        print(n) // step 2 perform the work
-        output(n: n-1) // step 3 repeat recursion with smaller problem
-    }
-}
+//var n = 6
+//while n > 0 {
+//    print(n)
+//    n -= 1
+//}
+//func output(n: Int) {
+//    if (n==0) { // step 1 base case
+//        return
+//    }
+//    else {
+//        print(n) // step 2 perform the work
+//        output(n: n-1) // step 3 repeat recursion with smaller problem
+//    }
+//}
 
 /* Output:
  6
@@ -1267,3 +1267,15 @@ func output(n: Int) {
  2
  1
  */
+
+/* Error handling. */
+
+let file= open(“file.txt”)
+do {
+    defer {
+        file.close()
+    }
+    let result = try readFile(file)
+} catch {
+    // Handle errors here
+}

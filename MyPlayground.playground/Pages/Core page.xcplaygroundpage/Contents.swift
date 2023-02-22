@@ -1270,12 +1270,42 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 
 /* Error handling. */
 
-let file= open(“file.txt”)
-do {
-    defer {
-        file.close()
-    }
-    let result = try readFile(file)
-} catch {
-    // Handle errors here
-}
+//let file= open(“file.txt”)
+//do {
+//    defer {
+//        file.close()
+//    }
+//    let result = try readFile(file)
+//} catch {
+//    // Handle errors here
+//}
+
+/*How to use state and binding?*/
+/*Suppose you have a view called ContentView and another one called LittleLemonLogocontaining the logo of Little Lemon restaurant. You want to create some functionality in ContentView that controls the logo's visibility.
+ ContentView will look like this:*/
+//struct ContentView: View {
+//    @State var showLogo = true
+//    var body: some View {
+//        VStack {
+//            if showLogo {
+//                LittleLemonLogo(bindingVariable: $showLogo)
+//            }
+//        }
+//    }
+//}
+///*The LittleLemonLogo view will be configured as follows:*/
+//struct LittleLemonLogo: View {
+//    @Binding var bindingVariable:Bool
+//    var body: some View {
+//        VStack {
+//            Image("littleLemonLogo")
+//            Button(action: {
+//                bindingVariable.toggle()
+//            }, label: {
+//                Text("Toggle Logo Visibility")
+//                  .font(.title2)
+//            })
+//        }
+//    }
+//}
+/*Once the button is tapped, the logo will disappear.*/

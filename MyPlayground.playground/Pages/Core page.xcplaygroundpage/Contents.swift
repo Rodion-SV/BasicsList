@@ -1280,6 +1280,18 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 //    // Handle errors here
 //}
 
+//_____________________________________________________________________________________________________________________________
+//_____________________________________________________________________________________________________________________________
+//_____________________________________________________________________________________________________________________________
+//_____________________________________________________________________________________________________________________________
+//_____________________________________________________________________________________________________________________________
+//_____________________________________________________________________________________________________________________________
+//_____________________________________________________________________________________________________________________________
+//_____________________________________________________________________________________________________________________________
+//_____________________________________________________________________________________________________________________________
+//_____________________________________________________________________________________________________________________________
+//_____________________________________________________________________________________________________________________________
+
 /*How to use state and binding?*/
 /*Suppose you have a view called ContentView and another one called LittleLemonLogocontaining the logo of Little Lemon restaurant. You want to create some functionality in ContentView that controls the logo's visibility.
  ContentView will look like this:*/
@@ -1308,4 +1320,39 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 //        }
 //    }
 //}
-/*Once the button is tapped, the logo will disappear.*/
+/* Once the button is tapped, the logo will disappear. */
+
+
+
+
+
+/* ObservableObject and ObservedObject. */
+//class MyClass:ObservableObject {
+//    @Published var showLogo = true
+//}
+//struct ContentView: View {
+//    @ObservedObject var myClass = MyClass()
+//    var body: some View {
+//        VStack {
+//            if myClass.showLogo {
+//                LittleLemonLogo(myClass: myClass)
+//            }
+//        }
+//    }
+//}
+//struct LittleLemonLogo: View {
+//    var myClass:MyClass
+//    var body: some View {
+//        VStack {
+//            Image("littleLemonLogo")
+//            Button(action: {
+//                myClass.showLogo.toggle()
+//            }, label: {
+//                Text("Toggle Logo Visibility OFF")
+//                    .font(.title2)
+//            })
+//        }
+//    }
+//}
+
+

@@ -1433,3 +1433,20 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 //        }
 //    }
 //}
+
+
+//Swift ui basic Controls cheat sheet
+//struct ContentView: View {
+//    
+//    var body: some View {
+//        
+//        Button(role: .destructive) {
+//            print("do something!")
+//        } label: {
+//            HStack {
+//                Image(systemName: "trash")
+//                Text("")
+//            }
+//        }
+//    }
+//}

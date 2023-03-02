@@ -1479,3 +1479,19 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 //        }
 //    }
 //}
+
+
+
+//struct ContentView: View {
+//    
+//    @State private var size: CGFloat = 0.1
+//    
+//    var body: some View {
+//        VStack {
+//            Text("Little Lemon").font(.system(size: size * 50))
+//            Slider(value: $size)
+//            
+//        }
+//        .padding()
+//    }
+//}

@@ -1583,3 +1583,44 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 //        ParentView()
 //    }
 //}
+
+
+
+//Dynamic elements
+//    let elements = ["Reservation", "Contacts", "Restaurant Locations"]
+//struct ContentView: View {
+//    let elements = ["Reservation", "Contacts", "Restaurant Locations"]
+//    var body: some View {
+//        List {
+//            ForEach(elements) {element in
+//                Text(element)
+//            }
+//        }
+//        .padding()
+//    }
+//}
+//
+//But there will be an error. To solve this:
+//extension String: Identifiable {
+//    public var id: String {
+//        self
+//    }
+//}
+//
+//
+//
+//
+//OR
+//
+//struct ContentView: View {
+//    let elements = ["Reservation", "Contacts", "Restaurant Locations"]
+//    var body: some View {
+//
+//        List {
+//            ForEach(elements, id: \.self) {element in
+//                Text(element)
+//            }
+//        }
+//        .padding()
+//    }
+//}

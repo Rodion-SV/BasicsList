@@ -1648,3 +1648,35 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 //        .padding()
 //    }
 //}
+
+
+
+//Getting rid of the List grey background
+//SwiftUI renders lists with a grey background. If you want to get rid of this background, add the following modifier to the List:
+//        .scrollContentBackground(.hidden)
+//
+//
+//
+//struct ContentView: View {
+//    let elements = ["Reservation", "Contacts", "Restaurant Locations"]
+//    var body: some View {
+//        List {
+//            Section(header: Text("Important Information")) {
+//                Text("This List shows information about our restaurant pages")
+//                    .font(.headline)
+//            }
+//
+//            ForEach(elements, id: \.self) {element in
+//                NavigationLink(destination: DetailView()) {
+//                    Text(element)
+//                }
+//            }
+//
+//            Section(footer: Text("More Information")) {
+//                Text("Contact us as (212) 555 3231")
+//            }
+//        }
+//        .scrollContentBackground(.hidden)
+//        .padding()
+//    }
+//}

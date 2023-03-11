@@ -1835,3 +1835,22 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 //        .gesture(sequence)
 //    }
 //}
+
+
+
+//There are other more advanced gestures that can be used:
+//* SimultaneousGesture contains two gestures that can happen at the same time with neither of them preceding the other.
+//* ExclusiveGesture is a gesture that consists of two gestures where only one of them can succeed.
+//struct GestureRecognizer: View {
+//    @State private var flag = false
+//    var body: some View {
+//        Text("Tap Me")
+//            .font(.largeTitle)
+//            .foregroundColor(.white)
+//            .padding(15)
+//            .background(flag ? Color.green : Color.yellow)
+//            .onTapGesture {
+//                flag.toggle()
+//            }
+//    }
+//}

@@ -1912,3 +1912,26 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 //    }
 //}
 
+
+
+//var count = 10
+//if count < 5 {
+//    count += 1
+//} else if count > 10 {
+//    count -= 1
+//}
+//print(count)
+///* Error handling */
+//
+//do {
+//    let image = try loadImageThrowableFunction("image.png")
+//}
+//catch {}
+//let image = try! loadImageThrowableFunction("image.png")
+//let image = try? loadImageThrowableFunction("image.png")
+//if let image = image {
+//    // Image was successfully loaded
+//}
+//else {
+//    // Error happened
+//}

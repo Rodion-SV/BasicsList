@@ -1935,3 +1935,36 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 //else {
 //    // Error happened
 //}
+
+
+
+
+//Finding a sum of all numbers from 1 to n
+//Another common use case is finding a sum of all numbers in some range.
+//Suppose the range, in this case, is from 1 to n.
+//The implementation using the while loop again is very similar to the first example:
+//var n = 6
+//var sum = 0
+//
+//while n > 0 {
+//    sum += n
+//    n -= 1
+//}
+//Implementation becomes a bit more complex with one more variable defined, namely sum. Now instead of a print statement inside the while loop, n is now added to the sum each time.
+//Let’s now discuss the process of making the implementation recursive using the three-step process again:
+//1. Base case: all the numbers from 1 to n have to be summed. Meaning that n has to be reduced by 1 each time until it is equal to 1, after that the algorithm has to stop. In other words, the algorithm must stop when n becomes 0, which will be the base case.
+//2. Perform work to reach the base case: in this instance, the work entails summing up the numbers.
+//3. Repeat the process: each time creating the sum with a call to the same function reducing n by 1.
+//The implementation of the algorithm becomes:
+//func output(n: Int) -> Int {
+//    if(n==0) { // step 1 base case
+//        return 0
+//    }
+//    else {
+//        return n + output(n: n - 1) // step 2 and step 3
+//    }
+//}
+//
+//The function output again expects a single argument n but this time it returns the result as well. The function implementation first checks for the base case returning 0 if it is met. Afterward, it combines steps 2 and steps 3 of the recursive algorithm into one line of code, calculating a sum and calling the same function with the reduced n value.
+//In the end, both code examples would output 21 when n=6.
+//Notice that in the example, the while loop implementation needs two values, while the recursive implementation only uses n. There is no additional sum variable defined.

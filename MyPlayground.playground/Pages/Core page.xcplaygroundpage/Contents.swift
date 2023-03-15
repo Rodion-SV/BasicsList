@@ -1968,3 +1968,43 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 //The function output again expects a single argument n but this time it returns the result as well. The function implementation first checks for the base case returning 0 if it is met. Afterward, it combines steps 2 and steps 3 of the recursive algorithm into one line of code, calculating a sum and calling the same function with the reduced n value.
 //In the end, both code examples would output 21 when n=6.
 //Notice that in the example, the while loop implementation needs two values, while the recursive implementation only uses n. There is no additional sum variable defined.
+
+
+
+//Mapping is a process of converting an array from one type to another.
+//struct User {
+//    let id: Int
+//    let name: String
+//}
+//
+//let users = [
+//    User(id: 1, name: "John"),
+//    User(id: 2, name: "Tom")
+//]
+//let usersIds = users.map { user in
+//    return user.id
+//}
+///*or shorter version */
+//let usersIds = users.map { $0.id }
+//
+//
+//
+//
+///*FlatMap is useful in:
+//1. When the mapping closure returns an array of elements rather than just a single element,
+//2. The final resulting array must be a one-dimensional array. This means that there must not be an array inside of an array.
+//*/
+//struct User {
+//    let id: Int
+//    let name: String
+//    let languages: [String]
+//}
+//
+//let users = [
+//    User(id: 1, name: "John", languages: ["English", "German"]),
+//    User(id: 2, name: "Tom", languages: ["Russian", "Spanish"])
+//]
+//
+//let allLanguages = users.flatMap { $0.languages }
+///*Output:
+//["English", "German", "Russian", "Spanish"] */

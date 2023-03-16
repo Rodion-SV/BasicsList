@@ -2008,3 +2008,27 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 //let allLanguages = users.flatMap { $0.languages }
 ///*Output:
 //["English", "German", "Russian", "Spanish"] */
+
+
+
+//struct Article {
+//    let title: String
+//    let isPublished: Bool
+//}
+//
+//let articles = [
+//    Article(title: "Breaking news", isPublished: true),
+//    Article(title: "Local news", isPublished: true),
+//    Article(title: "Unconfirmed", isPublished: false),
+//]
+//
+//let unpublishedArticles = articles.filter { $0.isPublished == false }
+//
+//
+//
+//
+//var numbers = [1, 4, 65, 3, -1]
+//let sum = numbers.reduce(0) { $0 + $1 }
+//
+//
+///* reduce is called with an initial value of 0 as there is no sum calculated before, and then with each iteration, it keeps adding the last result to a correct number. This simplifies the code and makes it more readable and reusable.*/

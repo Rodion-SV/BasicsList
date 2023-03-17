@@ -2032,3 +2032,28 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 //
 //
 ///* reduce is called with an initial value of 0 as there is no sum calculated before, and then with each iteration, it keeps adding the last result to a correct number. This simplifies the code and makes it more readable and reusable.*/
+
+
+
+
+//struct Order {
+//    let price: Int
+//    let location: String
+//}
+// 
+//func totalRevenueOf(orders: [Order],  location: String) -> Int {
+//    let ordersAtLocation = orders.filter { $0.location == location }
+//    print(ordersAtLocation)
+//    let orderPrices = ordersAtLocation.map { $0.price }
+//    print(orderPrices)
+//    return orderPrices.reduce(0){ $1 + $0 }
+//}
+// 
+//let orders = [
+//    Order(price: 24, location: "New York"),
+//    Order(price: 37, location: "San Francisco"),
+//    Order(price: 101, location: "New York"),
+//]
+//
+//let result = totalRevenueOf(orders: orders, location: "New York")
+//print(result)

@@ -2057,3 +2057,40 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 //
 //let result = totalRevenueOf(orders: orders, location: "New York")
 //print(result)
+
+
+
+
+//let donationsInformation  = ["John" : 56, "Tom": 15, "Charlie": 104]
+//let donationsTexts = donationsInformation.map { "\($0.key) has donated \($0.value) so far"}
+//for text in donationsTexts {
+//    print(text)
+//}
+//
+//
+//
+//let donationsInformation = ["John": 56, "Tom": 15, "Charlie": 104]
+//donationsInformation.map { "\($0.key) has donated \($0.value) so far" }
+//    .forEach { print($0) }
+//
+//
+//
+//
+//
+//
+//
+//func sum(n: Int) -> Int {
+//    if n == 0 {
+//        return 0
+//    }
+//    return n + sum(n: n - 1)
+//}
+//let result = sum(n: 6)
+//print(result)
+//
+//
+//
+//
+//
+//
+//array.map { String($0) }.filter { $0.count > 1 }

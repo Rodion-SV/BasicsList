@@ -2094,3 +2094,56 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 //
 //
 //array.map { String($0) }.filter { $0.count > 1 }
+
+
+
+///*Unit testing example*/
+//import XCTest
+//@testable import LittleLemon
+//
+//final class LittleLemonTests: XCTestCase {
+//    func test_recipeOrderCount_init_orderCountEqualsZero() {
+//        let recipe = Recipe()
+//        XCTAssert(recipe.orderCount == 0)
+//    }
+//    func test_recipeOrderCount_incrementOrderCount_orderCountEqualsOne() {
+//        var recipe = Recipe()
+//        recipe.incrementOrderCount()
+//        XCTAssert(recipe.orderCount == 1)
+//    }
+//}
+//
+//
+///*Example of using fake*/
+//import Foundation
+//import XCTest
+//
+//protocol NetworkManager {
+//    func getMealsList() -> [String]
+//}
+//
+//class MenuManager {
+//
+//    let networkManager: NetworkManager
+//
+//    init(networkManager: NetworkManager) {
+//        self.networkManager = networkManager
+//    }
+//
+//    func allMeals() -> String {
+//        return networkManager.getMealsList().joined(separator: ",")
+//    }
+//}
+///*To skip getting response from the server, the following fake implementation can be created that returns a predefined list of local meals items as follows*/
+//class FakeNetworkManager: NetworkManager {
+//    func getMealsList() -> [String] {
+//        return ["Soda", "Milkshake"]
+//    }
+//}
+///*The FakeNetworkManager class extends the NetworkManager protocol and implements the getMealsList method which returns a predefined list of meals.
+//Note: The fake loads data from the local file in the real scenario, but to simplify the example, it returns a predefined array.*/
+//
+///*Implementing menu using fake*/
+//let menu = MenuManager(networkManager: FakeNetworkManager())
+//let allMeals = menu.allMeals()
+//XCTAssertEqual(allMeals, "Soda,Milkshake")

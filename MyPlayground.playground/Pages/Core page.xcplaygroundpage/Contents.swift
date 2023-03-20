@@ -2147,3 +2147,42 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 //let menu = MenuManager(networkManager: FakeNetworkManager())
 //let allMeals = menu.allMeals()
 //XCTAssertEqual(allMeals, "Soda,Milkshake")
+
+
+
+
+///*What are mocks?
+//A mock is like a fake in a way that the real object is replaced with a simplified version of the complex code. But the difference between a fake and a mock is that a mock also tracks how many times a method is called and what parameters were used while calling the method.*/
+//import Foundation
+//import XCTest
+//
+//protocol NetworkManager {
+//    func createNewsletterSubscription(email: String)
+//}
+//
+//class NewsletterManager {
+//    let networkManager: NetworkManager
+//    init(networkManager: NetworkManager) {
+//        self.networkManager = networkManager
+//    }
+//    func subscribe(email: String) {
+//        networkManager.createNewsletterSubscription(email: email)
+//    }
+//}
+//
+///*Implementing a unit test*/
+//class MockNetworkManager: NetworkManager {
+//    var howManyTimesFunctionWasCalled = 0
+//    var emailTheFunctionReceived = ""
+//
+//    func createNewsletterSubscription(email: String) {
+//        howManyTimesFunctionWasCalled += 1
+//        emailTheFunctionReceived = email
+//    }
+//}
+//let mockNetworkManager = MockNetworkManager()
+//let newsletter = NewsletterManager(networkManager: mockNetworkManager)
+//let email = "example@email.com"
+//newsletter.subscribe(email: email)
+//XCTAssertEqual(mockNetworkManager.howManyTimesFunctionWasCalled, 1)
+//XCTAssertEqual(mockNetworkManager.emailTheFunctionReceived, email)

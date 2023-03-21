@@ -2186,3 +2186,37 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 //newsletter.subscribe(email: email)
 //XCTAssertEqual(mockNetworkManager.howManyTimesFunctionWasCalled, 1)
 //XCTAssertEqual(mockNetworkManager.emailTheFunctionReceived, email)
+
+
+
+
+////Unit testing
+//import XCTest
+//@testable import ImplementUnitTesting
+//
+//final class ImplementUnitTestingTests: XCTestCase {
+//    func test_calculateTotal_salesTaxTwentyPercent() {
+//        let items = [CheckoutItem(name: "Chips", price: 49), CheckoutItem(name: "Cola", price: 100), CheckoutItem(name: "Ketchup", price: 400), CheckoutItem(name: "Pizza", price: 982)]
+//        let taxPercentage = 20
+//        let totalToPay = calculateTotal(items: items, localTaxPercent: taxPercentage)
+//        print(totalToPay)
+//        XCTAssertEqual(totalToPay,1837)
+//    }
+//    func testExample() {
+//     let array = [1, 2, 3, 4]
+//     let sum = array.reduce(0){$0 + $1}
+//     XCTAssertNotEqual(sum, 9)
+//    }
+//}
+//
+//
+//
+//
+//                    .toolbar {
+//                        ToolbarItem {
+//                                NavigationLink(destination:MenuItemsOptionView()){Image(systemName: "slider.horizontal.3")}
+//                                    .frame(maxWidth: .infinity, alignment: .trailing)
+//
+//                        }
+//                    }
+//                    .navigationTitle("Menu")

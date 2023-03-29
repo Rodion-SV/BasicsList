@@ -2984,3 +2984,205 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 //  );
 //}
 //
+
+
+
+
+//React tab navigation
+//export default function App() {
+//  return (
+//    <NavigationContainer>
+//      <Tab.Navigator
+//        screenOptions={({ route }) => ({
+//        tabBarIcon: ({ focused, color, size }) => {
+//          let iconName;
+//
+//          if (route.name === 'Welcome') {
+//            iconName = focused
+//              ? 'ios-information-circle'
+//              : 'ios-information-circle-outline';
+//          } else if (route.name === 'Menu') {
+//            iconName =  'ios-list';
+//          }
+//          return <Ionicons name={iconName} size={size} color={color} />;
+//        },
+//        tabBarActiveTintColor: 'tomato',
+//        tabBarInactiveTintColor: 'gray',
+//      })}>
+//     <Tab.Screen name="Welcome" component={WelcomeScreen} />
+//      <Tab.Screen name="Menu" component={MenuScreen} />
+//    </Tab.Navigator>
+//    </NavigationContainer>
+//  );
+//}
+
+
+
+
+//Working with data swift
+//
+//
+//import Foundation
+//
+//
+//let littleLemonAddress = "https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/littleLemonSimpleMenu.json"
+//let url = URL(string: littleLemonAddress)
+//guard let url = url else {
+//    throw NSError()
+//}
+//
+//
+//let request = URLRequest(url: url)
+//let task = URLSession.shared.dataTask(with: request) { data, response, error in
+//    if let data = data,
+//       let string = String(data: data, encoding: .utf8) {
+//        print(string)
+//    }
+//}
+//task.resume()
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//import Foundation
+//
+//// Simple JSON decoding
+//struct Recipe: Decodable {
+//    let title: String
+//    let views: Int
+//}
+//
+//
+//let JSON = """
+//{
+//    "title": "Little Lemon Apple pie",
+//    "views": 47093
+//}
+//"""
+//
+// 
+//let jsonData = JSON.data(using: .utf8)!
+//let recipe = try! JSONDecoder().decode(Recipe.self, from: jsonData)
+//
+//// JSON as an array of objects
+//let JSONArray = """
+//[
+//    {
+//        "title": "Little Lemon Apple pie",
+//        "views": 47093
+//    },
+//    {
+//        "title": "Little Lemon scrambled egg",
+//        "views": 10757
+//    }
+//]
+//"""
+//
+//let jsonArrayData = JSONArray.data(using: .utf8)!
+//let recipes = try! JSONDecoder().decode([Recipe].self, from: jsonArrayData)
+//
+//// JSON mapped using custom property names
+//
+//let JSON2 = """
+//{
+//    "title": "Little Lemon Apple pie",
+//    "views": 47093,
+//    "url" : "www.littlelemon.com/recipes/298/image.png"
+//}
+//"""
+//
+//struct Recipe2: Decodable {
+//    enum CodingKeys: String, CodingKey { case
+//        title, views,
+//        imageLink = "url"
+//    }
+//     
+//     
+//    let title: String
+//    let views: Int
+//    let imageLink: String
+//}
+//
+//let jsonData2 = JSON2.data(using: .utf8)!
+//let recipe2 = try! JSONDecoder().decode(Recipe2.self, from: jsonData2)
+//print(recipe2.imageLink)
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//What will be the output?
+//import Foundation
+//
+//let url = URL(string: "www.google.com")
+//let request = URLRequest(url: url!)
+//URLSession.shared.dataTask(with: request) { _, _, _ in
+// print("Task completed")
+//}
+//print("Task created")
+//
+//
+//Because no resume method afterwards
+//Like so let task = URLSession..blahblah
+//Task.resume()
+//
+//
+//
+//
+//
+//
+//String parse
+//
+//
+//import Foundation
+//
+//let recipesJSONString = """
+//
+//[
+//    {
+//        "title": "Apple pie",
+//        "views": "3847",
+//        "rating": 4.5
+//    },
+//    {
+//        "title": "Boiled egg",
+//        "views": "10584",
+//        "rating": 4.9
+//    },
+//    {
+//        "title": "Bacon roll",
+//        "views": "5847",
+//        "rating": 3.2
+//    }
+//]
+//"""
+//
+//struct Recipe: Decodable {
+//    let title: String
+//    let rating: Double
+//}
+//
+//let recipesData = Data(recipesJSONString.utf8)
+//let decoder = JSONDecoder()
+//let recipes = try! decoder.decode([Recipe].self, from: recipesData)
+//recipes.forEach {
+//    print("\($0.title) with a rating of \($0.rating)")
+//}
+//
+//
+//
+//
+//

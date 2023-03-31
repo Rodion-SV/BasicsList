@@ -89,3 +89,131 @@
 //}
 //print(sum)
 ////Output: 167
+
+
+
+//383. Ransom Note
+//Given two strings ransomNote and magazine, return true if ransomNote can be constructed by using the letters from magazine and false otherwise.
+//Each letter in magazine can only be used once in ransomNote.
+//Constraints:
+//* 1 <= ransomNote.length, magazine.length <= 105
+//* ransomNote and magazine consist of lowercase English letters.
+//
+//class Solution {
+//    func canConstruct(_ ransomNote: String, _ magazine: String) -> Bool {
+//        var dict = [String: Int]()
+//        var letterBank = [Int](repeating: 0, count: 26)
+//
+//        let baseIndex = Int("a".utf8.first!)
+//        for char in magazine.utf8 {
+//            let index = Int(char) - baseIndex
+//            letterBank[index] += 1
+//        }
+//        for char in ransomNote.utf8 {
+//            let index = Int(char) - baseIndex
+//            letterBank[index] -= 1
+//            if letterBank[index] < 0 {
+//                return false
+//            }
+//        }
+//
+//        return true
+//
+//    }
+//}
+//
+//
+//
+//
+//1281. Subtract the Product and Sum of Digits of an Integer
+//Given an integer number n, return the difference between the product of its digits and the sum of its digits.
+//Example 1:
+//Input: n = 234
+//Output: 15
+//Explanation:
+//Product of digits = 2 * 3 * 4 = 24
+//Sum of digits = 2 + 3 + 4 = 9
+//Result = 24 - 9 = 15
+//
+//class Solution {
+//    func subtractProductAndSum(_ number: Int) -> Int {
+//        return "\(number)".compactMap { $0.wholeNumberValue }.reduce(1, *) - "\(number)".compactMap { $0.wholeNumberValue }.reduce(0, +)
+//    }
+//}
+//
+//class Solution {
+//    func subtractProductAndSum(_ n: Int) -> Int {
+//        if 1 <= n && n <= 10^5 { return 0 }
+//        var cp = n, products = [Int]()
+//        while cp > 0 {
+//            products.insert(cp % 10, at: 0)
+//            cp /= 10
+//        }
+//        let product = products.reduce(1, *)
+//        let sum = products.reduce(0, +)
+//        return product - sum
+//    }
+//}
+//
+//
+//2520. Count the Digits That Divide a Number
+//Given an integer num, return the number of digits in num that divide num.
+//An integer val divides nums if nums % val == 0.
+//
+//Example 3:
+//Input: num = 1248
+//Output: 4
+//Explanation: 1248 is divisible by all of its digits, hence the answer is 4.
+//
+//class Solution {
+//    func countDigits(_ n: Int) -> Int {
+//        String(n).compactMap(\.wholeNumberValue).filter{ n.isMultiple(of: $0) }.count
+//    }
+//}
+//
+//class Solution {
+//    func countDigits(_ num: Int) -> Int {
+//        String(num)
+//            .map { Int(String($0))! }
+//            .lazy
+//            .filter { num % $0 == 0 }
+//            .count
+//    }
+//}
+//
+//
+//
+//
+//
+//1486. XOR Operation in an Array
+//You are given an integer n and an integer start.
+//Define an array nums where nums[i] = start + 2 * i (0-indexed) and n == nums.length.
+//Return the bitwise XOR of all elements of nums.
+//Example 1:
+//Input: n = 5, start = 0
+//Output: 8
+//Explanation: Array nums is equal to [0, 2, 4, 6, 8] where (0 ^ 2 ^ 4 ^ 6 ^ 8) = 8.
+//Where "^" corresponds to bitwise XOR operator.
+//
+//* 1 <= n <= 1000
+//* 0 <= start <= 1000
+//* n == nums.length
+//
+//
+//
+//class Solution {
+//    func xorOperation(_ n: Int, _ start: Int) -> Int {
+//        return (0..<n).map({ start + $0 * 2 }).reduce(0, ^)
+//    }
+//}
+//
+//
+//class Solution {
+//    func xorOperation(_ n: Int, _ start: Int) -> Int {
+//        var res = 0
+//        for i in 0..<n {
+//            res ^= start + 2 * i
+//        }
+//        return res
+//    }
+//}

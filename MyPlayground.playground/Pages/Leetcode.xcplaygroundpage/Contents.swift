@@ -217,3 +217,262 @@
 //        return res
 //    }
 //}
+
+
+
+
+//1688. Count of Matches in Tournament
+//You are given an integer n, the number of teams in a tournament that has strange rules:
+//* If the current number of teams is even, each team gets paired with another team. A total of n / 2 matches are played, and n / 2 teams advance to the next round.
+//* If the current number of teams is odd, one team randomly advances in the tournament, and the rest gets paired. A total of (n - 1) / 2 matches are played, and (n - 1) / 2 + 1 teams advance to the next round.
+//Return the number of matches played in the tournament until a winner is decided.
+//
+//Example 1:
+//Input: n = 7
+//Output: 6
+//Explanation: Details of the tournament:
+//- 1st Round: Teams = 7, Matches = 3, and 4 teams advance.
+//- 2nd Round: Teams = 4, Matches = 2, and 2 teams advance.
+//- 3rd Round: Teams = 2, Matches = 1, and 1 team is declared the winner.
+//Total number of matches = 3 + 2 + 1 = 6.
+//Example 2:
+//Input: n = 14
+//Output: 13
+//Explanation: Details of the tournament:
+//- 1st Round: Teams = 14, Matches = 7, and 7 teams advance.
+//- 2nd Round: Teams = 7, Matches = 3, and 4 teams advance.
+//- 3rd Round: Teams = 4, Matches = 2, and 2 teams advance.
+//- 4th Round: Teams = 2, Matches = 1, and 1 team is declared the winner.
+//Total number of matches = 7 + 3 + 2 + 1 = 13.
+//
+//Constraints:
+//* 1 <= n <= 200
+//
+//
+//class Solution {
+//    func numberOfMatches(_ n: Int) -> Int {
+//        var n = n, m = 0
+//        while n > 1 {
+//            m += n / 2
+//            n = n / 2 + n % 2
+//        }
+//        return m
+//    }
+//}
+
+
+
+//1304. Find N Unique Integers Sum up to Zero
+//Given an integer n, return any array containing n unique integers such that they add up to 0.
+// 
+//Example 1:
+//Input: n = 5
+//Output: [-7,-1,1,3,4]
+//Explanation: These arrays also are accepted [-5,-1,1,2,3] , [-3,-1,2,-2,4].
+//Example 2:
+//Input: n = 3
+//Output: [-1,0,1]
+//Example 3:
+//Input: n = 1
+//Output: [0]
+// 
+//Constraints:
+//* 1 <= n <= 1000
+//
+//
+//class Solution {
+//    func sumZero(_ n: Int) -> [Int] {
+//        
+//        var arry = [Int]()
+//        var sum = 0
+//        for number in 1..<n  {
+//            arry.append(number)
+//            sum += number
+//        }
+//        arry.append(-sum)
+//        return arry
+//    }
+//}
+//
+//
+//
+//class Solution {
+//    func sumZero(_ n: Int) -> [Int] {
+//        if n == 1 { return [0] }
+//        return Array(1...Int(n / 2)) + Array(-Int(n / 2)...(-1)) + (n % 2 == 0 ? [] : [0])
+//    }
+//}
+//
+//
+//// [-2,-1,0,1,2] odd
+//// [-2,-1,1,2] even
+//// [-1,0,1] odd
+//// [-1,1] even
+//// [0]
+////
+//
+//
+//
+//
+//
+//
+//
+//1837. Sum of Digits in Base K
+//Given an integer n (in base 10) and a base k, return the sum of the digits of n after converting n from base 10 to base k.
+//After converting, each digit should be interpreted as a base 10 number, and the sum should be returned in base 10.
+// 
+//Example 1:
+//Input: n = 34, k = 6
+//Output: 9
+//Explanation: 34 (base 10) expressed in base 6 is 54. 5 + 4 = 9.
+//Example 2:
+//Input: n = 10, k = 10
+//Output: 1
+//Explanation: n is already in base 10. 1 + 0 = 1.
+// 
+//Constraints:
+//* 1 <= n <= 100
+//* 2 <= k <= 10
+//
+//
+//
+//class Solution {
+//    func sumBase(_ n: Int, _ k: Int) -> Int {
+//        return String(n, radix: k).compactMap { c in Int(String(c)) }.reduce(0, +)
+//    }
+//}
+//
+//
+//
+//
+//class Solution {
+//    func sumBase(_ n: Int, _ k: Int) -> Int {
+//        var n = n
+//        var reults: Int = 0
+//
+//        while (n > 0) {
+//            reults += n % k
+//            n /= k
+//        }
+//        
+//        return reults
+//    }
+//}
+//
+//
+//
+//
+//
+//
+//
+//2169. Count Operations to Obtain Zero
+//You are given two non-negative integers num1 and num2.
+//In one operation, if num1 >= num2, you must subtract num2 from num1, otherwise subtract num1 from num2.
+//* For example, if num1 = 5 and num2 = 4, subtract num2 from num1, thus obtaining num1 = 1 and num2 = 4. However, if num1 = 4 and num2 = 5, after one operation, num1 = 4 and num2 = 1.
+//Return the number of operations required to make either num1 = 0 or num2 = 0.
+//
+//Example 1:
+//Input: num1 = 2, num2 = 3
+//Output: 3
+//Explanation:
+//- Operation 1: num1 = 2, num2 = 3. Since num1 < num2, we subtract num1 from num2 and get num1 = 2, num2 = 3 - 2 = 1.
+//- Operation 2: num1 = 2, num2 = 1. Since num1 > num2, we subtract num2 from num1.
+//- Operation 3: num1 = 1, num2 = 1. Since num1 == num2, we subtract num2 from num1.
+//Now num1 = 0 and num2 = 1. Since num1 == 0, we do not need to perform any further operations.
+//So the total number of operations required is 3.
+//Example 2:
+//Input: num1 = 10, num2 = 10
+//Output: 1
+//Explanation:
+//- Operation 1: num1 = 10, num2 = 10. Since num1 == num2, we subtract num2 from num1 and get num1 = 10 - 10 = 0.
+//Now num1 = 0 and num2 = 10. Since num1 == 0, we are done.
+//So the total number of operations required is 1.
+// 
+//Constraints:
+//* 0 <= num1, num2 <= 105
+//
+//
+//func countOperations(_ num1: Int, _ num2: Int) -> Int {
+//    var num1 = num1, num2 = num2, result = 0
+//    while num1 != 0 && num2 != 0 {
+//        if num1 > num2 {
+//            num1 = num1 - num2
+//        } else {
+//            num2 = num2 - num1
+//        }
+//        result += 1
+//    }
+//    return result
+//}
+//
+//
+//
+//class Solution {
+//    func countOperations(_ num1: Int, _ num2: Int) -> Int {
+//        return num1*num2 == 0 ? 0 : num1 / num2 + countOperations(num2, num1 % num2)
+//    }
+//}
+//
+//
+//class Solution {
+//    func countOperations(_ num1: Int, _ num2: Int, _ c: Int = 0) -> Int {
+//        guard num1 * num2 != 0 else { return c }
+//        return countOperations(max(num1, num2) - min(num1, num2), min(num1, num2), c + 1)
+//    }
+//}
+//
+//
+//
+//
+//908. Smallest Range I
+//You are given an integer array nums and an integer k.
+//In one operation, you can choose any index i where 0 <= i < nums.length and change nums[i] to nums[i] + x where x is an integer from the range [-k, k]. You can apply this operation at most once for each index i.
+//The score of nums is the difference between the maximum and minimum elements in nums.
+//Return the minimum score of nums after applying the mentioned operation at most once for each index in it.
+// 
+//Example 1:
+//Input: nums = [1], k = 0
+//Output: 0
+//Explanation: The score is max(nums) - min(nums) = 1 - 1 = 0.
+//Example 2:
+//Input: nums = [0,10], k = 2
+//Output: 6
+//Explanation: Change nums to be [2, 8]. The score is max(nums) - min(nums) = 8 - 2 = 6.
+//Example 3:
+//Input: nums = [1,3,6], k = 3
+//Output: 0
+//Explanation: Change nums to be [4, 4, 4]. The score is max(nums) - min(nums) = 4 - 4 = 0.
+// 
+//Constraints:
+//* 1 <= nums.length <= 104
+//* 0 <= nums[i] <= 104
+//* 0 <= k <= 104
+//
+//
+//
+//
+//class Solution {
+//    func smallestRangeI(_ A: [Int], _ K: Int) -> Int {
+//        var min = A[0], max = A[0]
+//        for a in A {
+//            if min > a { min = a }
+//            if max < a { max = a }
+//        }
+//        return max - min > 2 * K ? max - min - 2 * K : 0
+//    }
+//}
+//
+//
+//class Solution {
+//    func smallestRangeI(_ nums: [Int], _ k: Int) -> Int {
+//        max(0, nums.max()! - nums.min()! - 2 * k)
+//    }
+//}
+//
+//
+//
+//class Solution {
+//    func smallestRangeI(_ A: [Int], _ K: Int) -> Int {
+//        return max(0, (A.reduce(into: Array(repeating: A[0], count: 3)) { $0[0] = min($0[0], $1); $0[1] = max($0[1], $1); $0[2] = $0[1] - $0[0] })[2] - 2 * K)
+//    }
+//}

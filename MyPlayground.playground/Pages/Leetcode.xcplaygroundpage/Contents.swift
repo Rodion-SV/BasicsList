@@ -476,3 +476,194 @@
 //        return max(0, (A.reduce(into: Array(repeating: A[0], count: 3)) { $0[0] = min($0[0], $1); $0[1] = max($0[1], $1); $0[2] = $0[1] - $0[0] })[2] - 2 * K)
 //    }
 //}
+
+
+
+//1925. Count Square Sum Triples
+//A square triple (a,b,c) is a triple where a, b, and c are integers and a2 + b2 = c2.
+//Given an integer n, return the number of square triples such that 1 <= a, b, c <= n.
+// 
+//Example 1:
+//Input: n = 5
+//Output: 2
+//Explanation: The square triples are (3,4,5) and (4,3,5).
+//Example 2:
+//Input: n = 10
+//Output: 4
+//Explanation: The square triples are (3,4,5), (4,3,5), (6,8,10), and (8,6,10).
+// 
+//Constraints:
+//* 1 <= n <= 250
+//
+//
+//
+//
+//
+//class Solution {
+//    func countTriples(_ n: Int) -> Int {
+//        guard n > 1 else { return 0 }
+//        var result = 0
+//        for i in 1...n - 1 {
+//            for j in i + 1...n {
+//                let k = Double(i * i + j * j)
+//                if sqrt(k) == Double(Int(sqrt(k))) && Int(sqrt(k)) <= n {
+//                    result += 1
+//                }
+//            }
+//        }
+//        return result * 2
+//    }
+//}
+//
+//
+//
+//func countTriples(_ n: Int) -> Int {
+//    var count = 0
+//
+//    for a in (1...n) {
+//        for b in (1...n) {
+//            let m = max(a, b)
+//
+//            for c in (m...n) {
+//                if a*a + b*b == c*c {
+//                    count += 1
+//                }
+//            }
+//        }
+//    }
+//
+//    return count
+//}
+//
+//
+//
+//
+//func countTriples(_ n: Int) -> Int {
+//    var count = 0
+//
+//    for i in (1..<n) {
+//        for j in (i+1..<n) {
+//            let k = i*i+j*j
+//            let s = sqrt(Double(k))
+//
+//            if s == floor(s), s <= Double(n) {
+//                count += 1
+//            }
+//        }
+//    }
+//
+//    return count*2
+//}
+//
+//
+//class Solution {
+//    func countTriples(_ n: Int) -> Int {
+//        
+//        var res = 0
+//        
+//        for a in 1...n {
+//            for b in 1...n {
+//                for c in 1...n
+//                    where a * a + b * b == c * c {
+//                        res += 1
+//                    }
+//            }
+//        }
+//        
+//        return res
+//    }
+//}
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//1025. Divisor Game
+//Alice and Bob take turns playing a game, with Alice starting first.
+//Initially, there is a number n on the chalkboard. On each player's turn, that player makes a move consisting of:
+//* Choosing any x with 0 < x < n and n % x == 0.
+//* Replacing the number n on the chalkboard with n - x.
+//Also, if a player cannot make a move, they lose the game.
+//Return true if and only if Alice wins the game, assuming both players play optimally.
+// 
+//Example 1:
+//Input: n = 2
+//Output: true
+//Explanation: Alice chooses 1, and Bob has no more moves.
+//Example 2:
+//Input: n = 3
+//Output: false
+//Explanation: Alice chooses 1, Bob chooses 1, and Alice has no more moves.
+// 
+//Constraints:
+//* 1 <= n <= 1000
+//
+//
+//class Solution {
+//    func divisorGame(_ n: Int) -> Bool {
+//        var gameStat = [Bool?](repeating: nil, count: max(2, n + 1))
+//    gameStat[0] = true
+//    gameStat[1] = false
+//
+//    return playGame(n, &gameStat)
+//    }
+//
+//    func playGame(_ n: Int, _ stats: inout [Bool?]) -> Bool {
+//    if let stat = stats[n] {
+//        return stat
+//    }
+//
+//    stats[n] = false
+//    var gameRound = 1
+//
+//    while gameRound * gameRound <= n {
+//        if n % gameRound == 0 {
+//            if !playGame(n - gameRound, &stats) || !playGame(n - (n / gameRound), &stats) {
+//                stats[n] = true
+//                break
+//            }
+//        }
+//
+//        gameRound += 1
+//    }
+//    return stats[n]!
+//}
+//}
+//
+//
+//
+//class Solution {
+//    func divisorGame(_ n: Int) -> Bool {
+//
+//
+//var myN = n
+//var counter = 0
+//var output = true
+//var possible = [Int]()
+//for i in 1..<myN where myN % i == 0 {
+//  possible.append(i)
+//}
+//
+//while myN > 1 {
+//var possible = [Int]()
+//for i in 1..<myN where myN % i == 0 {
+//  possible.append(i)
+//}
+////print(possible)
+//myN = myN - possible.min()!
+//counter += 1
+//}
+//
+//  if counter % 2 == 0 {
+//    output = false
+//  }
+//
+//return output
+//    }
+//}

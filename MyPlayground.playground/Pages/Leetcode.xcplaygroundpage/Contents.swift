@@ -667,3 +667,197 @@
 //return output
 //    }
 //}
+
+
+
+//1399. Count Largest Group
+//You are given an integer n.
+//Each number from 1 to n is grouped according to the sum of its digits.
+//Return the number of groups that have the largest size.
+//
+//Example 1:
+//Input: n = 13
+//Output: 4
+//Explanation: There are 9 groups in total, they are grouped according sum of its digits of numbers from 1 to 13:
+//[1,10], [2,11], [3,12], [4,13], [5], [6], [7], [8], [9].
+//There are 4 groups with largest size.
+//Example 2:
+//Input: n = 2
+//Output: 2
+//Explanation: There are 2 groups [1], [2] of size 1.
+//
+//Constraints:
+//* 1 <= n <= 104
+//
+//
+//class Solution {
+//    func countLargestGroup(_ n: Int) -> Int {
+//        var map:[Int:Int] = [:]
+//        var maxGroupSize = 0
+//        for i in 1...n{
+//            let sum = getSumOfDigits(i)
+//            if map[sum] == nil{
+//                map[sum] = 1
+//            }else{
+//                map[sum]! += 1
+//            }
+//            maxGroupSize = max(maxGroupSize, map[sum]!)
+//        }
+//        var res = 0
+//        for item in map{
+//            if item.value == maxGroupSize{ res += 1}
+//        }
+//        return res
+//    }
+//
+//    func getSumOfDigits(_ n:Int)->Int{
+//        var sum = 0
+//        var val = n
+//        while val > 0 {
+//            sum += val % 10
+//            val /= 10
+//        }
+//        return sum
+//    }
+//}
+//
+//
+//
+//class Solution {
+//    func countLargestGroup(_ n: Int) -> Int {
+//        (1...n)
+//            .reduce(into: [Int: Int]()) {
+//                let sum = Array(String($1)).map { c in Int(String(c))! }.reduce(0, +)
+//                $0[sum, default: 0] += 1
+//            }
+//            .values
+//            .reduce(into: [:]) { $0[$1, default: 0] += 1 }
+//            .max { $0.key < $1.key }!
+//            .value
+//    }
+//}
+//
+//
+//
+//
+//
+//
+//69. Sqrt(x)
+//Given a non-negative integer x, return the square root of x rounded down to the nearest integer. The returned integer should be non-negative as well.
+//You must not use any built-in exponent function or operator.
+//* For example, do not use pow(x, 0.5) in c++ or x ** 0.5 in python.
+//
+//Example 1:
+//Input: x = 4
+//Output: 2
+//Explanation: The square root of 4 is 2, so we return 2.
+//Example 2:
+//Input: x = 8
+//Output: 2
+//Explanation: The square root of 8 is 2.82842..., and since we round it down to the nearest integer, 2 is returned.
+//
+//Constraints:
+//* 0 <= x <= 231 - 1
+//
+//
+//
+//
+//class Solution {
+//    func mySqrt(_ x: Int) -> Int {
+//        if x == 0 || x == 1 {
+//            return x
+//        }
+//
+//        var left = 0
+//        var right = x
+//
+//        while left <= right {
+//            let mid = left + (right - left) / 2
+//            let square = mid * mid
+//
+//            if square == x {
+//                return mid
+//            } else if square < x {
+//                left = mid + 1
+//            } else {
+//                right = mid - 1
+//            }
+//        }
+//
+//        return right
+//    }
+//}
+//
+//
+//
+//
+//
+//168. Excel Sheet Column Title
+//Given an integer columnNumber, return its corresponding column title as it appears in an Excel sheet.
+//For example:
+//A -> 1
+//B -> 2
+//C -> 3
+//...
+//Z -> 26
+//AA -> 27
+//AB -> 28
+//...
+//
+//Example 1:
+//Input: columnNumber = 1
+//Output: "A"
+//Example 2:
+//Input: columnNumber = 28
+//Output: "AB"
+//Example 3:
+//Input: columnNumber = 701
+//Output: "ZY"
+//
+//Constraints:
+//* 1 <= columnNumber <= 231 - 1
+//
+//
+//
+//class Solution {
+//    let arr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+//    func convertToTitle(_ num: Int, _ str: String = "") -> String {
+//        num > 0 ? convertToTitle((num - 1) / 26, str + arr[(num - 1) % 26]) : String(str.reversed())
+//    }
+//}
+//
+//
+//
+//
+//class Solution {
+//    func convertToTitle(_ columnNumber: Int) -> String {
+//        var string = ""
+//        var num = columnNumber - 1
+//        var rem = 0
+//        var nums: [Int] = []
+//
+//        while num >= 0 {
+//            rem = num % 26
+//            num = num / 26
+//            nums.append(rem)
+//            if num == 0 { break }
+//        }
+//
+//        nums[0] += 1
+//        if nums.count > 1 && nums[nums.count - 1] == 1 && nums[nums.count - 2] == 0 {
+//            nums.remove(at: nums.count - 1)
+//        }
+//
+//        for num in nums {
+//            let c = num == 0 ? 26 : num
+//            string = "\(Character(Unicode.Scalar(c + 64)!))\(string)"
+//        }
+//
+//        return string
+//    }
+//
+//}
+//
+
+
+

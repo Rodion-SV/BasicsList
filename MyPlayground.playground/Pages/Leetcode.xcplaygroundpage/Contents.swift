@@ -1246,3 +1246,371 @@
 //        }
 //    }
 //}
+
+
+
+//405. Convert a Number to Hexadecimal
+//Given an integer num, return a string representing its hexadecimal representation. For negative integers, two’s complement method is used.
+//All the letters in the answer string should be lowercase characters, and there should not be any leading zeros in the answer except for the zero itself.
+//Note: You are not allowed to use any built-in library method to directly solve this problem.
+//
+//Example 1:
+//Input: num = 26
+//Output: "1a"
+//Example 2:
+//Input: num = -1
+//Output: "ffffffff"
+//
+//Constraints:
+//* -231 <= num <= 231 - 1
+//
+//
+//class Solution {
+//    func toHex(_ num: Int) -> String {
+//        if num >= 0 {
+//            return String(num, radix: 16)
+//        } else {
+//            return String(4294967296 + num, radix: 16)
+//        }
+//
+//    }
+//}
+//
+//
+//
+//
+//
+//class Solution {
+//
+//    static let c: [Int: Character] = (
+//            (0...9).map { ($0, Character(String($0))) }
+//            + (10...15).map { ($0, Character(UnicodeScalar(Character("a").asciiValue! + UInt8($0) - 10))) }
+//        ).reduce(into: [Int: Character]()) { $0[$1.0] = $1.1 }
+//
+//    func toHex(_ num: Int) -> String {
+//
+//        var res = [Character]()
+//        var n = num
+//
+//        if n < 0 { n += Int(pow(2.0, 32.0)) }
+//
+//        repeat {
+//            res.insert(Solution.c[n % 16]!, at: 0)
+//            n /= 16
+//        } while n > 0
+//
+//        return String(res)
+//    }
+//}
+//
+//
+//
+//class Solution {
+//    /// Time: O(n). Space: O(n).
+//    func toHex(_ num: Int) -> String {
+//        var num = num
+//        var result = ""
+//        let hexs: [String] = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"]
+//
+//        if num < 0 {
+//            num += 1 << 32
+//        }
+//
+//        while true {
+//            let rest = num % 16
+//            result = hexs[rest] + result
+//
+//            guard num / 16 != 0 else { return result }
+//            num /= 16
+//        }
+//        return result
+//    }
+//}
+//
+//
+//
+//class Solution {
+//    func toHex(_ num: Int) -> String {
+//        var hexa = String()
+//        var hexaNums:[String] = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"]
+//        var n = num
+//        if num < 0 {
+//            n += Int(pow(Double(2),Double(32)))
+//        }
+//        while true{
+//            let d = n % 16
+//            hexa = hexaNums[d] + hexa
+//            if n / 16 == 0{
+//                break
+//            }
+//            n /= 16
+//        }
+//        return hexa
+//    }
+//}
+
+
+
+//https://leetcode.com/problems/average-value-of-even-numbers-that-are-divisible-by-three/description/
+//2455. Average Value of Even Numbers That Are Divisible by Three
+//Given an integer array nums of positive integers, return the average value of all even integers that are divisible by 3.
+//Note that the average of n elements is the sum of the n elements divided by n and rounded down to the nearest integer.
+//
+//Example 1:
+//Input: nums = [1,3,6,10,12,15]
+//Output: 9
+//Explanation: 6 and 12 are even numbers that are divisible by 3. (6 + 12) / 2 = 9.
+//Example 2:
+//Input: nums = [1,2,4,7,10]
+//Output: 0
+//Explanation: There is no single number that satisfies the requirement, so return 0.
+//
+//Constraints:
+//* 1 <= nums.length <= 1000
+//* 1 <= nums[i] <= 1000
+//
+//
+//class Solution {
+//func averageValue(_ nums: [Int]) -> Int {
+//    let hash = nums.filter { $0.isMultiple(of: 3) && $0.isMultiple(of: 2) }
+//    return hash.isEmpty ? 0 : hash.reduce(0,+) / hash.count
+//}
+//}
+//
+//
+//
+//
+//class Solution {
+//    func averageValue(_ nums: [Int]) -> Int {
+//        var answer = 0
+//        var count = 0
+//        for num in nums {
+//            if num % 3 == 0, num % 2 == 0 {
+//                answer += num
+//                count += 1
+//            }
+//        }
+//        return count != 0 ? answer/count : answer
+//    }
+//}
+//
+//
+//class Solution {
+//    func averageValue(_ nums: [Int]) -> Int {
+//    var sumNumbers = ((nums.compactMap { ($0 % 2 == 0 && $0 % 3 == 0) ? $0 : nil }).reduce(0) { $0 + $1 })
+//   var count = (nums.compactMap { ($0 % 2 == 0 && $0 % 3 == 0) ? $0 : nil }).count
+//
+//    return count == 0 ? 0 :
+//    (Double(sumNumbers / count) - Double(Int(Double(sumNumbers / count)))) > 0.5 ? sumNumbers / count + 1 : sumNumbers / count
+//    }
+//}
+//
+//
+//class Solution {
+//    func averageValue(_ nums: [Int]) -> Int {
+//        let ns = nums.filter { $0 % 2 == 0 && $0 % 3 == 0 }
+//        return ns.reduce(0, +) / max(ns.count, 1)
+//    }
+//}
+//
+//
+//
+//class Solution {
+//    func averageValue(_ nums: [Int]) -> Int {
+//        var evenArray: [Int] = []
+//        for value in nums {
+//            if value % 2 == 0 && value % 3 == 0 {
+//                evenArray.append(value)
+//            }
+//        }
+//        if evenArray.isEmpty {
+//            return 0
+//        } else {
+//            let sum = evenArray.reduce(0, +)
+//            let avg = sum / evenArray.count
+//            return avg
+//        }
+//    }
+//}
+
+
+
+//https://leetcode.com/problems/odd-string-difference/description/
+//2451. Odd String Difference
+//You are given an array of equal-length strings words. Assume that the length of each string is n.
+//Each string words[i] can be converted into a difference integer array difference[i] of length n - 1 where difference[i][j] = words[i][j+1] - words[i][j] where 0 <= j <= n - 2. Note that the difference between two letters is the difference between their positions in the alphabet i.e. the position of 'a' is 0, 'b' is 1, and 'z' is 25.
+//* For example, for the string "acb", the difference integer array is [2 - 0, 1 - 2] = [2, -1].
+//All the strings in words have the same difference integer array, except one. You should find that string.
+//Return the string in words that has different difference integer array.
+//
+//Example 1:
+//Input: words = ["adc","wzy","abc"]
+//Output: "abc"
+//Explanation:
+//- The difference integer array of "adc" is [3 - 0, 2 - 3] = [3, -1].
+//- The difference integer array of "wzy" is [25 - 22, 24 - 25]= [3, -1].
+//- The difference integer array of "abc" is [1 - 0, 2 - 1] = [1, 1].
+//The odd array out is [1, 1], so we return the corresponding string, "abc".
+//Example 2:
+//Input: words = ["aaa","bob","ccc","ddd"]
+//Output: "bob"
+//Explanation: All the integer arrays are [0, 0] except for "bob", which corresponds to [13, -13].
+//
+//Constraints:
+//* 3 <= words.length <= 100
+//* n == words[i].length
+//* 2 <= n <= 20
+//* words[i] consists of lowercase English letters.
+//
+//
+//
+//class Solution {
+//    func oddString(_ words: [String]) -> String {
+//        let words = words.map { Array($0) }
+//        var dict = [[Int]: [String]]()
+//
+//        for i in words {
+//            var diffArr = [Int]()
+//            for j in 0..<i.count - 1 {
+//                diffArr.append(Int(i[j + 1].asciiValue!) - Int(i[j].asciiValue!))
+//            }
+//            dict[diffArr, default: []].append(String(i))
+//        }
+//        return dict.first(where: { $0.value.count == 1 })?.value[0] ?? ""
+//    }
+//}
+//
+//
+//
+//class Solution {
+//    func oddString(_ words: [String]) -> String {
+//        var set: Set<[Int]> = []
+//        var correctArray = [Int]()
+//
+//        for word in words {
+//            let array = getDifferenceArray(for: word)
+//            if set.contains(array) {
+//                correctArray = array
+//                break
+//            } else {
+//                set.insert(array)
+//            }
+//        }
+//
+//        for word in words {
+//            let array = getDifferenceArray(for: word)
+//            if array != correctArray { return word }
+//        }
+//
+//        return ""
+//    }
+//
+//    func getDifferenceArray(for string: String) -> [Int] {
+//        var string = Array(string)
+//        var result = [Int]()
+//
+//        for i in 0..<string.count - 1 {
+//            let firstVal = Int(string[i+1].asciiValue!)
+//            let secondVal = Int(string[i].asciiValue!)
+//            result.append(firstVal - secondVal)
+//        }
+//
+//        return result
+//    }
+//}
+//
+//
+//
+//
+//
+//
+//class Solution {
+//    func oddString(_ words: [String]) -> String {
+//        if words.isEmpty { return "" }
+//
+//        var diffs = [Int : [Int: Set<Int>]]()
+//        var diffString = 0
+//        var canStop = false
+//
+//        for (idx, word) in words.enumerated() {
+//            let wArr = Array(word)
+//
+//            for i in 0..<(wArr.count - 1) {
+//                let diff = Int(wArr[i + 1].asciiValue!) - Int(wArr[i].asciiValue!)
+//                diffs[i, default: [:]][diff, default: []].insert(idx)
+//
+//                if idx >= 2 && diffs[i]!.keys.count >= 2 {
+//                    // we know the answer here
+//                    diffString = diffs[i]!.values.filter{ $0.count == 1 }.first!.first!
+//                    canStop = true
+//                }
+//                if canStop { break }
+//            }
+//
+//            if canStop { break }
+//        }
+//        return words[diffString]
+//    }
+//}
+
+
+
+//https://leetcode.com/problems/count-days-spent-together/description/
+//2409. Count Days Spent Together
+//
+//Alice and Bob are traveling to Rome for separate business meetings.
+//You are given 4 strings arriveAlice, leaveAlice, arriveBob, and leaveBob. Alice will be in the city from the dates arriveAlice to leaveAlice (inclusive), while Bob will be in the city from the dates arriveBob to leaveBob (inclusive). Each will be a 5-character string in the format "MM-DD", corresponding to the month and day of the date.
+//Return the total number of days that Alice and Bob are in Rome together.
+//You can assume that all dates occur in the same calendar year, which is not a leap year. Note that the number of days per month can be represented as: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31].
+//
+//Example 1:
+//Input: arriveAlice = "08-15", leaveAlice = "08-18", arriveBob = "08-16", leaveBob = "08-19"
+//Output: 3
+//Explanation: Alice will be in Rome from August 15 to August 18. Bob will be in Rome from August 16 to August 19. They are both in Rome together on August 16th, 17th, and 18th, so the answer is 3.
+//Example 2:
+//Input: arriveAlice = "10-01", leaveAlice = "10-31", arriveBob = "11-01", leaveBob = "12-31"
+//Output: 0
+//Explanation: There is no day when Alice and Bob are in Rome together, so we return 0.
+//
+//Constraints:
+//* All dates are provided in the format "MM-DD".
+//* Alice and Bob's arrival dates are earlier than or equal to their leaving dates.
+//* The given dates are valid dates of a non-leap year.
+//
+//
+//func countDaysTogether(_ arriveAlice: String, _ leaveAlice: String, _ arriveBob: String, _ leaveBob: String) -> Int {
+//    let daysLimits = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+//    func dayOfTheYear(_ date: String) -> Int {
+//        let mmDD = date.components(separatedBy: "-").compactMap(Int.init)
+//        return (0..<mmDD.first!).reduce(0, { $0 + daysLimits[$1] }) - (daysLimits[mmDD.first!-1] - mmDD.last!)
+//    }
+//    let alice = dayOfTheYear(arriveAlice)...dayOfTheYear(leaveAlice), bob = dayOfTheYear(arriveBob)...dayOfTheYear(leaveBob)
+//    guard alice.overlaps(bob) else { return 0 }
+//    return min(alice.upperBound, bob.upperBound) - max(alice.lowerBound, bob.lowerBound) + 1
+//}
+//
+//
+//
+//class Solution {
+//    func countDaysTogether(_ arriveAlice: String, _ leaveAlice: String, _ arriveBob: String, _ leaveBob: String) -> Int {
+//
+//        let daysArray = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+//
+//        func returnDay(_ date: String) -> Int {
+//            var day = 0
+//            for month in 0..<Int(date.split(separator: "-")[0])!-1 {
+//                day += daysArray[month]
+//            }
+//            day += Int(date.split(separator: "-")[1])!
+//            return day
+//        }
+//
+//        let aliceDays = Set(returnDay(arriveAlice)...returnDay(leaveAlice))
+//        let bobDays = Set(returnDay(arriveBob)...returnDay(leaveBob))
+//
+//        return aliceDays.intersection(bobDays).count
+//    }
+//}
+
+
+

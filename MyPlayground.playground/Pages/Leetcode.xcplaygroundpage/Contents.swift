@@ -1614,3 +1614,415 @@
 
 
 
+//https://leetcode.com/problems/find-the-k-beauty-of-a-number/description/
+//2269. Find the K-Beauty of a Number
+//The k-beauty of an integer num is defined as the number of substrings of num when it is read as a string that meet the following conditions:
+//* It has a length of k.
+//* It is a divisor of num.
+//Given integers num and k, return the k-beauty of num.
+//Note:
+//* Leading zeros are allowed.
+//* 0 is not a divisor of any value.
+//A substring is a contiguous sequence of characters in a string.
+// 
+//Example 1:
+//Input: num = 240, k = 2
+//Output: 2
+//Explanation: The following are the substrings of num of length k:
+//- "24" from "240": 24 is a divisor of 240.
+//- "40" from "240": 40 is a divisor of 240.
+//Therefore, the k-beauty is 2.
+//Example 2:
+//Input: num = 430043, k = 2
+//Output: 2
+//Explanation: The following are the substrings of num of length k:
+//- "43" from "430043": 43 is a divisor of 430043.
+//- "30" from "430043": 30 is not a divisor of 430043.
+//- "00" from "430043": 0 is not a divisor of 430043.
+//- "04" from "430043": 4 is not a divisor of 430043.
+//- "43" from "430043": 43 is a divisor of 430043.
+//Therefore, the k-beauty is 2.
+// 
+//Constraints:
+//* 1 <= num <= 109
+//* 1 <= k <= num.length (taking num as a string)
+//
+//
+//
+//class Solution {
+//    func divisorSubstrings(_ num: Int, _ k: Int) -> Int {
+//        
+//        let s = String(num)
+//        
+//        var i = 0
+//        var res = 0
+//        
+//        while i <= s.count - k {
+//            let n = Int(String(s.dropFirst(i).prefix(k)))!
+//            if n != 0, num % n == 0 { res += 1 }
+//            i += 1
+//        }
+//        
+//        return res
+//    }
+//}
+//
+//
+//
+//
+//
+//https://leetcode.com/problems/count-integers-with-even-digit-sum/description/
+//2180. Count Integers With Even Digit Sum
+//Given a positive integer num, return the number of positive integers less than or equal to num whose digit sums are even.
+//The digit sum of a positive integer is the sum of all its digits.
+// 
+//Example 1:
+//Input: num = 4
+//Output: 2
+//Explanation:
+//The only integers less than or equal to 4 whose digit sums are even are 2 and 4.
+//Example 2:
+//Input: num = 30
+//Output: 14
+//Explanation:
+//The 14 integers less than or equal to 30 whose digit sums are even are
+//2, 4, 6, 8, 11, 13, 15, 17, 19, 20, 22, 24, 26, and 28.
+// 
+//Constraints:
+//* 1 <= num <= 1000
+//
+//
+//
+//
+//class Solution {
+//    func countEven(_ num: Int) -> Int {
+//        (1...num)
+//            .filter { String($0).map({ Int(String($0))! }).reduce(0, +) % 2 == 0 }
+//            .count
+//    }
+//}
+//
+//
+//
+//
+//
+//    func countEven(_ num: Int) -> Int {
+//        var x = num
+//        var sum = 0
+//            
+//        while x > 0 {
+//            sum += x % 10
+//            x = x / 10
+//        }
+//        
+//            
+//        if( num % 2 == 0 && sum % 2 == 0 )  {
+//            return num/2
+//        }
+//        
+//        return (num-1)/2
+//    }
+//
+//
+//
+//
+//
+//class Solution {
+//    func countEven(_ num: Int) -> Int {
+//        var evenCount = 0
+//        
+//        if num < 2 {
+//            return 0
+//        }
+//        
+//        for i in 2...num {
+//            var sum = 0
+//            var val = i
+//            while val > 0 {
+//                sum += val%10
+//                val /= 10
+//            }
+//            
+//            if sum % 2 == 0 {
+//                evenCount += 1
+//            }
+//        }
+//        
+//        return evenCount
+//    }
+//}
+//
+//
+//
+//
+//class Solution {
+//func countEven(_ num: Int) -> Int {
+//    var res = 0
+//    
+//    for i in 1 ... num {
+//        var n = i
+//        var sum = 0
+//        while n != 0 {
+//            sum += n % 10
+//            n /= 10
+//        }
+//        
+//        if sum % 2 == 0 {
+//            res += 1
+//        }
+//    }
+//    
+//    return res
+//}
+//}
+//
+//
+//
+//
+//
+//
+//
+//https://leetcode.com/problems/three-divisors/description/
+//1952. Three Divisors
+//Given an integer n, return true if n has exactly three positive divisors. Otherwise, return false.
+//An integer m is a divisor of n if there exists an integer k such that n = k * m.
+// 
+//Example 1:
+//Input: n = 2
+//Output: false
+//Explantion: 2 has only two divisors: 1 and 2.
+//Example 2:
+//Input: n = 4
+//Output: true
+//Explantion: 4 has three divisors: 1, 2, and 4.
+// 
+//Constraints:
+//* 1 <= n <= 104
+//
+//
+//
+//class Solution {
+//    func isThree(_ n: Int) -> Bool {
+//        Array(1...n).filter { n % $0 == 0 }.count == 3
+//    }
+//}
+//
+//
+//
+//class Solution {
+//    func isThree(_ n: Int) -> Bool {
+//        (1...max(1, n / 2)).filter({ n % $0 == 0 }).count == 2
+//    }
+//}
+//
+//
+//
+//class Solution {
+//    func isThree(_ n: Int) -> Bool {
+//        var divisors = 0
+//        for i in 1...n where n % i == 0 {
+//            divisors += 1
+//            if divisors > 3 {
+//                return false
+//            }
+//        }
+//        return divisors == 3
+//    }
+//}
+//
+//
+//class Solution {
+//    func isThree(_ n: Int) -> Bool {
+//        guard n > 1 else { return false }
+//        // must be a square of a prime
+//        let sqrt = Int(Double(n).squareRoot())
+//        guard sqrt * sqrt == n else { return false }
+//        return _isPrime(sqrt)
+//    }
+//    
+//    private func _isPrime(_ n: Int) -> Bool {
+//        guard n > 3 else { return true }
+//        let sqrt = Int(Double(n).squareRoot())
+//        for i in 2...sqrt {
+//            if n % i == 0 {
+//                return false
+//            }
+//        }
+//        return true
+//    }
+//}
+//
+//
+//
+//
+//
+//
+//
+//https://leetcode.com/problems/largest-odd-number-in-string/description/
+//1903. Largest Odd Number in String
+//
+//You are given a string num, representing a large integer. Return the largest-valued odd integer (as a string) that is a non-empty substring of num, or an empty string "" if no odd integer exists.
+//A substring is a contiguous sequence of characters within a string.
+// 
+//Example 1:
+//Input: num = "52"
+//Output: "5"
+//Explanation: The only non-empty substrings are "5", "2", and "52". "5" is the only odd number.
+//Example 2:
+//Input: num = "4206"
+//Output: ""
+//Explanation: There are no odd numbers in "4206".
+//Example 3:
+//Input: num = "35427"
+//Output: "35427"
+//Explanation: "35427" is already an odd number.
+// 
+//Constraints:
+//* 1 <= num.length <= 105
+//* num only consists of digits and does not contain any leading zeros.
+//
+//
+//
+//class Solution {
+//    func largestOddNumber(_ num: String) -> String {
+//        guard let i = num.lastIndex(where: { Int(String($0))! % 2 == 1 }) else { return "" }
+//        return String(num[...i])
+//    }
+//}
+//
+//
+//
+//class Solution {
+//    func largestOddNumber(_ num: String) -> String {
+//        var num = num
+//        
+//        for char in num.reversed() {
+//            if (Int(String(char)) ?? 0) % 2 == 0 {
+//                num.removeLast()
+//                continue
+//            }
+//            break
+//        }
+//        
+//        return num
+//    }
+//}
+//
+//
+//
+//func largestOddNumber(_ num: String) -> String {
+//    let numStartIndex = num.startIndex
+//    var numIndex = num.index(before: num.endIndex)
+//    while numIndex >= numStartIndex {
+//        guard let digit = Int(String(num[numIndex])) else { break }
+//        if digit % 2 != 0 {
+//            return String(num[...numIndex])
+//        }
+//        guard numIndex > numStartIndex else { break }
+//        numIndex = num.index(before: numIndex)
+//    }
+//    return ""
+//}
+//
+//
+//func largestOddNumber(_ num: String) -> String {
+//    var _num = num
+//
+//    for n in String(num.reversed()) {
+//        guard Int(String(n))! & 1 == 0 else { break }
+//        _num.removeLast()
+//    }
+//
+//    return _num
+//}
+//
+//
+//class Solution {
+//    func largestOddNumber(_ num: String) -> String {
+//        let num = Array(num), lastOddIndex = num.enumerated().reduce(into: Int(-1), { if (Int($1.1.asciiValue ?? 48) - 48) % 2 == 1 { $0 = $1.0 } })
+//        return lastOddIndex >= 0 ? String(num[0...lastOddIndex]) : ""
+//    }
+//}
+//
+//
+//
+//
+//
+//
+//
+//https://leetcode.com/problems/sign-of-the-product-of-an-array/description/
+//1822. Sign of the Product of an Array
+//There is a function signFunc(x) that returns:
+//* 1 if x is positive.
+//* -1 if x is negative.
+//* 0 if x is equal to 0.
+//You are given an integer array nums. Let product be the product of all values in the array nums.
+//Return signFunc(product).
+// 
+//Example 1:
+//Input: nums = [-1,-2,-3,-4,3,2,1]
+//Output: 1
+//Explanation: The product of all values in the array is 144, and signFunc(144) = 1
+//Example 2:
+//Input: nums = [1,5,0,2,-3]
+//Output: 0
+//Explanation: The product of all values in the array is 0, and signFunc(0) = 0
+//Example 3:
+//Input: nums = [-1,1,-1,1,-1]
+//Output: -1
+//Explanation: The product of all values in the array is -1, and signFunc(-1) = -1
+// 
+//Constraints:
+//* 1 <= nums.length <= 1000
+//* -100 <= nums[i] <= 100
+//
+//
+//Explanation
+//1. Check if nums array contains zero. 0 * n = 0
+//2. Find how many negative numbers in array
+//3. if its even: -2 * -2 = 4. So result will be 1.
+//4. if its odd: -2 * -2 * -1 = -4. In this way result will be -1.
+//
+//class Solution {
+//    func arraySign(_ nums: [Int]) -> Int {
+//        guard !nums.contains(0) else { return 0 }
+//        return nums.filter { $0 < 0 }.count % 2 == 0 ? 1 : -1
+//    }
+//}
+//
+//
+//
+//https://leetcode.com/problems/calculate-money-in-leetcode-bank/description/
+//1716. Calculate Money in Leetcode Bank
+//Hercy wants to save money for his first car. He puts money in the Leetcode bank every day.
+//He starts by putting in $1 on Monday, the first day. Every day from Tuesday to Sunday, he will put in $1 more than the day before. On every subsequent Monday, he will put in $1 more than the previous Monday.
+//Given n, return the total amount of money he will have in the Leetcode bank at the end of the nth day.
+// 
+//Example 1:
+//Input: n = 4
+//Output: 10
+//Explanation: After the 4th day, the total is 1 + 2 + 3 + 4 = 10.
+//Example 2:
+//Input: n = 10
+//Output: 37
+//Explanation: After the 10th day, the total is (1 + 2 + 3 + 4 + 5 + 6 + 7) + (2 + 3 + 4) = 37. Notice that on the 2nd Monday, Hercy only puts in $2.
+//Example 3:
+//Input: n = 20
+//Output: 96
+//Explanation: After the 20th day, the total is (1 + 2 + 3 + 4 + 5 + 6 + 7) + (2 + 3 + 4 + 5 + 6 + 7 + 8) + (3 + 4 + 5 + 6 + 7 + 8) = 96.
+// 
+//Constraints:
+//* 1 <= n <= 1000
+//
+//
+//
+//
+//class Solution {
+//    func totalMoney(_ n: Int) -> Int {
+//        var money = 0
+//        for i in 0 ..< n {
+//            money += i % 7 + i / 7 + 1
+//        }
+//        return money
+//    }
+//}

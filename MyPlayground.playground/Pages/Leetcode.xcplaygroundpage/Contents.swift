@@ -2026,3 +2026,300 @@
 //        return money
 //    }
 //}
+
+
+
+
+//https://leetcode.com/problems/number-of-days-between-two-dates/description/
+//1360. Number of Days Between Two Dates
+//
+//Write a program to count the number of days between two dates.
+//The two dates are given as strings, their format is YYYY-MM-DD as shown in the examples.
+// 
+//Example 1:
+//Input: date1 = "2019-06-29", date2 = "2019-06-30"
+//Output: 1
+//Example 2:
+//Input: date1 = "2020-01-15", date2 = "2019-12-31"
+//Output: 15
+// 
+//Constraints:
+//* The given dates are valid dates between the years 1971 and 2100.
+//
+//
+//
+//class Solution {
+//    
+//    private static let ms = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+//    
+//    private static func l(_ y: Int) -> Int {
+//        guard y % 400 != 0 else { return 1 }
+//        guard y % 100 != 0, y % 4 == 0 else { return 0 }
+//        return 1
+//    }
+//    
+//    private static func l(_ y: Int, _ m: Int) -> Int {
+//        guard m > 2 else { return 0 }
+//        return l(y)
+//    }
+//    
+//    private static func d(_ date: String) -> Int {
+//        let cs = date
+//            .components(separatedBy: "-")
+//            .map { Int($0)! }
+//        
+//        return cs[2]
+//            + l(cs[0], cs[1])
+//            + ms.prefix(cs[1] - 1).reduce(0, +)
+//            + (1970..<cs[0]).map({ 365 + l($0) }).reduce(0, +)
+//    }
+//    
+//    func daysBetweenDates(_ date1: String, _ date2: String) -> Int {
+//        abs(Solution.d(date1) - Solution.d(date2))
+//    }
+//}
+//
+//
+//
+//
+//
+//import Foundation
+//class Solution {
+//    func daysBetweenDates(_ date1: String, _ date2: String) -> Int {
+//        let d1 = Solution.dateFromString(string: date1, format: "yyyy-MM-dd")
+//        let d2 = Solution.dateFromString(string: date2, format: "yyyy-MM-dd")
+//        var difference = d2.timeIntervalSince(d1)
+//        if difference < 0 {
+//            difference = d1.timeIntervalSince(d2)
+//        }
+//        return Int(difference/86400)
+//    }
+//    class func dateFromString(string: String, format: String) -> Date {
+//        let formatter: DateFormatter = DateFormatter()
+//        formatter.calendar = Calendar(identifier: .gregorian)
+//        formatter.dateFormat = format
+//        return formatter.date(from: string)!
+//    }
+//}
+//
+//
+//class Solution {
+//func isLeapYear(_ year: Int) -> Bool
+//{
+//    return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0
+//}
+//
+//func countOfDaysFrom1971(day: Int, month: Int, year: Int) -> Int {
+//    var days = [0,31,28,31,30,31,30,31,31,30,31,30,31]
+//    var dayCount = day
+//
+//    for year in 1971..<year {
+//        dayCount += isLeapYear(year) ? 366 : 365
+//    }
+//
+//    if isLeapYear(year) { days[2] = 29 }
+//    for month in 1..<month {
+//        dayCount += days[month]
+//    }
+//
+//    return dayCount
+//}
+//
+//func daysBetweenDates(_ date1: String, _ date2: String) -> Int {
+//    let date1Components = date1.components(separatedBy: "-")
+//    let date2Components = date2.components(separatedBy: "-")
+//
+//    let days1 = countOfDaysFrom1971(day: Int(date1Components[2])!, month: Int(date1Components[1])!, year: Int(date1Components[0])!)
+//    let days2 = countOfDaysFrom1971(day: Int(date2Components[2])!, month: Int(date2Components[1])!, year: Int(date2Components[0])!)
+//    return abs(days1 - days2)
+//}
+//
+//}
+//
+//
+//
+//class Solution {
+//    func daysBetweenDates(_ date1: String, _ date2: String) -> Int {
+//        
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy-MM-dd"
+//        
+//        let firstDateTime = formatter.date(from: date1)!
+//        let secondDateTime = formatter.date(from: date2)!
+//
+//        let answer = secondDateTime.timeIntervalSince(firstDateTime)/60/60/24
+//
+//        return abs(Int(answer))
+//    }
+//}
+//
+//
+//
+//
+//class Solution {
+//    func daysBetweenDates(_ date1: String, _ date2: String) -> Int {
+//
+//        func isLeapYear(_ year: Int) -> Bool {
+//            return year % 4 == 0 ? (year % 100 == 0 ? (year % 400 == 0 ? true : false) : true) : false
+//        }
+//
+//        func daysSince1970(_ date: String) -> Int {
+//            let dateParts = date.split(separator: "-"), year = Int(dateParts[0]) ?? 0, month = Int(dateParts[1]) ?? 0, day = Int(dateParts[2]) ?? 0
+//            var days: Int = day
+//            for i in 1..<month {
+//                switch i {
+//                    case 1, 3, 5, 7, 8, 10, 12: days += 31
+//                    case 4, 6, 9, 11: days += 30
+//                    case 2: days += isLeapYear(year) ? 29 : 28
+//                    default: days += 0
+//                }
+//            }
+//            for i in 1971..<year {
+//                days += isLeapYear(i) ? 366 : 365
+//            }
+//            return days
+//        }
+//
+//        return abs(daysSince1970(date1) - daysSince1970(date2))
+//
+//    }
+//}
+//
+//
+//
+//
+//
+//https://leetcode.com/problems/convert-integer-to-the-sum-of-two-no-zero-integers/description/
+//1317. Convert Integer to the Sum of Two No-Zero Integers
+//No-Zero integer is a positive integer that does not contain any 0 in its decimal representation.
+//Given an integer n, return a list of two integers [a, b] where:
+//* a and b are No-Zero integers.
+//* a + b = n
+//The test cases are generated so that there is at least one valid solution. If there are many valid solutions, you can return any of them.
+// 
+//Example 1:
+//Input: n = 2
+//Output: [1,1]
+//Explanation: Let a = 1 and b = 1.
+//Both a and b are no-zero integers, and a + b = 2 = n.
+//Example 2:
+//Input: n = 11
+//Output: [2,9]
+//Explanation: Let a = 2 and b = 9.
+//Both a and b are no-zero integers, and a + b = 9 = n.
+//Note that there are other valid answers as [8, 3] that can be accepted.
+// 
+//Constraints:
+//* 2 <= n <= 104
+//
+//
+//
+//
+//
+//class Solution {
+//func getNoZeroIntegers(_ n: Int) -> [Int] {
+//    (1...(n/2)).lazy.filter { !"\($0)\(n-$0)".contains("0") }.lazy.map { [$0, n-$0] }.lazy.first!
+//}
+//}
+//
+//
+//
+//
+//class Solution {
+//    func getNoZeroIntegers(_ n: Int) -> [Int] {
+//        
+//        var i = 1
+//        
+//        while i <= n / 2 {
+//            if !String(i).contains("0") && !String(n - i).contains("0") {
+//                return [i, n - i]
+//            }
+//            i += 1
+//        }
+//        
+//        return []
+//    }
+//}
+//
+//
+//
+//
+//
+//
+//
+//https://leetcode.com/problems/day-of-the-week/
+//1185. Day of the Week
+//Given a date, return the corresponding day of the week for that date.
+//The input is given as three integers representing the day, month and year respectively.
+//Return the answer as one of the following values {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}.
+// 
+//Example 1:
+//Input: day = 31, month = 8, year = 2019
+//Output: "Saturday"
+//Example 2:
+//Input: day = 18, month = 7, year = 1999
+//Output: "Sunday"
+//Example 3:
+//Input: day = 15, month = 8, year = 1993
+//Output: "Sunday"
+// 
+//Constraints:
+//* The given dates are valid dates between the years 1971 and 2100.
+//
+//
+//
+///* Create a Date from the components */
+//let date = DateComponents(calendar: Calendar.current, year: year, month: month, day: day).date!
+//// Create a formatter
+//let dateFormatter = DateFormatter()
+//// Set the format to the wide name of the day of the week
+//dateFormatter.dateFormat = "EEEE"
+//// Return the string
+//return dateFormatter.string(from: date)
+//
+//
+//class Solution {
+//    func dayOfTheWeek(_ day: Int, _ month: Int, _ year: Int) -> String {
+//        var y = year
+//        let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+//        
+//        // Using Tomohiko Sakamoto's algorithm
+//        let t = [0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4]
+//        y -= month < 3 ? 1 : 0
+//        let dayIndex = (y + y/4 - y/100 + y/400 + t[month-1] + day) % 7
+//        return days[dayIndex]
+//    }
+//}
+//
+//
+//class Solution {
+//    func dayOfTheWeek(_ day: Int, _ month: Int, _ year: Int) -> String {
+//
+//        func isLeapYear(_ year: Int) -> Bool {
+//            return year % 4 == 0 ? (year % 100 == 0 ? (year % 400 == 0 ? true : false) : true) : false
+//        }
+//
+//        func daysInYear(_ year: Int) -> Int {
+//            return isLeapYear(year) ? 366 : 365
+//        }
+//
+//        func daysInMonth(_ year: Int, _ month: Int) -> Int {
+//            switch month {
+//                case 1, 3, 5, 7, 8, 10, 12: return 31
+//                case 4, 6, 9, 11: return 30
+//                case 2: return isLeapYear(year) ? 29 : 28
+//                default: return 0
+//            }
+//        }
+//
+//        let daysOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+//        var days: Int = day
+//        for i in 1..<month {
+//            days += daysInMonth(year, i)
+//        }
+//        for i in 1971..<year {
+//            days += daysInYear(i)
+//        }
+//        return daysOfTheWeek[(4 + days) % 7]
+//    }
+//}

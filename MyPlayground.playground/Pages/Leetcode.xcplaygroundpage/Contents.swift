@@ -2323,3 +2323,403 @@
 //        return daysOfTheWeek[(4 + days) % 7]
 //    }
 //}
+
+
+
+//https://leetcode.com/problems/count-distinct-numbers-on-board/
+//2549. Count Distinct Numbers on Board
+//You are given a positive integer n, that is initially placed on a board. Every day, for 109 days, you perform the following procedure:
+//* For each number x present on the board, find all numbers 1 <= i <= n such that x % i == 1.
+//* Then, place those numbers on the board.
+//Return the number of distinct integers present on the board after 109 days have elapsed.
+//Note:
+//* Once a number is placed on the board, it will remain on it until the end.
+//* % stands for the modulo operation. For example, 14 % 3 is 2.
+// 
+//Example 1:
+//Input: n = 5
+//Output: 4
+//Explanation: Initially, 5 is present on the board.
+//The next day, 2 and 4 will be added since 5 % 2 == 1 and 5 % 4 == 1.
+//After that day, 3 will be added to the board because 4 % 3 == 1.
+//At the end of a billion days, the distinct numbers on the board will be 2, 3, 4, and 5.
+//Example 2:
+//Input: n = 3
+//Output: 2
+//Explanation:
+//Since 3 % 2 == 1, 2 will be added to the board.
+//After a billion days, the only two distinct numbers on the board are 2 and 3.
+// 
+//Constraints:
+//* 1 <= n <= 100
+//
+//
+//
+//
+//class Solution {
+//    func distinctIntegers(_ n: Int) -> Int {
+//        max(n-1, 1)
+//    }
+//}
+//
+//
+//
+//class Solution {
+//    func distinctIntegers(_ n: Int) -> Int {
+//        if (n == 1)
+//        {
+//            return 1
+//        }
+//        else
+//        {
+//            return n-1
+//        }
+//    }
+//}
+//
+//
+//class Solution {
+//    func distinctIntegers(_ n: Int) -> Int {
+//        
+//        var n = n
+//        var temp: Set<Int> = [n]
+//        
+//        while n > 0 {
+//            
+//            for item in temp {
+//                for i in 1...item {
+//                    if n % i == 1 {
+//                        temp.insert(i)
+//                    }
+//                }
+//            }
+//            
+//            n -= 1
+//            
+//  
+//            
+//        }
+//        
+//        return temp.count
+//        
+//    }
+//}
+//
+//
+//
+//
+//
+//
+//
+//https://leetcode.com/problems/maximum-difference-by-remapping-a-digit/
+//2566. Maximum Difference by Remapping a Digit
+//You are given an integer num. You know that Danny Mittal will sneakily remap one of the 10 possible digits (0 to 9) to another digit.
+//Return the difference between the maximum and minimum values Danny can make by remapping exactly one digit in num.
+//Notes:
+//* When Danny remaps a digit d1 to another digit d2, Danny replaces all occurrences of d1 in num with d2.
+//* Danny can remap a digit to itself, in which case num does not change.
+//* Danny can remap different digits for obtaining minimum and maximum values respectively.
+//* The resulting number after remapping can contain leading zeroes.
+//* We mentioned "Danny Mittal" to congratulate him on being in the top 10 in Weekly Contest 326.
+// 
+//Example 1:
+//Input: num = 11891
+//Output: 99009
+//Explanation:
+//To achieve the maximum value, Danny can remap the digit 1 to the digit 9 to yield 99899.
+//To achieve the minimum value, Danny can remap the digit 1 to the digit 0, yielding 890.
+//The difference between these two numbers is 99009.
+//Example 2:
+//Input: num = 90
+//Output: 99
+//Explanation:
+//The maximum value that can be returned by the function is 99 (if 0 is replaced by 9) and the minimum value that can be returned by the function is 0 (if 9 is replaced by 0).
+//Thus, we return 99.
+// 
+//Constraints:
+//* 1 <= num <= 108
+//
+//
+//class Solution {
+//    func minMaxDifference(_ num: Int) -> Int {
+//        let maxNum = getMaxValueToReplace("\(num)", num)
+//        let minNum = getMinValueToReplace("\(num)", num)
+//        return maxNum - minNum
+//    }
+//
+//    func getMaxValueToReplace(_ str: String, _ num: Int) -> Int {
+//        guard let idx = str.firstIndex(where: { $0 != "9" } ) else { return num }
+//        return Int(str.replacingOccurrences(of: "\(str[idx])", with: "9"))!
+//    }
+//
+//    func getMinValueToReplace(_ str: String, _ num: Int) -> Int {
+//        guard let idx = str.firstIndex(where: { $0 != "0" } ) else { return num }
+//        return Int(str.replacingOccurrences(of: "\(str[idx])", with: "0"))!
+//    }
+//}
+//
+//
+//
+//
+//
+//
+//
+//https://leetcode.com/problems/split-with-minimum-sum/
+//2578. Split With Minimum Sum
+//Given a positive integer num, split it into two non-negative integers num1 and num2 such that:
+//* The concatenation of num1 and num2 is a permutation of num.
+//    * In other words, the sum of the number of occurrences of each digit in num1 and num2 is equal to the number of occurrences of that digit in num.
+//* num1 and num2 can contain leading zeros.
+//Return the minimum possible sum of num1 and num2.
+//Notes:
+//* It is guaranteed that num does not contain any leading zeros.
+//* The order of occurrence of the digits in num1 and num2 may differ from the order of occurrence of num.
+// 
+//Example 1:
+//Input: num = 4325
+//Output: 59
+//Explanation: We can split 4325 so that num1 is 24 and num2 is 35, giving a sum of 59. We can prove that 59 is indeed the minimal possible sum.
+//Example 2:
+//Input: num = 687
+//Output: 75
+//Explanation: We can split 687 so that num1 is 68 and num2 is 7, which would give an optimal sum of 75.
+// 
+//Constraints:
+//* 10 <= num <= 109
+//
+//class Solution {
+//    func splitNum(_ n: Int) -> Int {
+//        "\(n)".sorted().enumerated().reduce(into:["",""]) { $0[$1.0&1]+=[$1.1]}.reduce(0) {$0+Int($1)!}
+//    }
+//}
+//
+//
+//class Solution {
+//    func splitNum(_ num: Int) -> Int {
+//        "\(num)"  // convert `num` to string
+//         .sorted() // sort digits ascending, we want two numbers composed of lowest to highest digits
+//         .enumerated()
+//         .reduce(into: ["", ""]) { arr, tuple in  // split every other digit into two strings
+//            let (index, ch) = tuple
+//            arr[index & 1].append(ch)
+//         }
+//        .map { Int($0)! } // convert two string to two ints
+//        .reduce(0,+)      // add both values together
+//    }
+//}
+//
+//
+//
+//class Solution {
+//    func splitNum(_ num: Int) -> Int {
+//    
+//        // 1: Convern to digits (Int -> String -> [Int]) and filter 'zeros'
+//        let digits = "\(num)".compactMap({ Int("\($0)") }).filter({ $0 != 0 }).sorted()
+//        let enumeratedDigits = digits.lazy.enumerated()
+//        
+//        // 2: Filter(select) Even & Odd indeses in 'digits' array and convert final numbers to Int value
+//        let number = digits.lazy.enumerated().reduce(into: (even: "", odd: "")) {
+//            $1.offset.isMultiple(of: 2) ? ($0.even.append("\($1.element)")) : ($0.odd.append("\($1.element)"))
+//        }
+//        
+//        // 3: Sum even and odd sums
+//        return (Int(number.even) ?? 0) + (Int(number.odd) ?? 0)
+//    }
+//}
+//
+//
+//
+//
+//
+//
+//https://leetcode.com/problems/pass-the-pillow/
+//2582. Pass the Pillow
+//
+//There are n people standing in a line labeled from 1 to n. The first person in the line is holding a pillow initially. Every second, the person holding the pillow passes it to the next person standing in the line. Once the pillow reaches the end of the line, the direction changes, and people continue passing the pillow in the opposite direction.
+//* For example, once the pillow reaches the nth person they pass it to the n - 1th person, then to the n - 2th person and so on.
+//Given the two positive integers n and time, return the index of the person holding the pillow after time seconds.
+// 
+//Example 1:
+//Input: n = 4, time = 5
+//Output: 2
+//Explanation: People pass the pillow in the following way: 1 -> 2 -> 3 -> 4 -> 3 -> 2.
+//Afer five seconds, the pillow is given to the 2nd person.
+//Example 2:
+//Input: n = 3, time = 2
+//Output: 3
+//Explanation: People pass the pillow in the following way: 1 -> 2 -> 3.
+//Afer two seconds, the pillow is given to the 3rd person.
+// 
+//Constraints:
+//* 2 <= n <= 1000
+//* 1 <= time <= 1000
+//
+//
+//class Solution {
+//    func passThePillow(_ n: Int, _ time: Int) -> Int {
+//        time/(n-1) & 1 == 0 ? 1 + time % (n-1) : n - time % (n-1)
+//    }
+//}
+//
+//
+//
+//class Solution {
+//    func passThePillow(_ n: Int, _ time: Int) -> Int {
+//        // every calc here uses `n-1` instead of `n`, since were counting number
+//        // of jumps from leftmost person to rightmost person; counting jumps, not people, so `n-1`
+//        time/(n-1) & 1 == 0  // is pillow traveling toward the right (...&1 == 0) or left (...&1 == 1)
+//            ? 1 + (time % (n-1))  // toward the right: add 1 (since one-based index) to the modulo
+//            : n - (time % (n-1))  // toward the left: subtract modulo from `n`
+//    }
+//}
+//
+//
+//
+//
+//
+//Approach
+//1. Create a variable t to store the time
+//2. Create a variable i to store the current position
+//3. Create a variable flag to store the direction
+//4. Loop until t is less than time
+//5. If flag is false
+//6. Increment i by 1
+//7. If i is equal to n
+//8. Set flag to true
+//9. Else
+//10. Decrement i by 1
+//11. If i is equal to 1
+//12. Set flag to false
+//13. Increment t by 1
+//14. Return i
+//Complexity
+//* Time complexity: O(n)
+//* Space complexity: O(1)
+//Code
+//class Solution {
+//    func passThePillow(_ n: Int, _ time: Int) -> Int {
+//        var t=0,i=1;
+//        var flag = false;
+//        while(t<time){
+//            if(!flag){
+//                i+=1;
+//                if(i==n){
+//                    flag = true;
+//                }
+//            }
+//            else{
+//                i-=1;
+//                if(i==1){
+//                    flag = false;
+//                }
+//            }
+//            t+=1;
+//        }
+//        return i;
+//    }
+//}
+//
+//
+//
+//
+//
+//https://leetcode.com/problems/distribute-money-to-maximum-children/
+//2591. Distribute Money to Maximum Children
+//You are given an integer money denoting the amount of money (in dollars) that you have and another integer children denoting the number of children that you must distribute the money to.
+//You have to distribute the money according to the following rules:
+//* All money must be distributed.
+//* Everyone must receive at least 1 dollar.
+//* Nobody receives 4 dollars.
+//Return the maximum number of children who may receive exactly 8 dollars if you distribute the money according to the aforementioned rules. If there is no way to distribute the money, return -1.
+// 
+//Example 1:
+//Input: money = 20, children = 3
+//Output: 1
+//Explanation:
+//The maximum number of children with 8 dollars will be 1. One of the ways to distribute the money is:
+//- 8 dollars to the first child.
+//- 9 dollars to the second child.
+//- 3 dollars to the third child.
+//It can be proven that no distribution exists such that number of children getting 8 dollars is greater than 1.
+//Example 2:
+//Input: money = 16, children = 2
+//Output: 2
+//Explanation: Each child can be given 8 dollars.
+// 
+//Constraints:
+//* 1 <= money <= 200
+//* 2 <= children <= 30
+//
+//
+//class Solution {
+//    func distMoney(_ m: Int, _ c: Int) -> Int {
+//        m<c ? -1 : min((m-c)/7, c-1) + (c*8==m ? 1:0) + (((c-1)*8+4)==m ? -1:0)
+//    }
+//}
+//
+//
+//class Solution {
+//    func distMoney(_ m: Int, _ c: Int) -> Int {
+//        m<c ? -1 : // FAIL: not enough to give each child $1
+//        min((m-c)/7, c-1) + // give each child $1 (m-c), then distribute $7 chunks up to all but last child
+//        (c*8==m ? 1:0) + // if money == children*8, then give last child full $8
+//        (((c-1)*8+4)==m ? -1:0) // if all-but-last children have $8 and last has $4, remove second-to-last from result
+//    }
+//}
+//
+//
+//class Solution {
+//    func distMoney(_ m: Int, _ c: Int) -> Int {
+//        guard m >= c
+//        // case 1: not enough money to give each child $1
+//        else { return -1 }
+//        
+//        guard m >= 8 + (c-1)
+//        // case 2: not enough money to give one child $8 and other children $1
+//        else { return 0 }
+//        
+//        guard c*8 > m
+//        // case 3: every child can get at least $8
+//        else { return c + (m > c*8 ? -1 : 0) }  // exclude last child, if last child more than $8
+//        
+//        guard m - (c-1)*8 <= 0
+//        // case 4: every child except last can get $8
+//        else { return m/8 + (m%8 == 4 ? -1 : 0) } // exclude second-to-last, if last has $4
+//
+//        // case 5: more than one child cannot get $8
+//        return (m-c) / 7 // give every child $1, then how many children can get another $7?
+//    }
+//}
+//
+//
+//class Solution {
+//    func distMoney(_ money: Int, _ children: Int) -> Int {
+//
+//        guard children == 0 || money >= children else { return -1 }
+//        guard money >= children + 7 else { return 0 }
+//        
+//        func weCan(_ k: Int) -> Bool {
+//            var restMoney = money - k * 8
+//            var restChildren = children - k
+//
+//            switch (restMoney, restChildren) {
+//            case (..<0, _): return false
+//            case (0, 0): return true
+//            case (1..., 0): return false
+//            case (4, 1): return false
+//            default: return restMoney >= restChildren
+//            }
+//        }
+//
+//        var l = 0
+//        var r = children
+//
+//        while l <= r {
+//            let m = (l + r) / 2
+//            if weCan(m) { l = m + 1 }
+//            else { r = m - 1 }
+//        }
+//
+//        return l - 1
+//    }
+//}

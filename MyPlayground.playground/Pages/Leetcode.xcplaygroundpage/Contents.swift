@@ -2723,3 +2723,140 @@
 //        return l - 1
 //    }
 //}
+
+
+
+//https://leetcode.com/problems/k-items-with-the-maximum-sum/
+//2600. K Items With the Maximum Sum
+//There is a bag that consists of items, each item has a number 1, 0, or -1 written on it.
+//You are given four non-negative integers numOnes, numZeros, numNegOnes, and k.
+//The bag initially contains:
+//* numOnes items with 1s written on them.
+//* numZeroes items with 0s written on them.
+//* numNegOnes items with -1s written on them.
+//We want to pick exactly k items among the available items. Return the maximum possible sum of numbers written on the items.
+// 
+//Example 1:
+//Input: numOnes = 3, numZeros = 2, numNegOnes = 0, k = 2
+//Output: 2
+//Explanation: We have a bag of items with numbers written on them {1, 1, 1, 0, 0}. We take 2 items with 1 written on them and get a sum in a total of 2.
+//It can be proven that 2 is the maximum possible sum.
+//Example 2:
+//Input: numOnes = 3, numZeros = 2, numNegOnes = 0, k = 4
+//Output: 3
+//Explanation: We have a bag of items with numbers written on them {1, 1, 1, 0, 0}. We take 3 items with 1 written on them, and 1 item with 0 written on it, and get a sum in a total of 3.
+//It can be proven that 3 is the maximum possible sum.
+// 
+//Constraints:
+//* 0 <= numOnes, numZeros, numNegOnes <= 50
+//* 0 <= k <= numOnes + numZeros + numNegOnes
+//
+//
+//
+//
+//class Solution {
+//    func kItemsWithMaximumSum(_ numOnes: Int, _ numZeros: Int, _ numNegOnes: Int, _ k: Int) -> Int {
+//        
+//        var res = 0
+//        var rem = k
+//
+//        res += min(numOnes, rem)
+//        rem -= min(numOnes, rem)
+//
+//        rem -= min(numZeros, rem)
+//
+//        res -= min(numNegOnes, rem)
+//        rem -= min(numNegOnes, rem)
+//
+//        return res
+//    }
+//}
+//
+//
+//
+//https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+//26. Remove Duplicates from Sorted Array
+//Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
+//Consider the number of unique elements of nums be k, to get accepted, you need to do the following things:
+//* Change the array nums such that the first k elements of nums contain the unique elements in the order they were present in nums initially. The remaining elements of nums are not important as well as the size of nums.
+//* Return k.
+//Custom Judge:
+//The judge will test your solution with the following code:
+//int[] nums = [...]; // Input array
+//int[] expectedNums = [...]; // The expected answer with correct length
+//
+//int k = removeDuplicates(nums); // Calls your implementation
+//
+//assert k == expectedNums.length;
+//for (int i = 0; i < k; i++) {
+//    assert nums[i] == expectedNums[i];
+//}
+//If all assertions pass, then your solution will be accepted.
+// 
+//Example 1:
+//Input: nums = [1,1,2]
+//Output: 2, nums = [1,2,_]
+//Explanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
+//It does not matter what you leave beyond the returned k (hence they are underscores).
+//Example 2:
+//Input: nums = [0,0,1,1,1,2,2,3,3,4]
+//Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
+//Explanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
+//It does not matter what you leave beyond the returned k (hence they are underscores).
+// 
+//Constraints:
+//* 1 <= nums.length <= 3 * 104
+//* -100 <= nums[i] <= 100
+//* nums is sorted in non-decreasing order.
+//
+//
+//class Solution {
+//    func removeDuplicates(_ nums: inout [Int]) -> Int {
+//        let len = nums.count
+//        guard len > 1 else { return len }
+//        var idx = 0
+//        for n in nums where n != nums[idx] {
+//            idx += 1
+//            nums[idx] = n
+//        }
+//        return idx + 1
+//    }
+//}
+//
+//
+//
+//import XCTest
+//
+//class Tests: XCTestCase {
+//    
+//    private let solution = Solution()
+//    
+//    /// Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
+//    /// It does not matter what you leave beyond the returned k (hence they are underscores).
+//    func test0() {
+//        var array = [1,1,2]
+//        solution.removeDuplicates(&array)
+//        XCTAssertEqual(2, [1,2].count)
+//    }
+//    
+//    /// Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
+//    /// It does not matter what you leave beyond the returned k (hence they are underscores).
+//    func test1() {
+//        var array = [0,0,1,1,1,2,2,3,3,4]
+//        solution.removeDuplicates(&array)
+//        XCTAssertEqual(5, [0,1,2,3,4].count)
+//    }
+//}
+//
+//Tests.defaultTestSuite.run()
+//
+//
+//
+//
+//class Solution {
+//    func removeDuplicates(_ nums: inout [Int]) -> Int {
+//        nums = Array(Set(nums))
+//        nums.sort{$0 < $1}
+//        return nums.count
+//    }
+//}

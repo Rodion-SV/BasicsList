@@ -2860,3 +2860,348 @@
 //        return nums.count
 //    }
 //}
+
+
+
+//https://leetcode.com/problems/shortest-completing-word/
+//748. Shortest Completing Word
+//
+//Given a string licensePlate and an array of strings words, find the shortest completing word in words.
+//A completing word is a word that contains all the letters in licensePlate. Ignore numbers and spaces in licensePlate, and treat letters as case insensitive. If a letter appears more than once in licensePlate, then it must appear in the word the same number of times or more.
+//For example, if licensePlate = "aBc 12c", then it contains letters 'a', 'b' (ignoring case), and 'c' twice. Possible completing words are "abccdef", "caaacab", and "cbca".
+//Return the shortest completing word in words. It is guaranteed an answer exists. If there are multiple shortest completing words, return the first one that occurs in words.
+//
+//Example 1:
+//Input: licensePlate = "1s3 PSt", words = ["step","steps","stripe","stepple"]
+//Output: "steps"
+//Explanation: licensePlate contains letters 's', 'p', 's' (ignoring case), and 't'.
+//"step" contains 't' and 'p', but only contains 1 's'.
+//"steps" contains 't', 'p', and both 's' characters.
+//"stripe" is missing an 's'.
+//"stepple" is missing an 's'.
+//Since "steps" is the only word containing all the letters, that is the answer.
+//Example 2:
+//Input: licensePlate = "1s3 456", words = ["looks","pest","stew","show"]
+//Output: "pest"
+//Explanation: licensePlate only contains the letter 's'. All the words contain 's', but among these "pest", "stew", and "show" are shortest. The answer is "pest" because it is the word that appears earliest of the 3.
+//
+//Constraints:
+//* 1 <= licensePlate.length <= 7
+//* licensePlate contains digits, letters (uppercase or lowercase), or space ' '.
+//* 1 <= words.length <= 1000
+//* 1 <= words[i].length <= 15
+//* words[i] consists of lower case English letters.
+//
+//
+//class Solution {
+//    func shortestCompletingWord(_ licensePlate: String, _ words: [String]) -> String {
+//        var sL: String = "" // lowercased sorted letters from licensePlate
+//        for char in licensePlate.lowercased().sorted() {
+//            if char.isLetter { sL.append(char) }
+//        }
+//        let eL = sL.endIndex
+//        var results: [String] = [] // suitable words
+//        var minLength: Int = Int.max // minimum length of suitable words
+//        for word in words {
+//            let sW = word.sorted() // sorted letters from word
+//            let eW = sW.endIndex
+//            var iL = sL.startIndex
+//            var iW = sW.startIndex
+//            while iL < eL && iW < eW { // looking for letters from licensePlate in word
+//                if sL[iL] == sW[iW] { sL.formIndex(after: &iL) }
+//                sW.formIndex(after: &iW)
+//            }
+//            if iL == eL { // all letters found
+//                results.append(word)
+//                if word.count < minLength { minLength = word.count }
+//            }
+//        }
+//        for result in results { // return first suitable word with minimum length
+//            if result.count == minLength { return result }
+//        }
+//        return ""
+//    }
+//}
+//
+//
+//
+//
+//https://leetcode.com/problems/goat-latin/description/
+//824. Goat Latin
+//
+//You are given a string sentence that consist of words separated by spaces. Each word consists of lowercase and uppercase letters only.
+//We would like to convert the sentence to "Goat Latin" (a made-up language similar to Pig Latin.) The rules of Goat Latin are as follows:
+//* If a word begins with a vowel ('a', 'e', 'i', 'o', or 'u'), append "ma" to the end of the word.
+//    * For example, the word "apple" becomes "applema".
+//* If a word begins with a consonant (i.e., not a vowel), remove the first letter and append it to the end, then add "ma".
+//    * For example, the word "goat" becomes "oatgma".
+//* Add one letter 'a' to the end of each word per its word index in the sentence, starting with 1.
+//    * For example, the first word gets "a" added to the end, the second word gets "aa" added to the end, and so on.
+//Return the final sentence representing the conversion from sentence to Goat Latin.
+//
+//Example 1:
+//Input: sentence = "I speak Goat Latin"
+//Output: "Imaa peaksmaaa oatGmaaaa atinLmaaaaa"
+//Example 2:
+//Input: sentence = "The quick brown fox jumped over the lazy dog"
+//Output: "heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa overmaaaaaaa hetmaaaaaaaa azylmaaaaaaaaa ogdmaaaaaaaaaa"
+//
+//Constraints:
+//* 1 <= sentence.length <= 150
+//* sentence consists of English letters and spaces.
+//* sentence has no leading or trailing spaces.
+//* All the words in sentence are separated by a single space.
+//
+//
+//class Solution {
+//    func toGoatLatin(_ sentence: String) -> String {
+//        let vowel: Set<Character> = [
+//            "a", "e", "i", "o", "u",
+//            "A", "E", "I", "O", "U",
+//        ]
+//
+//        var moddifiedWords = [String]()
+//
+//        for (i, word) in sentence.split(separator: " ").enumerated() {
+//            var moddified = word
+//            let first = word.first!
+//
+//            if !vowel.contains(first) {
+//                moddified = word.dropFirst()
+//                moddified.append(first)
+//            }
+//            moddified.append(contentsOf: "ma")
+//            moddified.append(contentsOf: Array(repeating: "a", count: i + 1))
+//
+//            moddifiedWords.append(String(moddified))
+//        }
+//
+//        return moddifiedWords.joined(separator: " ")
+//    }
+//}
+//
+//
+//class Solution {
+//    func toGoatLatin(_ sentence: String) -> String {
+//        var vowels: Set<Character> = ["a", "e", "i", "o", "u"]
+//        return sentence.components(separatedBy: " ").reduce(into: [String]()) {
+//            var temp = ""
+//            if vowels.contains(($1.first?.lowercased())!) {
+//                temp += $1 + "ma"
+//            } else {
+//                temp += $1.dropFirst() + String($1.first!) + "ma"
+//            }
+//            temp += String(repeating: "a", count: $0.count + 1)
+//            $0 += [temp]
+//        }.joined(separator: " ")
+//    }
+//}
+//
+//
+//
+//
+//
+//https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses/
+//1614. Maximum Nesting Depth of the Parentheses
+//A string is a valid parentheses string (denoted VPS) if it meets one of the following:
+//* It is an empty string "", or a single character not equal to "(" or ")",
+//* It can be written as AB (A concatenated with B), where A and B are VPS's, or
+//* It can be written as (A), where A is a VPS.
+//We can similarly define the nesting depth depth(S) of any VPS S as follows:
+//* depth("") = 0
+//* depth(C) = 0, where C is a string with a single character not equal to "(" or ")".
+//* depth(A + B) = max(depth(A), depth(B)), where A and B are VPS's.
+//* depth("(" + A + ")") = 1 + depth(A), where A is a VPS.
+//For example, "", "()()", and "()(()())" are VPS's (with nesting depths 0, 1, and 2), and ")(" and "(()" are not VPS's.
+//Given a VPS represented as string s, return the nesting depth of s.
+//
+//Example 1:
+//Input: s = "(1+(2*3)+((8)/4))+1"
+//Output: 3
+//Explanation: Digit 8 is inside of 3 nested parentheses in the string.
+//Example 2:
+//Input: s = "(1)+((2))+(((3)))"
+//Output: 3
+//
+//Constraints:
+//* 1 <= s.length <= 100
+//* s consists of digits 0-9 and characters '+', '-', '*', '/', '(', and ')'.
+//* It is guaranteed that parentheses expression s is a VPS.
+//
+//class Solution {
+//    func maxDepth(_ s: String) -> Int {
+//        guard !s.isEmpty else {
+//            return 0
+//        }
+//
+//        var sArray = Array(s)
+//        var stack = [Character]()
+//        var maxDep = 0
+//        var count = 0
+//        for char in sArray {
+//            if char == "(" {
+//                stack.append(char)
+//                count += 1
+//                maxDep = max(maxDep, count)
+//            } else if char == ")" {
+//                if !stack.isEmpty {
+//                    stack.popLast()
+//                    count -= 1
+//                }
+//            }
+//        }
+//        return maxDep
+//    }
+//}
+//
+//
+//
+//
+//
+//
+//https://leetcode.com/problems/long-pressed-name/
+//925. Long Pressed Name
+//Your friend is typing his name into a keyboard. Sometimes, when typing a character c, the key might get long pressed, and the character will be typed 1 or more times.
+//You examine the typed characters of the keyboard. Return True if it is possible that it was your friends name, with some characters (possibly none) being long pressed.
+//
+//Example 1:
+//Input: name = "alex", typed = "aaleex"
+//Output: true
+//Explanation: 'a' and 'e' in 'alex' were long pressed.
+//Example 2:
+//Input: name = "saeed", typed = "ssaaedd"
+//Output: false
+//Explanation: 'e' must have been pressed twice, but it was not in the typed output.
+//
+//Constraints:
+//* 1 <= name.length, typed.length <= 1000
+//* name and typed consist of only lowercase English letters.
+//
+//
+//class Solution {
+//    func isLongPressedName(_ name: String, _ typed: String) -> Bool {
+//        /// ni: name index
+//        /// ti: typed index
+//        var ni = 0, ti = 0
+//
+//        /// nl: name char list
+//        /// tl: typed char list
+//        let nl = Array(name), tl = Array(typed)
+//
+//        while ni < nl.count, ti < tl.count {
+//            if nl[ni] == tl[ti] {
+//                ni += 1
+//                ti += 1
+//            } else {
+//                while ti > 0, ti < tl.count, tl[ti] == tl[ti - 1] {
+//                    ti += 1
+//                }
+//
+//                if ti >= tl.count { return false}
+//                if nl[ni] != tl[ti] { return false }
+//            }
+//        }
+//        while ti < tl.count, tl[ti] == tl[ti - 1] { ti += 1 }
+//        return ni == nl.count && ti == tl.count
+//    }
+//}
+//
+//
+//class Solution {
+//    func isLongPressedName(_ name: String, _ typed: String) -> Bool {
+//        var left = 0
+//        var right = 0
+//        var name = Array(name)
+//        var typed = Array(typed)
+//
+//        while left < name.count && right < typed.count {
+//            if name[left] != typed[right] {
+//                return false
+//            }
+//
+//            let lhs = calculate(name, left)
+//            let rhs = calculate(typed, right)
+//
+//            if rhs < lhs {
+//                return false
+//            }
+//
+//            left += lhs
+//            right += rhs
+//        }
+//
+//        if left < name.count || right < typed.count {
+//            return false
+//        }
+//
+//        return true
+//    }
+//
+//    private func calculate(_ word: [Character], _ index: Int) -> Int {
+//        var char = word[index]
+//        var count = 0
+//
+//        while index + count < word.count && word[index + count] == char {
+//            count += 1
+//        }
+//
+//        return count
+//    }
+//}
+
+
+//https://leetcode.com/problems/find-common-characters/
+//1002. Find Common Characters
+//Given a string array words, return an array of all characters that show up in all strings within the words (including duplicates). You may return the answer in any order.
+//
+//
+//
+//Example 1:
+//
+//Input: words = ["bella","label","roller"]
+//Output: ["e","l","l"]
+//Example 2:
+//
+//Input: words = ["cool","lock","cook"]
+//Output: ["c","o"]
+//
+//
+//Constraints:
+//
+//1 <= words.length <= 100
+//1 <= words[i].length <= 100
+//words[i] consists of lowercase English letters.
+//
+//
+//class Solution {
+//    func commonChars(_ A: [String]) -> [String] {
+//        return A.reduce(into: [String: Int](), { for s in $1.reduce(into: [Character: Int](), { $0[$1] = $0[$1, default: 0] + 1 }).reduce(into: [String](), { for i in 1...$1.1 { $0.append(String(Array(repeating: $1.0, count: i))) } }) { $0[s] = $0[s, default: 0] + 1 } }).reduce(into: [String](), { if $1.1 == A.count { $0.append(String($1.0.first!)) } })
+//    }
+//}
+//
+//
+//class Solution {
+//    func commonChars(_ words: [String]) -> [String] {
+//        var firstWord = words[0].reduce(into: [:]) { $0[$1, default : 0] += 1}
+//        var result = [String]()
+//
+//        for word in words {
+//            var nextWord = word.reduce(into: [:]) { $0[$1, default : 0] += 1}
+//            for (letter, count) in firstWord {
+//                if let newCount = nextWord[letter] {
+//                    firstWord[letter] = min(newCount, count)
+//                } else {
+//                    firstWord[letter] = nil
+//                }
+//            }
+//        }
+//
+//        for key in firstWord.keys{
+//            result += Array(repeating: String(key), count: firstWord[key]!)
+//        }
+//
+//        return result
+//    }
+//}
+
+

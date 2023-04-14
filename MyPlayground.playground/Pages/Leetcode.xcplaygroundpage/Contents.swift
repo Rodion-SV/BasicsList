@@ -3368,3 +3368,70 @@
 //                                                    (words[$1] == first && words[$1+1] == second) ? $0 + [String(words[$1+2])] : $0
 //                                                }
 //                                            }
+
+
+//https://leetcode.com/problems/decrypt-string-from-alphabet-to-integer-mapping/
+//1309. Decrypt String from Alphabet to Integer Mapping
+//You are given a string s formed by digits and '#'. We want to map s to English lowercase characters as follows:
+//
+//Characters ('a' to 'i') are represented by ('1' to '9') respectively.
+//Characters ('j' to 'z') are represented by ('10#' to '26#') respectively.
+//Return the string formed after mapping.
+//
+//The test cases are generated so that a unique mapping will always exist.
+//
+// 
+//
+//Example 1:
+//
+//Input: s = "10#11#12"
+//Output: "jkab"
+//Explanation: "j" -> "10#" , "k" -> "11#" , "a" -> "1" , "b" -> "2".
+//Example 2:
+//
+//Input: s = "1326#"
+//Output: "acz"
+// 
+//
+//Constraints:
+//
+//1 <= s.length <= 1000
+//s consists of digits and the '#' letter.
+//s will be a valid string such that mapping is always possible.
+//
+//
+//
+//class Solution {
+//    func freqAlphabets(_ s: String) -> String {
+//        
+//        let numbersByAlphabets = ["17": "q", "3": "c", "5": "e", "22": "v", "9": "i", "12": "l", "23": "w", "1": "a", "7": "g", "26": "z", "18": "r", "19": "s", "13": "m", "24": "x", "4": "d", "10": "j", "14": "n", "6": "f", "16": "p", "21": "u", "11": "k", "20": "t", "2": "b", "8": "h", "15": "o", "25": "y"]
+//
+//        var output = String()
+//    
+//        // 1) Access every character and keep converting them to alphabets by looking up using the dictionary
+//        
+//        // 2) When you encounter a "#", it means that the last 2 numnbers, before the "#",
+//        // have to be interpreted as a single alphabet
+//        
+//        // 3) So, you go back delete 2 characters which were interpreted seperately, concatenate them and look it
+//        // up in the dictionary and append to output string
+//        
+//        for index in s.indices {
+//            let char = s[index]
+//            if char != "#" {
+//                // Here, the dictionary lookup can fail for "0". So, we just append '0' and later remove it when
+//                // we encounter a "#". When you see an zero,  you will mostly certainly see a "#" next to it
+//                let alphabet = numbersByAlphabets["\(char)"] ?? "\(char)"
+//                output.append(alphabet)
+//            } else {
+//                output.removeLast(2)
+//                let indexMinus1 = s.index(index, offsetBy: -1)
+//                let indexMinus2 = s.index(index, offsetBy: -2)
+//                let alphabet = numbersByAlphabets["\(s[indexMinus2])\(s[indexMinus1])"]!
+//                output.append(alphabet)
+//            }
+//        }
+//        
+//        return output
+//    }
+//}

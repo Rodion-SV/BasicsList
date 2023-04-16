@@ -1563,7 +1563,7 @@ Bob is driving to 1 Spaghetti Lane to deliver Super Spaghetti.
 //    var body: some View {
 //        HStack {
 //            Rectangle()
-//                .fill(Color.yellow)
+//                .fill(ColorColor.yellow)
 //                .frame(width: 50, height: 50)
 //   
 //            Text("Rectangle One")

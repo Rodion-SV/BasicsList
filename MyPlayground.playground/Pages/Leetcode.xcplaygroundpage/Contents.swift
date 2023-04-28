@@ -4191,3 +4191,80 @@
 //    }
 //}
 
+
+//https://leetcode.com/problems/count-vowel-substrings-of-a-string/
+//2062. Count Vowel Substrings of a String
+//A substring is a contiguous (non-empty) sequence of characters within a string.
+//
+//A vowel substring is a substring that only consists of vowels ('a', 'e', 'i', 'o', and 'u') and has all five vowels present in it.
+//
+//Given a string word, return the number of vowel substrings in word.
+//
+// 
+//
+//Example 1:
+//
+//Input: word = "aeiouu"
+//Output: 2
+//Explanation: The vowel substrings of word are as follows (underlined):
+//- "aeiouu"
+//- "aeiouu"
+//Example 2:
+//
+//Input: word = "unicornarihan"
+//Output: 0
+//Explanation: Not all 5 vowels are present, so there are no vowel substrings.
+//Example 3:
+//
+//Input: word = "cuaieuouac"
+//Output: 7
+//Explanation: The vowel substrings of word are as follows (underlined):
+//- "cuaieuouac"
+//- "cuaieuouac"
+//- "cuaieuouac"
+//- "cuaieuouac"
+//- "cuaieuouac"
+//- "cuaieuouac"
+//- "cuaieuouac"
+// 
+//
+//Constraints:
+//
+//1 <= word.length <= 100
+//word consists of lowercase English letters only.
+//
+//
+//class Solution {
+//    func countVowelSubstrings(_ word: String) -> Int {
+//        guard word.count > 4 else { return 0 }
+//        let word = Array(word)
+//        let vowelsInit = Dictionary(uniqueKeysWithValues: "aeiou".map{($0, 0)})
+//        var result = 0, windowStart = 0, windowEnd = 0, vowelCounts = vowelsInit, vowelsPresent = 0
+//        for (i, ch) in word.enumerated() {
+//            if let count = vowelCounts[ch] {
+//              if count == 0 {
+//                if vowelsPresent == 0 {
+//                  windowStart = i
+//                  windowEnd = i
+//                }
+//                vowelsPresent += 1
+//              }
+//              vowelCounts[ch]! = count + 1
+//              if vowelsPresent == 5 {
+//                for ch in word[windowEnd ..< word.count] {
+//                    windowEnd += 1
+//                    if let count = vowelCounts[ch] {
+//                      vowelCounts[ch]! = count - 1
+//                      guard count > 1 else { vowelsPresent -= 1; break }
+//                    }
+//                }
+//              }
+//              result += windowEnd - windowStart
+//          } else if vowelsPresent > 0 {
+//            vowelCounts = vowelsInit
+//            vowelsPresent = 0
+//          }
+//        }
+//        return result
+//    }
+//}
